@@ -2,7 +2,7 @@
 
 ## Users:
 * id
-* username
+* account_name
 * email
 * password_digest
 * session_token
