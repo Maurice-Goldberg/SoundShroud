@@ -8,9 +8,9 @@
 * session_token
 * created_at
 * updated_at
-index on username, unique: true
-index on email, unique: true
-index on session_token, unique: true
+    * _index on username, unique: true_
+    * _index on email, unique: true_
+    * _index on session_token, unique: true_
 
 
 ## Tracks:
@@ -18,8 +18,8 @@ index on session_token, unique: true
 * author_id
 * created_at
 * updated_at
-author_id references users
-index on author_id
+    * _author_id references users_
+    * _index on author_id_
 
 
 ## Likes:
@@ -28,10 +28,10 @@ index on author_id
 * track_id
 * created_at
 * updated_at
-user_id references users
-index on user_id
-track_id references tracks
-index on track_id
+    * _user_id references users_
+    * _index on user_id_
+    * _track_id references tracks_
+    * _index on track_id_
 
 
 ## Follows:
