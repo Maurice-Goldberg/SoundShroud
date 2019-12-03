@@ -1,6 +1,6 @@
-Schema
+# Schema
 
-Users:
+## Users:
 * id
 * username
 * email
@@ -13,7 +13,7 @@ index on email, unique: true
 index on session_token, unique: true
 
 
-Tracks:
+## Tracks:
 * id
 * author_id
 * created_at
@@ -22,7 +22,7 @@ author_id references users
 index on author_id
 
 
-Likes:
+## Likes:
 * id
 * user_id
 * track_id
@@ -34,10 +34,10 @@ track_id references tracks
 index on track_id
 
 
-Follows:
+## Follows:
 * id
 * user_id
 * created_at
 * updated_at
-user_id references users
-index on user_id
+    * _user_id references users_
+    * _index on user_id_
