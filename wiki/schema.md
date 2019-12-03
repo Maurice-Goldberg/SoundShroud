@@ -1,4 +1,4 @@
-# Schema
+# Database Schema
 
 ## Users:
 * id
