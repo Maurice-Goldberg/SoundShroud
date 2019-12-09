@@ -72,3 +72,12 @@ Migrating to CreateComments (20191209190903)
   ↳ bin/rails:9
   [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/appacademystudent/.rbenv/versions/2.5.1/bin/annotate:23
+Started GET "/" for ::1 at 2019-12-09 17:45:51 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/appacademystudent/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/appacademystudent/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/appacademystudent/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4/lib/rails/templates/rails/welcome/index.html.erb (3.7ms)
+Completed 200 OK in 24ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
