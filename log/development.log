@@ -342,3 +342,17 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 2396ms (Views: 2391.8ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2019-12-10 13:49:18 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 907ms (Views: 902.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-10 13:49:43 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 854ms (Views: 850.2ms | ActiveRecord: 0.0ms)
+
+
