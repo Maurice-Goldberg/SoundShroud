@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
+  def require_user_logged_in
+    unless logged_in?
+      render json: { base: ['must log in first'] }, status: 401
+    end
+  end
 end
