@@ -43,15 +43,16 @@ class SessionForm extends React.Component {
     );
   }
 
-  handleDemoSignIn(event) {
-    event.preventDefault();
-    this.setState({
+  handleDemoSignIn() {
+    const {submitUser} = this.props;
+    submitUser({
       email: "demouser@gmail.com",
-      password: "password"
-    });
+      password: "password123"});
 
-    debugger
-    this.handleSubmit(event);
+    this.setState({
+      email: "",
+      password: ""
+    });
   }
 
   render() {
@@ -71,9 +72,9 @@ class SessionForm extends React.Component {
           {formType==="Create account" && <input type="text" placeholder="Your account name *"
             value={this.state.account_name}
             onChange={this.update('account_name')}
-          />}
+            />}
         </form>
-        {formType === "Sign in" && <button onClick={this.handleDemoSignIn}>Demo User</button>}
+            {formType === "Sign in" && <button onClick={this.handleDemoSignIn}>Demo User</button>}
         {this.showErrors()}
       </label>
     );

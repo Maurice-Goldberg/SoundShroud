@@ -19,11 +19,13 @@
  }
 
  #sign-in-btn {
-   width: 110px;
+   width: 60px;
+   flex-shrink: 0;
  }
 
  #create-acc-btn {
-   width: 250px;
+   width: 125px;
+   flex-shrink: 0;
  }
 
  #search-bar {
@@ -33,6 +35,7 @@
    margin-right: 15px;
    margin-top: auto;
    margin-bottom: auto;
+   flex-shrink: 0;
  }
 
 .logo {
@@ -62,4 +65,17 @@
 
  .account-dropdown {
    padding-top: 12.5px;
+ }
+
+ .nav-tabs {
+   display: flex;
+   justify-content: space-evenly;
+    padding-top: 12.5px;
+ }
+
+ .home-tab {
+   padding-right: 25px;
+   padding-left: 25px;
+   border-left: 1px solid white;
+   border-right: 1px solid white;
  }
