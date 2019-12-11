@@ -17,12 +17,11 @@ class NavBar extends React.Component {
     );
 
     return (
-      <div className="account-dropdown">
         <DropdownContainer
+          classStr="account-dropdown"
           title={account_name}
           list={list}  
         />
-      </div>
     );
   }
 
@@ -55,8 +54,9 @@ class NavBar extends React.Component {
           placeholder="Search for artists, bands, tracks, podcasts"
         />
         {userNavItem}
-        <div className="settings-dropdown">
+        <div>
           {currentUser && <DropdownContainer
+            classStr = "settings-dropdown"
             title="..."
             list={settings}
             currentUser={currentUser}
