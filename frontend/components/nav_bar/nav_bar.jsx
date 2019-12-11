@@ -17,10 +17,12 @@ class NavBar extends React.Component {
     );
 
     return (
-      <DropdownContainer
-        title={account_name}
-        list={list}  
-      />
+      <div className="account-dropdown">
+        <DropdownContainer
+          title={account_name}
+          list={list}  
+        />
+      </div>
     );
   }
 
@@ -34,16 +36,12 @@ class NavBar extends React.Component {
     }
   
     let settings = (
-      <>
-        <li></li>
-        <li></li>
-        <li></li>
-      </>
+        <li>Settings</li>
     );
 
     return (
       <nav className="nav-bar">
-        <figure class="logo">
+        <figure className="logo">
           <img id="logo-img" src={window.logo}/>
           <h1 id="site-title">SOUNDSHROUD</h1>
         </figure>
@@ -54,12 +52,12 @@ class NavBar extends React.Component {
         />
         {userNavItem}
         <div className="settings-dropdown">
-          <DropdownContainer
+          {currentUser && <DropdownContainer
             title="..."
             list={settings}
             currentUser={currentUser}
             logout={logout}
-          />
+          />}
         </div>
       </nav>
     );

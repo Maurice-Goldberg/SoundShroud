@@ -8,6 +8,7 @@ class Dropdown extends React.Component {
       headerText: this.props.title,
     };
     this.logoutUser = this.logoutUser.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   handleClickOutside() {
@@ -34,14 +35,16 @@ class Dropdown extends React.Component {
       signOutListItem = (<li onClick={this.logoutUser}>Sign out</li>);
     }
     return (
-      <div className="dropdown">
-        <div className="dropdown-header" onClick={() => this.toggleList()}>
-          <div className="dropdown-header-text">{this.state.headerText}</div>
+      <div className="dropdown-background">
+        <div className="dropdown">
+          <div className="dropdown-header" onClick={() => this.toggleList()}>
+            <div className="dropdown-header-text">{this.state.headerText}</div>
+          </div>
+          {this.state.open && <ul className="dropdown-list">
+            {this.props.list}
+            {signOutListItem}
+          </ul>}
         </div>
-        {this.state.open && <ul className="dropdown-list">
-          {this.props.list}
-          {signOutListItem}
-        </ul>}
       </div>
     );
   }
