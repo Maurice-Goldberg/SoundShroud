@@ -4,45 +4,65 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "Your email address *",
-      profileURL: "Your email address *",
-      password: ""
+      email: "",
+      password: "",
+      account_name: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
+    const {submitUser} = this.props;
     event.preventDefault();
-    this.props.submitUser(this.state);
+    submitUser(this.state);
+    this.setState({
+      email: "",
+      password: "",
+      account_name: ""
+    });
   }
 
   update(formField) {
-    return e => {
-      if(e.currentTarget.value === "" && formField === "email") {
-        this.setState({
-          "email": "Your email address *"
-        });
-      } else {
-        this.setState({
-          [formField]: e.currentTarget.value
-        });
-      }
-    };
+    return e => this.setState({ [formField]: e.currentTarget.value });
+  }
+
+  showErrors() {
+    let errors = this.props.errors.map((error, i) => {
+      return (
+        <li key={`err${i}`}>
+          {error}
+        </li>
+      );
+    });
+
+    return (
+      <ul>
+        {errors}
+      </ul>
+    );
   }
 
   render() {
+    const {formType} = this.props;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text"
-          value={this.state.email}
-          onChange={this.update('email')}
-        />
-        <input type="password"
-          value={this.state.password}
-          onChange={this.update('password')}
-        />
-        <button type="submit">Continue</button>
-      </form>
+      <label>{this.props.formType}
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Your email address *"
+            value={this.state.email}
+            onChange={this.update('email')}
+          />
+          <input type="password" placeholder="Your password *"
+            value={this.state.password}
+            onChange={this.update('password')}
+          />
+          <button type="submit">Continue</button>
+          {formType==="Create account" && <input type="text" placeholder="Your account name *"
+            value={this.state.account_name}
+            onChange={this.update('account_name')}
+          />}
+        </form>
+        {this.showErrors()}
+      </label>
     );
   }
 }
