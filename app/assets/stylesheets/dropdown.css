@@ -1,0 +1,16 @@
+#signOutListItem {
+  width: 100px;
+  height: 30px;
+}
+
+#signOutListItem:hover {
+  cursor: pointer;
+}
+
+.settings-dropdown {
+  width: 50px;
+}
+
+.account-dropdown {
+  width: 120px;
+}
