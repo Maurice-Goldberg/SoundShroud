@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
       account_name: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSignIn = this.handleDemoSignIn.bind(this);
   }
 
   handleSubmit(event) {
@@ -42,6 +43,17 @@ class SessionForm extends React.Component {
     );
   }
 
+  handleDemoSignIn(event) {
+    event.preventDefault();
+    this.setState({
+      email: "demouser@gmail.com",
+      password: "password"
+    });
+
+    debugger
+    this.handleSubmit(event);
+  }
+
   render() {
     const {formType} = this.props;
     return (
@@ -61,6 +73,7 @@ class SessionForm extends React.Component {
             onChange={this.update('account_name')}
           />}
         </form>
+        {formType === "Sign in" && <button onClick={this.handleDemoSignIn}>Demo User</button>}
         {this.showErrors()}
       </label>
     );
