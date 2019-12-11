@@ -45,9 +45,15 @@ class NavBar extends React.Component {
           <h1 id="site-title">SOUNDSHROUD</h1>
         </figure>
         <div className="nav-tabs">
-          <h2 id="home-tab">Home</h2>
-          <h2 id="stream-tab">Stream</h2>
-          <h2 id="library-tab">Library</h2>
+          <div className="nav-tab-wrapper">
+            <h2 id="home-tab">Home</h2>
+          </div>
+          <div className="nav-tab-wrapper">
+            <h2 id="stream-tab">Stream</h2>
+          </div>
+          <div className="nav-tab-wrapper">
+            <h2 id="library-tab">Library</h2>
+          </div>
         </div>
         <input id="search-bar"
           type="text"
