@@ -35,24 +35,32 @@ class NavBar extends React.Component {
   
     let settings = (
       <>
-        
+        <li></li>
+        <li></li>
+        <li></li>
       </>
     );
 
     return (
       <nav className="nav-bar">
-        <h1 id="site-title">SOUNDSHROUD</h1>
+        <figure class="logo">
+          <img id="logo-img" src={window.logo}/>
+          <h1 id="site-title">SOUNDSHROUD</h1>
+        </figure>
+
         <input id="search-bar"
           type="text"
           placeholder="Search for artists, bands, tracks, podcasts"
         />
         {userNavItem}
-        <DropdownContainer
-          title="..."
-          list={settings}
-          currentUser={currentUser}
-          logout={logout}
-        />
+        <div className="settings-dropdown">
+          <DropdownContainer
+            title="..."
+            list={settings}
+            currentUser={currentUser}
+            logout={logout}
+          />
+        </div>
       </nav>
     );
   }

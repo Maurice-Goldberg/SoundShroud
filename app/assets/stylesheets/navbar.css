@@ -2,11 +2,9 @@
   display: flex;
   justify-content: space-evenly;
   background-color: grey;
-  padding-top: 8px;
-  padding-bottom: 8px;
   padding-right: 30%;
   padding-left: 30%;
-  height: 25px;
+  height: 46px;
 }
 
  button {
@@ -16,6 +14,8 @@
    border-radius: 5px;
    margin-top: auto;
    margin-bottom: auto;
+   margin-left: 15px;
+   margin-right: 15px;
  }
 
  #sign-in-btn {
@@ -28,9 +28,34 @@
 
  #search-bar {
    width: 375px;
- }
-
- #site-title {
+   height: 20px;
+   margin-left: 15px;
+   margin-right: 15px;
    margin-top: auto;
    margin-bottom: auto;
+ }
+
+.logo {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: black;
+  margin-right: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+ #site-title {
+   padding-top: 15px;
+   padding-bottom: 10px;
+   color: white;
+   height: 20px;
+ }
+
+ #logo-img {
+   width: 45px;
+   margin-right: 8px;
+ }
+
+ .settings-dropdown {
+   padding-top: 10px;
  }
