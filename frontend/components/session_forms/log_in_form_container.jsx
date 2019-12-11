@@ -13,7 +13,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  debugger
   return {
     submitUser: (user) => dispatch(login(user)),
   };
