@@ -45,7 +45,11 @@ class NavBar extends React.Component {
           <img id="logo-img" src={window.logo}/>
           <h1 id="site-title">SOUNDSHROUD</h1>
         </figure>
-
+        <div className="nav-tabs">
+          <h2 id="home-tab">Home</h2>
+          <h2 id="stream-tab">Stream</h2>
+          <h2 id="library-tab">Library</h2>
+        </div>
         <input id="search-bar"
           type="text"
           placeholder="Search for artists, bands, tracks, podcasts"
