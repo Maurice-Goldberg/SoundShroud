@@ -6,14 +6,13 @@ import SignupFormContainer from './sign_up_form_container';
 
 const Modal = (props) => {
   const { modal, closeModal, openSignInModal, openCreateAccModal } = props;
-  debugger
   if (!modal) {
     return (
     <>
-      <button onClick={() => openSignInModal()}>
+      <button id="sign-in-btn" onClick={() => openSignInModal()}>
         Sign in
     </button>
-      <button onClick={() => openCreateAccModal()}>
+      <button id="create-acc-btn" onClick={() => openCreateAccModal()}>
         Create account
     </button>
     </>
@@ -24,15 +23,12 @@ const Modal = (props) => {
   switch (modal) {
     case "Sign in":
       component = <LoginFormContainer />;
-      debugger
       break;
     case "Create account":
       component = <SignupFormContainer />;
-      debugger
       break;
   }
 
-  debugger
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>

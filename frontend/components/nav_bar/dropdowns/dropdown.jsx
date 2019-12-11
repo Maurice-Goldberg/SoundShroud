@@ -25,7 +25,6 @@ class Dropdown extends React.Component {
   logoutUser() {
     this.props.logout();
     this.toggleList();
-    debugger
     this.props.closeModal();
   }
 

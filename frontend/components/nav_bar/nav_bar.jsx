@@ -28,13 +28,9 @@ class NavBar extends React.Component {
     let userNavItem;
     const {currentUser, logout} = this.props;
     if (typeof currentUser === 'undefined') {
-      debugger
       userNavItem = <Modal />;
-      debugger
     } else {
-      debugger
       userNavItem = this.accountNav();
-      debugger
     }
   
     let settings = (
@@ -44,8 +40,12 @@ class NavBar extends React.Component {
     );
 
     return (
-      <nav>
-        <h1>SoundShroud</h1>
+      <nav className="nav-bar">
+        <h1 id="site-title">SOUNDSHROUD</h1>
+        <input id="search-bar"
+          type="text"
+          placeholder="Search for artists, bands, tracks, podcasts"
+        />
         {userNavItem}
         <DropdownContainer
           title="..."
