@@ -8,7 +8,7 @@ class NavBar extends React.Component {
   }
 
   accountNav() {
-    let account_name = this.props.currentUser.account_name;
+    let account_name = window.currentUser.account_name;
     let list = (
       <>
         <li className="dropdown-list-item">Profile</li>
@@ -27,11 +27,11 @@ class NavBar extends React.Component {
 
   render() {
     let userNavItem;
-    const {currentUser, logout} = this.props;
-    if (typeof currentUser === 'undefined') {
-      userNavItem = <Modal />;
-    } else {
+    const {logout, currentUser} = this.props;
+    if (currentUser) {
       userNavItem = this.accountNav();
+    } else {
+      userNavItem = <Modal />;
     }
   
     let settings = (

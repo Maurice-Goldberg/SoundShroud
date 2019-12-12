@@ -21,6 +21,10 @@
    border: 0.5px solid black;
  }
 
+  button:focus {
+    outline: none;
+ }
+
  #sign-in-btn {
    background-color: rgb(45, 47, 48);
    font-size: 14px;
@@ -55,6 +59,15 @@
    border: none;
    border-radius: 5px;
    font-size: 14px;
+   padding-left: 6px;
+   font-weight: lighter;
+   color: white;
+ }
+
+ #search-bar:focus-within {
+   background-color: #0c0d18;
+   outline-color: purple;
+   color: white;
  }
 
 .logo {
@@ -92,17 +105,19 @@
   }
 
   #home-tab {
-   height: 100%;
+   padding-top: 15px;
    padding-right: 25px;
    padding-left: 10px;
- }
-
- #stream-tab {
-   padding-right: 25px;
-   padding-left: 25px;
- }
-
- #library-tab {
+  }
+  
+  #stream-tab {
+    padding-top: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+  
+  #library-tab {
+    padding-top: 15px;
    padding-right: 25px;
    padding-left: 25px;
  }
