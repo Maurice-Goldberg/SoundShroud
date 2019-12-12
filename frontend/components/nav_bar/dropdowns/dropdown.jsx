@@ -14,6 +14,7 @@ class Dropdown extends React.Component {
   }
 
   handleClickOutside() {
+    debugger
     this.setState({
       open: false
     });
@@ -21,7 +22,8 @@ class Dropdown extends React.Component {
 
   handleChildEvent(ref, callback) {
     return event => {
-      //if this event's object is a item on the dropdown menu
+      //if this event's object isn't a item on the dropdown menu
+      debugger
       if(!ref.current.contains(event.target)) {
         //perform the callback
         callback();

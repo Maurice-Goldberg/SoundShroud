@@ -13,4 +13,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
+  background: rgb(20, 17, 40);
+  height: 600px;
+  width: 500px;
 }
