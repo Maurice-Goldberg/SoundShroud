@@ -32,13 +32,40 @@
 
  #sign-in-btn:hover {
    border: 1px solid rgb(122, 128, 130);
-   
  }
 
  #create-acc-btn {
    font-size: 14px;
    width: 125px;
    flex-shrink: 0;
+ }
+
+ .dropdown-header {
+  background-color: rgb(60, 64, 67);
+  border-color: rgb(60, 64, 67);
+  color: rgba(255, 255, 255, 0.673);
+ }
+
+ .dropdown-header:hover {
+   cursor: pointer;
+ }
+
+ .settings-dropdown button {
+   font-size: 35px;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   margin-top: 0px;
+ }
+
+.settings-dropdown button:active:hover, .account-dropdown button:active:hover {
+    background-color: rgb(40, 43, 45);
+}
+
+ .settings-dropdown button:hover {
+  color: white;
+ }
+
+ .account-dropdown button {
+   color: white;
  }
 
  #search-bar {
@@ -67,7 +94,7 @@
   padding-left: 10px;
 }
 
- #site-title {
+#site-title {
    padding-top: 15px;
    padding-bottom: 10px;
    color: white;
@@ -97,21 +124,15 @@
     border-right: 1px solid white;
     height: 100%;
   }
-
-  #home-tab {
-   padding-top: 15px;
-   padding-right: 25px;
-   padding-left: 10px;
-  }
-  
-  #stream-tab {
+ 
+  #library-tab, #stream-tab,  #home-tab {
+    color: rgba(255, 255, 255, 0.673);
+    cursor: pointer;
     padding-top: 15px;
     padding-right: 25px;
     padding-left: 25px;
   }
-  
-  #library-tab {
-    padding-top: 15px;
-   padding-right: 25px;
-   padding-left: 25px;
- }
+
+  #library-tab:hover, #stream-tab:hover,  #home-tab:hover {
+    color: white;
+  }

@@ -6,7 +6,7 @@ import SignupFormContainer from './sign_up_form_container';
 
 const Modal = (props) => {
   const { modal, closeModal, openSignInModal, openCreateAccModal } = props;
-  
+
   let component;
   switch (modal) {
     case "Sign in":
