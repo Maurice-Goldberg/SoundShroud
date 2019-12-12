@@ -23,8 +23,8 @@ class Dropdown extends React.Component {
   handleChildEvent(ref, callback) {
     return event => {
       //if this event's object isn't a item on the dropdown menu
-      debugger
-      if(!ref.current.contains(event.target)) {
+      if(!ref.current.contains(event.relatedTarget)) {
+        debugger
         //perform the callback
         callback();
       }
@@ -53,10 +53,10 @@ class Dropdown extends React.Component {
       <div className="dropdown-background">
         <div ref={this.dropDownParent}
         className={this.props.classStr === "account-dropdown" ? "account-dropdown" : "settings-dropdown"}>
-          <button className="dropdown-header" onClick={() => this.toggleList()} onBlur={this.handleChildEvent(this.dropDownParent, this.handleClickOutside)}>
+          <button className="dropdown-header" onFocus={() => this.toggleList()} onBlur={this.handleChildEvent(this.dropDownParent, this.handleClickOutside)}>
             <div className="dropdown-header-text">{this.state.headerText}</div>
           </button>
-          {this.state.open && <ul className="dropdown-list">
+          {this.state.open && <ul tabIndex="0" className="dropdown-list">
             {this.props.list}
             {signOutListItem}
           </ul>}

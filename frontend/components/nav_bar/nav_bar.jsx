@@ -8,7 +8,8 @@ class NavBar extends React.Component {
   }
 
   accountNav() {
-    let account_name = window.currentUser.account_name;
+    debugger
+    let account_name = this.props.currentUser.account_name;
     let list = (
       <>
         <li className="dropdown-list-item">Profile</li>

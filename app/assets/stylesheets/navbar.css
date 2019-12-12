@@ -9,7 +9,7 @@
 }
 
  button {
-   font-size: 12px;
+   font-size: 14px;
    padding: 5px;
    background-color: darkslateblue;
    border-radius: 3px;
@@ -19,32 +19,26 @@
    margin-right: 15px;
    color: white;
    border: 0.5px solid black;
+   flex-shrink: 0;
  }
 
-  button:focus {
-    outline: none;
- }
+
 
  #sign-in-btn {
    background-color: rgb(45, 47, 48);
    font-size: 14px;
    width: 70px;
-   flex-shrink: 0;
  }
 
  #sign-in-btn:hover {
    border: 1px solid rgb(122, 128, 130);
-   cursor: pointer;
+   
  }
 
  #create-acc-btn {
    font-size: 14px;
    width: 125px;
    flex-shrink: 0;
- }
-
- #create-acc-btn {
-   cursor: pointer;
  }
 
  #search-bar {
@@ -61,12 +55,6 @@
    font-size: 14px;
    padding-left: 6px;
    font-weight: lighter;
-   color: white;
- }
-
- #search-bar:focus-within {
-   background-color: #0c0d18;
-   outline-color: purple;
    color: white;
  }
 
@@ -90,6 +78,12 @@
    width: 45px;
    margin-right: 8px;
  }
+
+ #search-bar:focus-within {
+    background-color: #0c0d18;
+    outline-color: darkslateblue;
+    color: white;
+}
 
  
  .nav-tabs {
