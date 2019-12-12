@@ -1,0 +1,55 @@
+.splash-div .nav-bar {
+  position: absolute;
+  top: -655px;
+}
+
+.splash-panel {
+  background: darkslateblue;
+  height: 4px;
+  z-index: 3;
+  left: 18%;
+  width: 1230px;
+  position: relative;
+  height: 660px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.splash-panel-carousel {
+  top: 4px;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 400%;
+  position: relative;
+  animation: carousel 16s infinite;
+  
+}
+
+@keyframes carousel {
+  0%   { transform: translateX(0); }
+  50% { transform: translateX(-1000px)}
+  100% { transform: translateX(-2000px); }
+}
+
+.splash-panel-carousel div {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+}
+
+.splash-div .logo, .splash-div .nav-bar  {
+  background: transparent;
+  position: relative;
+  z-index: 5;
+}
+
+.splash-div #sign-in-btn {
+  background: transparent;
+  border-color: rgb(76, 52, 126);
+  z-index: 5;
+}
+
+.splash-div #sign-in-btn:hover {
+  border-color: rgb(113, 79, 186);
+}

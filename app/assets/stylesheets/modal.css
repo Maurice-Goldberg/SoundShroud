@@ -20,9 +20,25 @@
   width: 500px;
   animation-name: modal-swoop-in;
   animation-duration: 0.25s;
-  /* Safari 4.0 - 8.0
-  -webkit-animation-name: modal-swoop-in;
-  -webkit-animation-duration: 0.5s;  */
+  display: flex;
+  justify-content: center;
+}
+
+.session-form-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.session-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+}
+
+.session-button {
+  width: 400px;
 }
 
 @keyframes modal-swoop-in {
@@ -46,13 +62,3 @@
     background: rgba(0, 0, 0, 0.7);
   }
 }
-
-.modal-background {
-
-}
-
-/* Safari 4.0 - 8.0 */
-/* @-webkit-keyframes modalswoop {
-  from {}
-  to {}
-} */

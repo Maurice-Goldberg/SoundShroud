@@ -59,7 +59,7 @@ class SessionForm extends React.Component {
     const {formType} = this.props;
     return (
       <label>{this.props.formType}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="session-form">
           <input type="text" placeholder="Your email address *"
             value={this.state.email}
             onChange={this.update('email')}
@@ -68,13 +68,16 @@ class SessionForm extends React.Component {
             value={this.state.password}
             onChange={this.update('password')}
           />
-          <button type="submit">Continue</button>
-          {formType==="Create account" && <input type="text" placeholder="Your account name *"
+          {formType === "Create account" && <input type="text" placeholder="Your account name *"
             value={this.state.account_name}
             onChange={this.update('account_name')}
-            />}
+          />}
+          <button type="submit" className="session-button">Continue</button>
         </form>
-            {formType === "Sign in" && <button onClick={this.handleDemoSignIn}>Demo User</button>}
+        {formType === "Sign in" && <button
+          onClick={this.handleDemoSignIn}
+          className="session-button"
+        >Demo User</button>}
         {this.showErrors()}
       </label>
     );
