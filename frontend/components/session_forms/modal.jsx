@@ -6,19 +6,7 @@ import SignupFormContainer from './sign_up_form_container';
 
 const Modal = (props) => {
   const { modal, closeModal, openSignInModal, openCreateAccModal } = props;
-  if (!modal) {
-    return (
-    <>
-      <button id="sign-in-btn" onClick={() => openSignInModal()}>
-        Sign in
-      </button>
-      <button id="create-acc-btn" onClick={() => openCreateAccModal()}>
-        Create account
-      </button>
-    </>
-    )
-  }
-
+  
   let component;
   switch (modal) {
     case "Sign in":
@@ -28,14 +16,32 @@ const Modal = (props) => {
       component = <SignupFormContainer />;
       break;
   }
+  
+  let sessionButtons = (
+    <>
+      <button id="sign-in-btn" onClick={() => openSignInModal()}>
+        Sign in
+        </button>
+      <button id="create-acc-btn" onClick={() => openCreateAccModal()}>
+        Create account
+        </button>
+    </>
+  );
+
+  if (!modal) {
+    return sessionButtons;
+  }
 
   return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        {component}
+    <>
+      {sessionButtons}
+      <div className="modal-background" onClick={closeModal}>
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+          {component}
+        </div>
       </div>
-    </div>
-  );
+    </>
+  )
 }
 
 const mapStateToProps = state => {

@@ -23,6 +23,14 @@ body {
      background-color: rgb(21, 24, 27);
  }
 
- input:focus {
-     border-color: purple;
+ button:hover {
+    cursor: pointer;
  }
+
+button:focus {
+    outline: none;
+ }
+
+ul:focus {
+    outline: none;
+}
