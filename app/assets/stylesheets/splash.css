@@ -47,20 +47,20 @@
 
 .splash-div .nav-bar {
   position: relative;
-  top: -660px;
+  top: -655px;
   left: 18%;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.468);
+  background: rgba(87, 54, 133, 0.468);
 }
 
 .splash-div #sign-in-btn {
   background: transparent;
-  border-color: rgb(96, 66, 159);
+  border-color: rgb(0, 0, 0);
   z-index: 5;
 }
 
 .splash-div #sign-in-btn:hover {
-  border-color: rgb(126, 90, 233);
+  border-color: white;
 }
 
 .splash-modal-btns {
