@@ -1,6 +1,6 @@
 .top-border {
   position: relative;
-  left: 18%;
+  left: 27%;
   height: 4px;
   background: darkslateblue;
   width: 1230px;
@@ -9,10 +9,10 @@
 .splash-panel {
   background: transparent;
   z-index: 3;
-  left: 18%;
+  left: 27%;
   width: 1230px;
   position: relative;
-  height: 660px;
+  height: 600px;
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -39,17 +39,22 @@
   height: 300px;
 }
 
+.splash-panel-carousel img {
+  opacity: 0.6;
+}
+
 .splash-div .logo, .splash-div  {
   background: transparent;
-  position: relative;
+  position: absolute;
   z-index: 5;
 }
 
 .splash-div .nav-bar {
   position: relative;
-  top: -655px;
-  left: 18%;
+  top: -595px;
+  left: 27%;
   z-index: 10;
+  width: 45%;
   background: rgba(87, 54, 133, 0.468);
 }
 
@@ -64,10 +69,138 @@
 }
 
 .splash-modal-btns {
-  left: 200px;
+  left: 950px;
+  position: absolute;
   display: flex;
 }
 
 .splash-div .logo {
-  left: -600px;
+  left: 0px;
+}
+
+.carousel-text {
+  z-index: 8;
+  color: rgba(255, 255, 255, 0.728);
+  text-shadow: 2px 2px rgb(7, 7, 130);
+  position: absolute;
+  top: 285px;
+  font-size: 30px;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+.panel-1, .panel-2, .panel-3 {
+  position: relative;
+}
+
+.panel-1 .carousel-text {
+  left: 100px;
+}
+
+.panel-2 .carousel-text {
+  left: 180px;
+}
+
+.panel-3 .carousel-text {
+  left: 200px;
+}
+
+.splash-div #search-bar {
+  left: 600px;
+  width: 500px;
+  height: 40px;
+  top: -2px;
+  font-size: 16px;
+  background: black;
+  position: relative;
+  /* border: solid 2px rgba(71, 61, 139, 0.66); */
+}
+
+.splash-div #upload-btn {
+  left: 1162px;
+  top: -60px;
+  font-size: 14px;
+  padding-right: 17px;
+  padding-left: 17px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  position: relative;
+}
+
+.splash-div #or {
+  left: 1143px;
+  top: -32px;
+  font-size: 15px;
+  color: white;
+  position: relative;
+}
+
+#banner-text {
+  font-size: 28px;
+  position: relative;
+  left: 550px;
+  top: -22px;
+  color: white;
+}
+
+#trending-tracks {
+  height: 450px;
+  width: 1170px;
+  position: relative;
+  left: 30%;
+  border: solid 1px rgba(71, 61, 139, 0.81);
+  margin-bottom: 75px;
+  border-radius: 5px;
+}
+
+#thank-you-text {
+  font-size: 35px;
+  position: relative;
+  left: 675px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+#thank-you-subheader {
+  font-size: 20px;
+  position: relative;
+  left: 675px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+#splash-footer #create-acc-btn {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 200px;
+  height: 50px;
+  font-size: 17px;
+  left: 840px;
+  top: 91px;
+  position: absolute;
+}
+
+#small-text {
+  color: white;
+  font-size: 14px;
+  position: relative;
+  left: 830px;
+  top: 68px;
+}
+
+#splash-footer #sign-in-btn {
+  position: absolute;
+  left: 995px;
+  top: 156px;
+  margin-bottom: 20px;
+  border-color: darkslateblue;
+}
+
+#splash-footer #sign-in-btn:hover {
+  border-color: white;
+}
+
+#splash-footer {
+  position: relative;
+  top: -30px;
 }
