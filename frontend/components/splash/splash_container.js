@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import Splash from './splash';
+import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = ({session}) => {
   return {
@@ -7,10 +8,4 @@ const mapStateToProps = ({session}) => {
   }
 }
 
-const mapDispatchToProps = () => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Splash);
+export default connect(mapStateToProps, null)(Splash);

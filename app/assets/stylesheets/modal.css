@@ -19,7 +19,7 @@
   height: 600px;
   width: 500px;
   animation-name: modal-swoop-in;
-  animation-duration: 0.25s;
+  animation-duration: 0.5s;
   display: flex;
   justify-content: center;
 }
