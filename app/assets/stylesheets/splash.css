@@ -1,11 +1,13 @@
-.splash-div .nav-bar {
-  position: absolute;
-  top: -655px;
+.top-border {
+  position: relative;
+  left: 18%;
+  height: 4px;
+  background: darkslateblue;
+  width: 1230px;
 }
 
 .splash-panel {
-  background: darkslateblue;
-  height: 4px;
+  background: transparent;
   z-index: 3;
   left: 18%;
   width: 1230px;
@@ -16,20 +18,19 @@
 }
 
 .splash-panel-carousel {
-  top: 4px;
   display: flex;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   width: 400%;
   position: relative;
-  animation: carousel 16s infinite;
+  animation: carousel 26s infinite;
   
 }
 
 @keyframes carousel {
   0%   { transform: translateX(0); }
   50% { transform: translateX(-1000px)}
-  100% { transform: translateX(-2000px); }
+  100% { transform: translateX(-3010px); }
 }
 
 .splash-panel-carousel div {
@@ -38,18 +39,35 @@
   height: 300px;
 }
 
-.splash-div .logo, .splash-div .nav-bar  {
+.splash-div .logo, .splash-div  {
   background: transparent;
   position: relative;
   z-index: 5;
 }
 
+.splash-div .nav-bar {
+  position: relative;
+  top: -660px;
+  left: 18%;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.468);
+}
+
 .splash-div #sign-in-btn {
   background: transparent;
-  border-color: rgb(76, 52, 126);
+  border-color: rgb(96, 66, 159);
   z-index: 5;
 }
 
 .splash-div #sign-in-btn:hover {
-  border-color: rgb(113, 79, 186);
+  border-color: rgb(126, 90, 233);
+}
+
+.splash-modal-btns {
+  left: 200px;
+  display: flex;
+}
+
+.splash-div .logo {
+  left: -600px;
 }
