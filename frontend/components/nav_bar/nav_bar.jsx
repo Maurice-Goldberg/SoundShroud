@@ -36,7 +36,8 @@ class NavBar extends React.Component {
     }
   
     let settings = (
-        <li>Settings</li>
+        <>
+        </>
     );
 
     return (
