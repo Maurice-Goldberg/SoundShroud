@@ -20,21 +20,39 @@
   width: 500px;
   animation-name: modal-swoop-in;
   animation-duration: 0.5s;
-  display: flex;
-  justify-content: center;
 }
 
 .session-form-container {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
+
 }
 
 .session-form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  position: absolute;
+  top: 200px;
+  left: 60px;
   width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.session-form input {
+  margin: 10px;
+  height: 35px;
+  width: 380px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  padding-left: 10px;
+  color: white;
+  background-color: rgb(97, 96, 109);
+}
+
+.session-form input::placeholder {
+  color: rgb(171, 171, 171);
+}
+
+.session-form input:focus-within {
+  outline-color: darkslateblue;
 }
 
 .session-button {

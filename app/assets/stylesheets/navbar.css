@@ -65,17 +65,52 @@
    overflow: hidden;
  }
 
+ .account-dropdown button {
+   color: white;
+  border: none;
+   border-radius: 0px;
+   position: absolute;
+   overflow: hidden;
+    margin-top: 0px;
+   height: 45px;
+   width: 90px;
+   padding-bottom: 5px;
+   top: 0px;
+ }
+
+ .account-dropdown li {
+    position: absolute;
+    top: 80px;
+    color: white;
+    left: 1326px;
+    background: black;
+    width: 60px;
+    height: 20px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 7.5px;
+ }
+
+ .account-dropdown li:first-child {
+    top: 45.5px;
+    left: 1326px;
+    padding-bottom: 7.5px;
+    padding-top: 10px;  
+ }
+
+ .account-dropdown li:hover {
+   background: darkslateblue;
+ }
+
+
 .settings-dropdown button:active:hover, .account-dropdown button:active:hover {
-    background-color: rgb(40, 43, 45);
+    background-color: darkslateblue;
 }
 
  .settings-dropdown button:hover {
   color: white;
  }
 
- .account-dropdown button {
-   color: white;
- }
 
  #search-bar {
    width: 375px;
@@ -144,4 +179,21 @@
 
   #library-tab:hover, #stream-tab:hover,  #home-tab:hover {
     color: white;
+  }
+
+  #signOutListItem {
+    position: absolute;
+    top: 46px;
+    color: white;
+    left: 1392px;
+    background: black;
+    padding-bottom: 5px;
+    padding-left: 9px;
+    padding-top: 10px;
+    width: 70px;
+    height: 20px;
+    border-radius: 1px;
+  }
+  #signOutListItem:hover {
+    background: darkslateblue;
   }
