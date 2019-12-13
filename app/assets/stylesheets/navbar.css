@@ -6,6 +6,7 @@
   padding-right: 30%;
   padding-left: 25%;
   height: 46px;
+  position: relative;
 }
 
  button {
@@ -54,6 +55,14 @@
    font-size: 35px;
    font-family: Georgia, 'Times New Roman', Times, serif;
    margin-top: 0px;
+   height: 64px;
+   width: 45px;
+   padding-bottom: 5px;
+   top: -18px;
+   border: none;
+   border-radius: 0px;
+   position: absolute;
+   overflow: hidden;
  }
 
 .settings-dropdown button:active:hover, .account-dropdown button:active:hover {
