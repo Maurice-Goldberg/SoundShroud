@@ -91,7 +91,7 @@ class SessionForm extends React.Component {
     const or = (
       <div id="or-border">
         <p id="line">____________________</p>
-        <p id="or">or</p>
+        <p id="modal-or">or</p>
         <p id="line">____________________</p>
       </div>);
     

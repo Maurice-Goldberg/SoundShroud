@@ -16,7 +16,7 @@
   top: 15%;
   color: white;
   background: rgb(20, 17, 40);
-  height: 600px;
+  height: 400px;
   width: 500px;
   animation-name: modal-swoop-in;
   animation-duration: 0.5s;
@@ -33,8 +33,11 @@
 
 #demo-login-btn {
   position: absolute;
-  top: -150px;
+  top: -90px;
   left: -10px;
+}
+#or-border {
+  position: absolute;
 }
 
 #line {
@@ -51,9 +54,10 @@
   left: 240px;
 }
 
-#or {
+#modal-or {
   position: absolute;
-  left: -300px;
+  left: 200px;
+  top: -30px;
 }
 
 .session-form input {
@@ -77,12 +81,14 @@
   outline-color: darkslateblue;
 }
 
-.email-input {
-  
+#email-input {
+  top: 0px;
+  left: 10px;
 }
 
-.password-input {
-  top: 30px;
+#password-input {
+  top: 50px;
+  left: 10px;
 }
 
 .left-arrow {
@@ -99,7 +105,7 @@
 
 #second-email-input {
   position: absolute;
-  top: 10px;
+  top: 0px;
   left: 10px;
   height: 25px;
   z-index: 10;
@@ -146,7 +152,7 @@
 #continue-btn {
   position: absolute;
   left: -9px;
-  top: 130px;
+  top: 50px;
   z-index: 12;
 }
 
@@ -154,7 +160,7 @@
   position: absolute;
   z-index: 10;
   left: -9px;
-  top: 130px;
+  top: 100px;
 }
 
 #accept-continue-btn {
