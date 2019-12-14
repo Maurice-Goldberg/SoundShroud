@@ -38,3 +38,7 @@ button:focus {
 ul:focus {
     outline: none;
 }
+
+* {
+    white-space: nowrap;
+}

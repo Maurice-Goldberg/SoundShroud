@@ -1,15 +1,20 @@
 .top-border {
   position: relative;
-  left: 27%;
+  padding-left: 18%;
+  padding-right: 18%;  
   height: 4px;
   background: darkslateblue;
   width: 1230px;
 }
 
+.splash-div {
+  padding-left: 18%;
+  padding-right: 18%;
+}
+
 .splash-panel {
   background: transparent;
   z-index: 3;
-  left: 27%;
   width: 1230px;
   position: relative;
   height: 600px;
@@ -43,22 +48,24 @@
   opacity: 0.6;
 }
 
-.splash-div .logo, .splash-div  {
+.splash-div .logo {
   background: transparent;
   position: absolute;
   z-index: 5;
 }
 
 .splash-div .nav-bar {
-  position: relative;
-  top: -595px;
-  left: 27%;
-  z-index: 10;
-  width: 45%;
+  position: absolute;
+  top: 10px;
+  padding-left: 18%;
+  padding-right: 18%;
+  z-index: 10;  
+  width: 100%;
   background: rgba(87, 54, 133, 0.468);
 }
 
 .splash-div #sign-in-btn {
+  position: relative;
   background: transparent;
   border-color: rgb(0, 0, 0);
   z-index: 5;
@@ -106,19 +113,18 @@
 }
 
 .splash-div #search-bar {
-  left: 600px;
-  width: 500px;
+  width: 700px;
   height: 40px;
-  top: -2px;
+  left: 170px;
+  top: 47px;
   font-size: 16px;
   background: black;
   position: relative;
-  /* border: solid 2px rgba(71, 61, 139, 0.66); */
 }
 
 .splash-div #upload-btn {
-  left: 1162px;
   top: -60px;
+  left: 930px;
   font-size: 14px;
   padding-right: 17px;
   padding-left: 17px;
@@ -128,18 +134,19 @@
 }
 
 .splash-div #or {
-  left: 1143px;
   top: -32px;
+  left: 910px;
   font-size: 15px;
   color: white;
   position: relative;
+  margin-top: 50px;
 }
 
 #banner-text {
   font-size: 28px;
   position: relative;
-  left: 550px;
   top: -22px;
+  left: 215px;
   color: white;
 }
 
@@ -147,7 +154,7 @@
   height: 450px;
   width: 1170px;
   position: relative;
-  left: 30%;
+  left: 40px;
   border: solid 1px rgba(71, 61, 139, 0.81);
   margin-bottom: 75px;
   border-radius: 5px;
@@ -203,4 +210,5 @@
 #splash-footer {
   position: relative;
   top: -30px;
+  left: -320px;
 }

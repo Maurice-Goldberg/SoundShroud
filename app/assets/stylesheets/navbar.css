@@ -79,21 +79,19 @@
  }
 
  .account-dropdown li {
-    position: absolute;
-    top: 80px;
+    position: relative;
     color: white;
-    left: 1326px;
     background: black;
     width: 60px;
     height: 20px;
     padding-left: 10px;
     padding-bottom: 5px;
     padding-top: 7.5px;
+    top: 58px;
+    left: 35px;
  }
 
  .account-dropdown li:first-child {
-    top: 45.5px;
-    left: 1326px;
     padding-bottom: 7.5px;
     padding-top: 10px;  
  }
@@ -182,10 +180,10 @@
   }
 
   #signOutListItem {
-    position: absolute;
-    top: 46px;
+    position: relative;
+    top: 41px;
     color: white;
-    left: 1392px;
+    left: -18px;
     background: black;
     padding-bottom: 5px;
     padding-left: 9px;
