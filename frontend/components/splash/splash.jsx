@@ -36,16 +36,16 @@ class Splash extends React.Component {
               </figure>
             </div>
           </div>
+          <nav className="nav-bar">
+            <figure className="logo">
+              <img id="logo-img" src={window.logo} />
+              <h1 id="site-title">SOUNDSHROUD</h1>
+            </figure>
+            <div className="splash-modal-btns">
+              <Modal />
+            </div>
+          </nav>
         </div>
-        <nav className="nav-bar">
-          <figure className="logo">
-            <img id="logo-img" src={window.logo} />
-            <h1 id="site-title">SOUNDSHROUD</h1>
-          </figure>
-          <div className="splash-modal-btns">
-            <Modal />
-          </div>
-        </nav>
         <input id="search-bar" type="text"
           placeholder="Search for artists, bands, tracks, podcasts" />
           <p id="or">or</p>

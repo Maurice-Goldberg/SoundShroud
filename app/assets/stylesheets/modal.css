@@ -22,51 +22,113 @@
   animation-duration: 0.5s;
 }
 
-.session-form-container {
-
-}
-
 .session-form {
   position: absolute;
   top: 200px;
-  left: 60px;
+  left: 48px;
   width: 400px;
   display: flex;
   flex-direction: column;
 }
 
+#demo-login-btn {
+  position: absolute;
+  top: -150px;
+  left: -10px;
+}
+
+#line {
+  color: white;
+  position: absolute;
+  top: -35px;
+  font-weight: lighter;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  left: 13px;
+}
+
+#line:first-child {
+  top: -35px;
+  left: 240px;
+}
+
+#or {
+  position: absolute;
+  left: -300px;
+}
+
 .session-form input {
-  margin: 10px;
+  position: absolute;
   height: 35px;
   width: 380px;
   border-radius: 5px;
   border: none;
   font-size: 16px;
   padding-left: 10px;
-  color: white;
-  background-color: rgb(97, 96, 109);
+  color: black;
+  background-color: white;
+  z-index: 11;
 }
 
 .session-form input::placeholder {
-  color: rgb(171, 171, 171);
+  color: grey;
 }
 
 .session-form input:focus-within {
   outline-color: darkslateblue;
 }
 
+.email-input {
+  
+}
+
+.password-input {
+  top: 30px;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 21px;
+  left: 24px;
+  width: 0; 
+  height: 0; 
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent; 
+  border-right: 10px solid black; 
+  z-index: 10;
+}
+
+#second-email-input {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 25px;
+  z-index: 10;
+  font-size: 14px;
+  width: 359px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+#second-email-input:hover {
+  cursor: pointer;
+}
+
 .session-button {
   width: 400px;
+  height: 40px;
 }
 
 @keyframes modal-swoop-in {
   from {
-    /* left: 50%; */
     top: -100%;
     bottom: -100%;
   }
   to {
-    /* left: 50%; */
     top: 15%;
     bottom: 0%;
   }
@@ -79,4 +141,25 @@
   to {
     background: rgba(0, 0, 0, 0.7);
   }
+}
+
+#continue-btn {
+  position: absolute;
+  left: -9px;
+  top: 130px;
+  z-index: 12;
+}
+
+#signin-button {
+  position: absolute;
+  z-index: 10;
+  left: -9px;
+  top: 130px;
+}
+
+#accept-continue-btn {
+  z-index: 11;
+  position: absolute;
+  left: 0px;
+  top: 170px;
 }
