@@ -31,14 +31,14 @@ button:focus {
     outline: none;
  }
 
- button:active:hover {
-     background-color: rgb(55, 47, 104);
- }
-
 ul:focus {
     outline: none;
 }
 
 * {
     white-space: nowrap;
+}
+
+button:active {
+    background-color: rgb(55, 47, 104);
 }
