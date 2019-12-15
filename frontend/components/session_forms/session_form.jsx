@@ -1,30 +1,40 @@
 import React from 'react';
+import {findByEmail} from '../../util/session_api_util';
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
-      account_name: ""
+      userParams: {
+        email: "",
+        password: "",
+        account_name: ""
+      },
+      formToRender: "First form"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoSignIn = this.handleDemoSignIn.bind(this);
   }
 
   handleSubmit(event) {
-    const {submitUser} = this.props;
     event.preventDefault();
-    submitUser(this.state);
+    const { submitUser } = this.props;
+    submitUser(this.state.userParams);
     this.setState({
-      email: "",
-      password: "",
-      account_name: ""
+      userParams: {
+        email: "",
+        password: "",
+        account_name: ""
+      },
+      formToRender: "First form"
     });
   }
 
+  //hopefully this doesn't run an error with the new userParams state structure?
   update(formField) {
-    return e => this.setState({ [formField]: e.currentTarget.value });
+    return e => this.setState({
+      userParams: { [formField]: e.currentTarget.value }
+    });
   }
 
   showErrors() {
@@ -43,100 +53,168 @@ class SessionForm extends React.Component {
     );
   }
 
-  handleDemoSignIn() {
-    const {submitUser} = this.props;
-    submitUser({
-      email: "demouser@gmail.com",
-      password: "password123"});
+  handleDemoSignIn(event) {
+    event.preventDefault();
+    const { submitUser } = this.props;
+    // this.setState({userParams: {
+    //   email: "demouser@gmail.com",
+    //   password: "password123"
+    // }});
+
+    submitUser({email: "demouser@gmail.com", password: "password123"})
 
     this.setState({
-      email: "",
-      password: ""
+      userParams: {
+        email: "",
+        password: ""
+      }
     });
   }
 
-  processContinue() {
-    //if log in or if sign up and already email exists
-      //hide normal email input field
-      //hide demo user button
-      //reveal password field
-      //reveal sign in button
-      //reveal disabled email input field
-    //else
-      //hide normal email input field
-      //reveal disabled email input field
-      //reveal password field
-      //reveal account name field
-      //reveal accept & continue button
+  userExists(email) {
+    findByEmail(email).success(
+      this.setState({ formToRender: "Log in" })
+    ).fail(
+      this.setState({ formToRender: "Create account" })
+    )
+  }
+
+  processFirstContinue(email) {
+    const formType = this.props.formType;
+    if(formType === "Sign in" || (formType === "Create account" && this.userExists(email))) {
+      this.setState({formToRender: "Sign in"});
+    } else {
+      this.setState({formToRender: "Create account"});
+    }
+  }
+
+  processSignUpContinue() {
+    this.setState({formToRender: "Account name"});
   }
 
   returnToFirstForm() {
+    this.setState({
+      formToRender: 'First form'
+    });
+  }
 
+  firstForm() {
+    return (
+      <div id="first-form">
+        <button
+          id="demo-login-btn"
+          onClick={event => this.handleDemoSignIn(event)}
+          className="session-button"
+        >Demo User</button>
+
+        <div id="or-border">
+          <p id="line">____________________</p>
+          <p id="modal-or">or</p>
+          <p id="line">____________________</p>
+        </div>
+
+        <input type="text"
+          id="email-input"
+          placeholder="Your email address *"
+          value={this.state.userParams.email}
+          onChange={this.update('email')}
+        />
+
+        <p
+          id="continue-btn"
+          className="session-button"
+          onClick={() => this.processFirstContinue(this.state.userParams.email)}
+        >Continue</p>
+      </div>
+    );
+  }
+
+  pwLoginForm() {
+    return (
+      <div id="pw-login-form">
+        <p
+          id="second-email-input"
+          onClick={this.returnToFirstForm}
+        >{this.state.userParams.email}</p>
+        <div className="left-arrow" onClick={this.returnToFirstForm}></div>
+        
+        <input
+          id="password-input"
+          type="password"
+          placeholder="Your password *"
+          value={this.state.userParams.password}
+          onChange={this.update('password')}
+        />
+        
+        <button
+          id="signin-button"
+          type="submit"
+          className="session-button"
+        >Sign in</button>
+      </div>
+    )
+  }
+
+  pwSignupForm() {
+    return(
+      <div id="pw-signup-form">
+        <h2 id="signup-header">Create your SoundShroud account</h2>
+        
+        <input type="text"
+          id="email-input"
+          placeholder="Your email address *"
+          value={this.state.userParams.email}
+          onChange={this.update('email')}
+        />
+        
+        <p
+          id="accept-continue-btn"
+          type="submit"
+          className="session-button"
+          onClick={() => this.processSignUpContinue()}
+        >Accept {"&"} Continue</p>
+      </div>
+    )
+  }
+
+  accountNameForm() {
+    return (
+      <div id="acc-name-form">
+        <h2 id="acc-name-header">Tell us a bit about yourself</h2>
+
+        <input type="text" placeholder="Your account name *"
+          value={this.state.userParams.account_name}
+          onChange={this.update('account_name')}
+        />
+
+        <button
+          id="get-started-btn"
+          type="submit"
+          className="session-button"
+        >Get started</button>
+      </div>
+    )
   }
 
   render() {
-    const {formType} = this.props;
-    const lastButton = formType === "Sign in" ?
-      <button
-        id="signin-button"
-        type="submit"
-        className="session-button"
-      >Sign in</button> :
-      <button
-        id="accept-continue-btn"
-        type="submit"
-        className="session-button"
-      >Accept {"&"} Continue</button>;
+    let form;
+    switch (this.state.formToRender) {
+      case "First form":
+        form = this.firstForm();
+      case "Create account":
+        form = this.pwSignupForm();
+      case "Log in":
+        form = this.pwLoginForm();
+      case "Account name":
+        form = this.accountNameForm();
+      default:
+        form = this.firstForm();
+    }
 
-    const or = (
-      <div id="or-border">
-        <p id="line">____________________</p>
-        <p id="modal-or">or</p>
-        <p id="line">____________________</p>
-      </div>);
-    
     return (
-      <label>
-        <form onSubmit={this.handleSubmit} className="session-form">
-          {formType === "Sign in" && <button
-            id="demo-login-btn"
-            onClick={this.handleDemoSignIn}
-            className="session-button"
-          >Demo User</button>}
-          
-          {formType === "Sign in" && or}
-
-          <input type="text"
-            id="email-input"
-            placeholder="Your email address *"
-            value={this.state.email}
-            onChange={this.update('email')}
-          />
-          <p
-            id="second-email-input"
-            onClick={this.returnToFirstForm}
-          >{this.state.email}</p>
-          <div className="left-arrow"></div>
-          <input
-            id="password-input"
-            type="password"
-            placeholder="Your password *"
-            value={this.state.password}
-            onChange={this.update('password')}
-          />
-          {formType === "Create account" && <input type="text" placeholder="Your account name *"
-            value={this.state.account_name}
-            onChange={this.update('account_name')}
-          />}
-          <button
-            id="continue-btn"
-            className="session-button"
-            onClick={this.processContinue}
-            >Continue</button>
-          {lastButton}
+        <form onSubmit={event => this.handleSubmit(event)} className="session-form" >
+          {form}
         </form>
-        {this.showErrors()}
-      </label>
     );
   }
 }

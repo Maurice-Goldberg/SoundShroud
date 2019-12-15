@@ -81,7 +81,7 @@
  .account-dropdown li {
     position: relative;
     color: white;
-    background: black;
+    background: darkslateblue;
     width: 60px;
     height: 20px;
     padding-left: 10px;
@@ -181,10 +181,10 @@
 
   #signOutListItem {
     position: relative;
-    top: 41px;
+    top: 40px;
     color: white;
     left: -18px;
-    background: black;
+    background: darkslateblue;
     padding-bottom: 5px;
     padding-left: 9px;
     padding-top: 10px;

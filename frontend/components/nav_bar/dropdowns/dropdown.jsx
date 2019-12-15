@@ -11,6 +11,7 @@ class Dropdown extends React.Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.dropDownParent = React.createRef();
     this.handleChildEvent = this.handleChildEvent.bind(this);
+    this.toggleList = this.toggleList.bind(this);
   }
 
   handleClickOutside() {
@@ -32,6 +33,7 @@ class Dropdown extends React.Component {
   }
 
   toggleList() {
+    debugger
     this.setState(oldState => ({
       open: !oldState.open
     }));
@@ -53,7 +55,7 @@ class Dropdown extends React.Component {
       <div className="dropdown-background">
         <div ref={this.dropDownParent}
         className={this.props.classStr === "account-dropdown" ? "account-dropdown" : "settings-dropdown"}>
-          <button className="dropdown-header" onFocus={() => this.toggleList()} onBlur={this.handleChildEvent(this.dropDownParent, this.handleClickOutside)}>
+          <button className="dropdown-header" onClick={() => this.toggleList()} onBlur={this.handleChildEvent(this.dropDownParent, this.handleClickOutside)}>
             <div className="dropdown-header-text">{this.state.headerText}</div>
           </button>
           {this.state.open && <ul tabIndex="0" className="dropdown-list">
