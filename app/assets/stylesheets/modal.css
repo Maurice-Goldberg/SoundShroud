@@ -33,8 +33,27 @@
 
 #demo-login-btn {
   position: absolute;
-  top: -90px;
+  top: -140px;
   left: -10px;
+}
+
+#github-btn {
+  position: absolute;
+  top: -85px;
+  left: 6px;
+  background-color: darkslateblue;
+  border-radius: 2px;
+  padding-left: 130px;
+  padding-top: 10px;
+  width: 268px;
+  height: 28px;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+#github-btn:active {
+  background-color: rgb(55, 47, 104);
 }
 
 #or-border {
