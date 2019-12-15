@@ -15,6 +15,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoSignIn = this.handleDemoSignIn.bind(this);
     this.userExists = this.userExists.bind(this);
+    this.returnToFirstForm = this.returnToFirstForm.bind(this);
   }
 
   handleSubmit(event) {
@@ -113,6 +114,7 @@ class SessionForm extends React.Component {
   }
 
   returnToFirstForm() {
+    debugger
     this.setState({
       formToRender: 'First form'
     });
@@ -168,7 +170,7 @@ class SessionForm extends React.Component {
         <input
           id="password-input"
           type="password"
-          placeholder="Your password *"
+          autoFocus
           value={this.state.userParams.password}
           onChange={this.update('password')}
         />
@@ -185,15 +187,24 @@ class SessionForm extends React.Component {
   pwSignupForm() {
     return(
       <div id="pw-signup-form">
-        <h2 id="signup-header">Create your SoundShroud account</h2>
+        <h2 id="signup-header">Create your SoundShroud</h2>
+        <h2 id="signup-header">account</h2>
         
-        <input type="text"
-          id="email-input"
-          placeholder="Your email address *"
-          value={this.state.userParams.email}
-          onChange={this.update('email')}
+        <p
+          id="second-email-input"
+          onClick={this.returnToFirstForm}
+        >{this.state.userParams.email}</p>
+        <div className="left-arrow" onClick={this.returnToFirstForm}></div>
+
+        <input
+          id="password-input"
+          type="password"
+          autoFocus
+          value={this.state.userParams.password}
+          onChange={this.update('password')}
         />
         
+        <p id="password-prompt">Choose a password *</p>
         <p
           id="accept-continue-btn"
           type="submit"
@@ -207,12 +218,18 @@ class SessionForm extends React.Component {
   accountNameForm() {
     return (
       <div id="acc-name-form">
-        <h2 id="acc-name-header">Tell us a bit about yourself</h2>
+        <h2 id="acc-name-header">Tell us a bit</h2>
+        <h2 id="acc-name-header">about yourself</h2>
 
-        <input type="text" placeholder="Your account name *"
+        <p id="name-prompt">Choose your display name *</p>
+        <input
+          id="name-input"
+          type="text" autoFocus
           value={this.state.userParams.account_name}
           onChange={this.update('account_name')}
         />
+        <p id="name-explanation1">Your display name can be anything you like. Your name or artist</p>
+        <p id="name-explanation2">name are good choices.</p>
 
         <button
           id="get-started-btn"

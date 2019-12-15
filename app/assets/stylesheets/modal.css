@@ -12,7 +12,7 @@
 
 .modal-child {
   position: absolute;
-  left: 36%;
+  left: 30%;
   top: 15%;
   color: white;
   background: rgb(20, 17, 40);
@@ -66,7 +66,7 @@
   top: -35px;
   font-weight: lighter;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  left: 13px;
+  left: 63px;
 }
 
 #line:first-child {
@@ -76,7 +76,7 @@
 
 #modal-or {
   position: absolute;
-  left: 200px;
+  left: 204px;
   top: -30px;
 }
 
@@ -138,7 +138,7 @@
   border: 1px solid rgb(196, 196, 196);
 }
 
-#second-email-input:hover .left-arrow:hover {
+#second-email-input:hover, .left-arrow:hover {
   cursor: pointer;
 }
 
@@ -197,18 +197,101 @@
   background-color: rgb(55, 47, 104);
 }
 
+
+#signup-header:first-of-type {
+  position: absolute;
+  font-size: 30px;
+  top: -150px;
+  width: 300px;
+  left: 13px;
+}
+
+#signup-header {
+  position: absolute;
+  font-size: 30px;
+  top: -105px;
+  left: 150px;
+  
+}
+
+#password-prompt {
+  position: absolute;
+  font-size: 14px;
+  left: 10px;
+  top: 3px;
+}
+
+#pw-signup-form #second-email-input {
+  top: -50px;
+}
+
+#pw-signup-form .left-arrow {
+  top: -38px;
+}
+
+#pw-signup-form #password-input {
+  top: 30px;
+}
+
 #accept-continue-btn {
   position: absolute;
   left: 8px;
-  top: 50px;
+  top: 85px;
   background-color: darkslateblue;
   border-radius: 2px;
-  padding-left: 165px;
+  padding-left: 130px;
   padding-top: 10px;
-  width: 230px;
+  width: 265px;
   height: 28px;
 }
 
-#accept-continue-btn:active {
-  
+#acc-name-header:first-of-type {
+  position: absolute;
+  font-size: 30px;
+  top: -120px;
+  width: 300px;
+  left: 120px;
+}
+
+#acc-name-header {
+  position: absolute;
+  font-size: 30px;
+  top: -80px;
+  left: 100px;
+}
+
+#name-prompt {
+  position: absolute;
+  font-size: 14px;
+  left: 11px;
+  top: -16px;
+}
+
+#name-input {
+  position: absolute;
+  left: 13px;
+  top: 10px;
+}
+
+#name-explanation1 {
+  position: absolute;
+  font-size: 12.5px;
+  color: gray;
+  top: 60px;
+  left: 12px;
+}
+
+#name-explanation2 {
+  position: absolute;
+  font-size: 12px;
+  color: gray;
+  top: 78px;
+  left: 12px;
+}
+
+
+#get-started-btn {
+  position: absolute;
+  top: 101px;
+  left: -7px;
 }

@@ -1,15 +1,13 @@
 .top-border {
   position: relative;
-  padding-left: 18%;
-  padding-right: 18%;  
   height: 4px;
   background: darkslateblue;
   width: 1230px;
 }
 
 .splash-div {
-  padding-left: 18%;
-  padding-right: 18%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 .splash-panel {
@@ -17,7 +15,7 @@
   z-index: 3;
   width: 1230px;
   position: relative;
-  height: 600px;
+  height: 500px;
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -90,7 +88,7 @@
   color: rgba(255, 255, 255, 0.728);
   text-shadow: 2px 2px rgb(7, 7, 130);
   position: absolute;
-  top: 285px;
+  top: 240px;
   font-size: 30px;
   padding: 8px;
   border-radius: 3px;
