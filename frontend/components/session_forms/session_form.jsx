@@ -30,7 +30,6 @@ class SessionForm extends React.Component {
     });
   }
 
-  //hopefully this doesn't run an error with the new userParams state structure?
   update(formField) {
     return e => this.setState({
       userParams: { [formField]: e.currentTarget.value }
@@ -53,22 +52,11 @@ class SessionForm extends React.Component {
     );
   }
 
-  handleDemoSignIn(event) {
-    event.preventDefault();
-    const { submitUser } = this.props;
-    // this.setState({userParams: {
-    //   email: "demouser@gmail.com",
-    //   password: "password123"
-    // }});
-
-    submitUser({email: "demouser@gmail.com", password: "password123"})
-
-    this.setState({
-      userParams: {
-        email: "",
-        password: ""
-      }
-    });
+  handleDemoSignIn() {
+    this.setState({userParams: {
+      email: "demouser@gmail.com",
+      password: "password123"
+    }});
   }
 
   userExists(email) {
@@ -80,11 +68,16 @@ class SessionForm extends React.Component {
   }
 
   processFirstContinue(email) {
+    debugger
     const formType = this.props.formType;
     if(formType === "Sign in" || (formType === "Create account" && this.userExists(email))) {
+      debugger
       this.setState({formToRender: "Sign in"});
+      debugger
     } else {
+      debugger
       this.setState({formToRender: "Create account"});
+      debugger
     }
   }
 
@@ -101,11 +94,18 @@ class SessionForm extends React.Component {
   firstForm() {
     return (
       <div id="first-form">
+        {this.props.formType === "Sign in" &&
         <button
+          type="submit"
           id="demo-login-btn"
-          onClick={event => this.handleDemoSignIn(event)}
+          onClick={this.handleDemoSignIn}
           className="session-button"
-        >Demo User</button>
+        >Demo User</button>}
+        
+        <a id="github-btn"
+          href="https://github.com/Maurice-Goldberg/SoundShroud">
+          Soundshroud GitHub
+        </a>
 
         <div id="or-border">
           <p id="line">____________________</p>
