@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoSignIn = this.handleDemoSignIn.bind(this);
+    this.userExists = this.userExists.bind(this);
   }
 
   handleSubmit(event) {
@@ -31,9 +32,34 @@ class SessionForm extends React.Component {
   }
 
   update(formField) {
-    return e => this.setState({
-      userParams: { [formField]: e.currentTarget.value }
-    });
+    switch(formField) {
+      case "password":
+        return e => this.setState({
+          userParams: {
+            password: e.currentTarget.value,
+            account_name: this.state.userParams.account_name,
+            email: this.state.userParams.email
+          }
+        });
+      case "email":
+        return e => this.setState({
+          userParams: {
+            email: e.currentTarget.value,
+            password: this.state.userParams.password,
+            account_name: this.state.userParams.account_name,
+          }
+        });
+      case "account_name":
+        return e => this.setState({
+          userParams: {
+            account_name: e.currentTarget.value,
+            email: this.state.userParams.email,
+            password: this.state.userParams.password,
+          }
+        });
+      default:
+        break;
+    }
   }
 
   showErrors() {
@@ -60,10 +86,11 @@ class SessionForm extends React.Component {
   }
 
   userExists(email) {
-    findByEmail(email).success(
-      this.setState({ formToRender: "Log in" })
+    debugger
+    findByEmail(email).then(
+      () => true
     ).fail(
-      this.setState({ formToRender: "Create account" })
+      () => false
     )
   }
 
@@ -72,7 +99,7 @@ class SessionForm extends React.Component {
     const formType = this.props.formType;
     if(formType === "Sign in" || (formType === "Create account" && this.userExists(email))) {
       debugger
-      this.setState({formToRender: "Sign in"});
+      this.setState({formToRender: "Log in"});
       debugger
     } else {
       debugger
@@ -200,15 +227,25 @@ class SessionForm extends React.Component {
     let form;
     switch (this.state.formToRender) {
       case "First form":
+        debugger
         form = this.firstForm();
+        break;
       case "Create account":
+        debugger
         form = this.pwSignupForm();
+        break;
       case "Log in":
+        debugger
         form = this.pwLoginForm();
+        break;
       case "Account name":
+        debugger
         form = this.accountNameForm();
+        break;
       default:
+        debugger
         form = this.firstForm();
+        break;
     }
 
     return (
