@@ -30683,3 +30683,572 @@ Processing by Api::TracksController#show as JSON
 Completed 200 OK in 35ms (Views: 10.9ms | ActiveRecord: 20.2ms)
 
 
+Started GET "/" for ::1 at 2019-12-16 14:50:19 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "KQrayhiYf4g5GJbNeGi84A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 87ms (Views: 81.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 14:50:20 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (2.1ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.9ms)
+  Rendered api/tracks/show.json.jbuilder (3.8ms)
+Completed 200 OK in 19ms (Views: 13.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 14:50:37 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "KQrayhiYf4g5GJbNeGi84A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 56ms (Views: 53.0ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-12-16 14:50:40 -0500
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "KQrayhiYf4g5GJbNeGi84A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "yZ_JQy-Z7rAxDiqy38zgWA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "yZ_JQy-Z7rAxDiqy38zgWA"], ["updated_at", "2019-12-16 19:50:40.797428"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (3.3ms)
+Completed 200 OK in 26ms (Views: 11.3ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/api/session" for ::1 at 2019-12-16 14:50:42 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demouser@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["updated_at", "2019-12-16 19:50:43.016821"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (8.4ms)
+Completed 200 OK in 347ms (Views: 16.5ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 14:50:45 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 81ms (Views: 71.1ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 14:50:46 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (3.2ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.8ms)
+  Rendered api/tracks/show.json.jbuilder (5.2ms)
+Completed 200 OK in 26ms (Views: 20.6ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 14:50:56 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.7ms)
+  Rendered api/tracks/show.json.jbuilder (3.0ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:02:22 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 61ms (Views: 58.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:03:05 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 79ms (Views: 74.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:03:22 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 124ms (Views: 120.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:03:39 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 105ms (Views: 101.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:03:40 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (1.2ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.8ms)
+  Rendered api/tracks/show.json.jbuilder (3.9ms)
+Completed 200 OK in 20ms (Views: 14.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:03:45 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 63ms (Views: 57.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:04:16 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (1.0ms)
+  Rendered api/tracks/show.json.jbuilder (2.9ms)
+Completed 200 OK in 15ms (Views: 12.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:08:51 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (23.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (29.3ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.5ms)
+
+
+
+NoMethodError - undefined method `authoredTrackIds' for #<User:0x00007ff06fdc2af0>:
+  app/views/api/users/_user.json.jbuilder:1:in `_app_views_api_users__user_json_jbuilder___1703606356830331920_70335322785880'
+  app/views/static_pages/root.html.erb:3:in `_app_views_static_pages_root_html_erb__41759520744929063_70335326467460'
+
+Started POST "/__better_errors/f058509d75457b39/variables" for ::1 at 2019-12-16 15:08:51 -0500
+Started GET "/" for ::1 at 2019-12-16 15:10:55 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 93ms (Views: 89.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:10:56 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (8.2ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.9ms)
+  Rendered api/tracks/show.json.jbuilder (4.3ms)
+Completed 200 OK in 28ms (Views: 17.9ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:23:39 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 65ms (Views: 59.9ms | ActiveRecord: 3.1ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-12-16 15:23:41 -0500
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtvnloDr3tXhufdN12YMYg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "PxEmXzIk0S-Vv5SmNkMSHw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "PxEmXzIk0S-Vv5SmNkMSHw"], ["updated_at", "2019-12-16 20:23:41.980577"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (4.9ms)
+Completed 200 OK in 33ms (Views: 11.9ms | ActiveRecord: 10.6ms)
+
+
+Started POST "/api/session" for ::1 at 2019-12-16 15:23:44 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demouser@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (3.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "sNDPmRiUHJfXuNHpbl1shQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "sNDPmRiUHJfXuNHpbl1shQ"], ["updated_at", "2019-12-16 20:23:44.574361"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (6.7ms)
+Completed 200 OK in 407ms (Views: 17.7ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:23:48 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "sNDPmRiUHJfXuNHpbl1shQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 90ms (Views: 82.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:23:49 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (1.9ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.8ms)
+  Rendered api/tracks/show.json.jbuilder (3.8ms)
+Completed 200 OK in 23ms (Views: 16.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:24:07 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "sNDPmRiUHJfXuNHpbl1shQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 60ms (Views: 56.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:26:37 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (4.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.6ms)
+  Rendered api/tracks/show.json.jbuilder (3.5ms)
+Completed 200 OK in 23ms (Views: 16.6ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:42:25 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "sNDPmRiUHJfXuNHpbl1shQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (51.2ms)
+Completed 200 OK in 131ms (Views: 110.0ms | ActiveRecord: 18.5ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-12-16 15:42:28 -0500
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "sNDPmRiUHJfXuNHpbl1shQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (3.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (4.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "vORWE8kDUmb2ByLYjxZPmg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (3.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "vORWE8kDUmb2ByLYjxZPmg"], ["updated_at", "2019-12-16 20:42:28.602704"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (18.7ms)
+Completed 200 OK in 59ms (Views: 20.7ms | ActiveRecord: 29.7ms)
+
+
+Started POST "/api/session" for ::1 at 2019-12-16 15:42:43 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demouser@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "l3bN4q1Qx8js-NmtDMIhfg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "l3bN4q1Qx8js-NmtDMIhfg"], ["updated_at", "2019-12-16 20:42:44.287160"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (8.1ms)
+Completed 200 OK in 375ms (Views: 21.5ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:46:25 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.6ms)
+  Rendered api/tracks/show.json.jbuilder (2.9ms)
+Completed 200 OK in 32ms (Views: 11.7ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:51:25 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "l3bN4q1Qx8js-NmtDMIhfg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 931ms (Views: 927.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:51:27 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (1.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.6ms)
+  Rendered api/tracks/show.json.jbuilder (2.2ms)
+Completed 200 OK in 52ms (Views: 11.9ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:54:26 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "l3bN4q1Qx8js-NmtDMIhfg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (14402.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (14432.8ms)
+Started GET "/" for ::1 at 2019-12-16 15:54:41 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+Completed 200 OK in 14527ms (Views: 14524.1ms | ActiveRecord: 1.2ms)
+
+
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "l3bN4q1Qx8js-NmtDMIhfg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (542.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (603.4ms)
+Completed 200 OK in 681ms (Views: 639.5ms | ActiveRecord: 38.9ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-12-16 15:54:45 -0500
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (15.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "l3bN4q1Qx8js-NmtDMIhfg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (12.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (36.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "p_rOJhl77eWni_G2QkX_Bw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (53.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "p_rOJhl77eWni_G2QkX_Bw"], ["updated_at", "2019-12-16 20:54:45.454623"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (669.3ms)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (4350.6ms)
+Completed 200 OK in 4493ms (Views: 4359.4ms | ActiveRecord: 124.6ms)
+
+
+Started POST "/api/session" for ::1 at 2019-12-16 15:54:53 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demouser@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (7.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "5AYeTXxnA12pUcbMQOjGTA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (6.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "5AYeTXxnA12pUcbMQOjGTA"], ["updated_at", "2019-12-16 20:54:53.858522"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (648.3ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (3470.6ms)
+Completed 200 OK in 3922ms (Views: 3486.1ms | ActiveRecord: 20.4ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:55:04 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (1.2ms)
+  Rendered api/tracks/show.json.jbuilder (4.0ms)
+Completed 200 OK in 44ms (Views: 14.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 15:59:13 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5AYeTXxnA12pUcbMQOjGTA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (33095.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (33107.8ms)
+Completed 200 OK in 33197ms (Views: 33186.0ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 15:59:47 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (2.0ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (1.7ms)
+  Rendered api/tracks/show.json.jbuilder (5.1ms)
+Completed 200 OK in 54ms (Views: 20.4ms | ActiveRecord: 29.6ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 16:11:53 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5AYeTXxnA12pUcbMQOjGTA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (78.8ms)
+Completed 200 OK in 167ms (Views: 118.8ms | ActiveRecord: 43.0ms)
+
+
+Started GET "/api/tracks/1" for ::1 at 2019-12-16 16:11:55 -0500
+Processing by Api::TracksController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (2.2ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/tracks_controller.rb:12
+  Rendering api/tracks/show.json.jbuilder
+  Rendered api/tracks/_track.json.jbuilder (0.6ms)
+  Rendered api/tracks/show.json.jbuilder (5.5ms)
+Completed 200 OK in 93ms (Views: 27.6ms | ActiveRecord: 23.1ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 16:28:37 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5AYeTXxnA12pUcbMQOjGTA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 108ms (Views: 90.8ms | ActiveRecord: 14.3ms)
+
+
+Started DELETE "/api/session" for ::1 at 2019-12-16 16:28:41 -0500
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5AYeTXxnA12pUcbMQOjGTA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."account_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["account_name", "Demo User"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "JEZVz9x6cF98TUk_P6eu5w"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "JEZVz9x6cF98TUk_P6eu5w"], ["updated_at", "2019-12-16 21:28:41.976900"], ["id", 1]]
+  ↳ app/models/user.rb:39
+  [1m[35m (41.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:39
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "tracks"."id" FROM "tracks" WHERE "tracks"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (12.4ms)
+Completed 200 OK in 79ms (Views: 20.7ms | ActiveRecord: 47.7ms)
+
+

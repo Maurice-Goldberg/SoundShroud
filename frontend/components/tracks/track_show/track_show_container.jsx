@@ -24,6 +24,7 @@ const mapStateToProps = (state, ownProps) => {
         track = {};
     }
 
+    // let track = state.entities.tracks[ownProps.match.params.trackId] || {};
     return {
         track: track,
         artist: findTrackArtist(state, track.id),
