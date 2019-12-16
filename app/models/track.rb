@@ -13,6 +13,7 @@
 
 class Track < ApplicationRecord
   belongs_to :author,
+    primary_key: :id,
     foreign_key: :account_id,
     class_name: :User
 

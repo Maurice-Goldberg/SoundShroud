@@ -1,14 +1,15 @@
-export const findTrack = ({entities}, trackTitle, artistName) => {
-    debugger
+export const findTrack = ({entities}, trackId) => {
     let tracksArr = Object.values(entities.tracks);
+    if(tracksArr.length === 0) {
+        return {};
+    }
     debugger
     let users = entities.users;
     debugger
     for(let i = 0; i < tracksArr.length; i++) {
         debugger
         let track = tracksArr[i];
-        let artist = users[track.authorId];
-        if(track.title === trackTitle && artist.accountName === artistName ) {
+        if(track.id === parseInt(trackId)) {
             debugger
             return track;
         }
@@ -18,15 +19,22 @@ export const findTrack = ({entities}, trackTitle, artistName) => {
 }
 
 export const findTrackArtist = ({entities}, trackId) => {
-    let usersArr = Object.values(entities.users);
-    for (let i = 0; i < usersArr.length; i++) {
-        let user = usersArr[i];
-        if (user.authoredTrackIds[trackId]) {
-            return user;
+    if(trackId) {
+        let usersArr = Object.values(entities.users);
+        debugger
+        for (let i = 0; i < usersArr.length; i++) {
+            debugger
+            let user = usersArr[i];
+            debugger
+            if (user.authoredTrackIds[trackId]) {
+                return user;
+            }
         }
+        return {};
+    } else {
+        return {};
     }
-    return {};
-}
+};
 
 export const currentUser = ({entities, session}) => {
     return entities.users[session.currentUserId];

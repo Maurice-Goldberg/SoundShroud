@@ -6,3 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 demouser = User.create({account_name: "Demo User", email: "demouser@gmail.com", password: "password123"});
+
+chrome_country = Track.create({
+  private: false,
+  title: "Chrome Country",
+  account_id: 1,
+  description: "A expansive abstract electronic landscape",
+})
