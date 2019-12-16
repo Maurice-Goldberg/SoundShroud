@@ -18,8 +18,10 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
 
-  has_many :tracks
-
+  has_many :tracks,
+    primary_key: :id,
+    foreign_key: :account_id,
+    class_name: :Track
   # to be used when showing a user's comments on their profile page
   has_many :comments
 

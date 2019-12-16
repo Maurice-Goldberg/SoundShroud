@@ -1,4 +1,5 @@
 export const fetchTrack = (trackId) => {
+    debugger
     return $.ajax({
         method: 'GET',
         url: `/api/tracks/${trackId}`

@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import TrackShow from './track_show';
 import {findTrack, findTrackArtist, currentUser} from '../../../reducers/selectors';
 import {fetchArtist} from '../../../actions/artist_actions';
+import {fetchTrack} from '../../../actions/track_actions';
 
 const mapStateToProps = (state, ownProps) => {
     //finding track from track component's own state
@@ -10,8 +11,9 @@ const mapStateToProps = (state, ownProps) => {
         componentTrack = ownProps.location.state.track;
     }
 
+    debugger
     //finding track from url path
-    const urlTrack = findTrack(state, ownProps.match.params.artist, ownProps.match.params.track);
+    const urlTrack = findTrack(state, ownProps.match.params.trackId);
 
     let track;
     if(componentTrack) {
@@ -33,7 +35,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchArtist: dispatch(fetchArtist(artist))
+        fetchArtist: (artist) => dispatch(fetchArtist(artist)),
+        fetchTrack: (trackId) => dispatch(fetchTrack(trackId))
     }
 }
 

@@ -1,6 +1,16 @@
 class Api::TracksController < ApplicationController
   def create
-
+    @track = Track.new(track_params)
+    if @track.save
+      render "api/tracks/show"
+    else 
+      render json: @track.errors.full_messages, status: 422
+    end
+  end
+  
+  def show
+    @track = Track.find_by_id(params[:id])
+    render "api/tracks/show"
   end
 
   def destroy
@@ -8,10 +18,6 @@ class Api::TracksController < ApplicationController
   end
 
   def index
-
-  end
-
-  def show
 
   end
 end
