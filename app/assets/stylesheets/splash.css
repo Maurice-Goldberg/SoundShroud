@@ -1,13 +1,15 @@
 .top-border {
+  margin: 0 auto;
   position: relative;
   height: 4px;
   background: darkslateblue;
   width: 1230px;
 }
 
-.splash-div {
-  padding-left: 2%;
-  padding-right: 2%;
+.splash-content {
+  position: relative;
+  margin: 0 auto;
+  width: 1230px;
 }
 
 .splash-panel {
@@ -110,6 +112,10 @@
   left: 200px;
 }
 
+.non-carousel-content {
+  margin: 0 auto;
+}
+
 .splash-div #search-bar {
   width: 700px;
   height: 40px;
@@ -157,6 +163,7 @@
   margin-bottom: 75px;
   border-radius: 5px;
 }
+
 
 #thank-you-text {
   font-size: 35px;
