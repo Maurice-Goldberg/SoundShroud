@@ -11,8 +11,8 @@
 }
 
 .modal-child {
-  position: absolute;
-  left: 30%;
+  position: relative;
+  margin: 0 auto;
   top: 15%;
   color: white;
   background: rgb(20, 17, 40);

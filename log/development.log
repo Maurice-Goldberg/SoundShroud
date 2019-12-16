@@ -29009,3 +29009,17 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 82ms (Views: 80.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2019-12-16 10:59:12 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 102ms (Views: 98.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-16 10:59:23 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 90ms (Views: 85.7ms | ActiveRecord: 0.0ms)
+
+
