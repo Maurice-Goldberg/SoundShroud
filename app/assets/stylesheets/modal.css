@@ -66,7 +66,7 @@
   top: -35px;
   font-weight: lighter;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  left: 63px;
+  left: 10px;
 }
 
 #line:first-child {
@@ -76,7 +76,7 @@
 
 #modal-or {
   position: absolute;
-  left: 204px;
+  left: 200px;
   top: -30px;
 }
 
