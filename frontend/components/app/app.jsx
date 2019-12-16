@@ -11,7 +11,7 @@ const App = (props) => {
       <NavBarContainer /> :
       <SplashContainer />}
       <div className="content">
-        <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} />
+        {/* <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} /> */}
       </div>
     </>
   );
