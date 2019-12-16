@@ -1,15 +1,19 @@
 export const findTrack = ({entities}, trackTitle, artistName) => {
+    debugger
     let tracksArr = Object.values(entities.tracks);
+    debugger
     let users = entities.users;
-
+    debugger
     for(let i = 0; i < tracksArr.length; i++) {
+        debugger
         let track = tracksArr[i];
         let artist = users[track.authorId];
         if(track.title === trackTitle && artist.accountName === artistName ) {
+            debugger
             return track;
         }
     }
-
+    debugger
     return {};
 }
 
