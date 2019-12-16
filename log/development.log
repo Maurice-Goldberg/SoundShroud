@@ -28703,3 +28703,25 @@ Processing by Api::SessionsController#destroy as JSON
 Completed 200 OK in 18ms (Views: 6.2ms | ActiveRecord: 4.1ms)
 
 
+Started GET "/" for ::1 at 2019-12-15 20:34:43 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 84ms (Views: 80.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2019-12-15 20:34:53 -0500
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"password"=>"[FILTERED]", "account_name"=>"", "email"=>"demouser@gmail.com"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27
+Completed 401 Unauthorized in 251ms (Views: 0.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2019-12-15 21:15:16 -0500
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 50ms (Views: 48.2ms | ActiveRecord: 0.0ms)
+
+
