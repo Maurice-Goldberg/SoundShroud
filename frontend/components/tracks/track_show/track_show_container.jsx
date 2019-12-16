@@ -6,25 +6,25 @@ import {fetchTrack} from '../../../actions/track_actions';
 
 const mapStateToProps = (state, ownProps) => {
     //finding track from track component's own state
-    let componentTrack;
-    if(ownProps.location.state) {
-        componentTrack = ownProps.location.state.track;
-    }
+    // let componentTrack;
+    // if(ownProps.location.state) {
+    //     componentTrack = ownProps.location.state.track;
+    // }
 
     debugger
     //finding track from url path
-    const urlTrack = findTrack(state, ownProps.match.params.trackId);
+    // const urlTrack = findTrack(state, ownProps.match.params.trackId);
 
-    let track;
-    if(componentTrack) {
-        track = componentTrack;
-    } else if (urlTrack) {
-        track = urlTrack;
-    } else {
-        track = {};
-    }
+    // let track;
+    // if(componentTrack) {
+    //     track = componentTrack;
+    // } else if (urlTrack) {
+    //     track = urlTrack;
+    // } else {
+    //     track = {};
+    // }
 
-    // let track = state.entities.tracks[ownProps.match.params.trackId] || {};
+    let track = state.entities.tracks[ownProps.match.params.trackId] || {};
     return {
         track: track,
         artist: findTrackArtist(state, track.id),
