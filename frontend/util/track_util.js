@@ -10,19 +10,31 @@ export const formatTime = (sqlTime) => {
   let minutesAgo = currentTime.getMinutes() - timeOfCreation.getMinutes();
   let secondsAgo = currentTime.getSeconds() - timeOfCreation.getSeconds();
 
-  if(yearsAgo >= 1) {
+  if(yearsAgo > 1) {
     return `${yearsAgo} years ago`;
-  } else if (monthsAgo >= 1) {
+  } else if (yearsAgo === 1) {
+    return "1 year ago";
+  } else if (monthsAgo > 1) {
     return `${monthsAgo} months ago`;
-  } else if (weeksAgo >= 1) {
+  } else if (monthsAgo === 1) {
+    return "1 month ago";
+  } else if (weeksAgo > 1) {
     return `${weeksAgo} weeks ago`;
-  } else if (daysAgo >= 1) {
+  } else if (weeksAgo === 1) {
+    return "1 week ago";
+  } else if (daysAgo > 1) {
     return `${daysAgo} days ago`;
-  } else if (hoursAgo >= 1) {
+  } else if (daysAgo === 1) {
+    return "1 day ago";
+  } else if (hoursAgo > 1) {
     return `${hoursAgo} hours ago`;
-  } else if (minutesAgo >= 1) {
+  } else if (hoursAgo === 1) {
+    return "1 hour ago";
+  } else if (minutesAgo > 1) {
     return `${minutesAgo} minutes ago`;
+  } else if (minutesAgo === 1) {
+    return "1 minute ago";
   } else {
-    return `${secondsAgo} ago`;
+    return `${secondsAgo} seconds ago`;
   }
 }
