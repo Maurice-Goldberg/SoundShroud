@@ -1,0 +1,132 @@
+.discover-wrapper {
+  margin: 0 auto;
+  width: 1230px;
+  height: 1300px;
+  overflow: hidden;
+  padding: 30px;
+  position: relative;
+  left: 22px;
+}
+
+.discover-panel-header {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.discover-panel-subtitle {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+
+.side-panel {
+  position: relative;
+  top: -1290px;
+  left: 900px;
+  display: inline-block;
+  border: 1px solid white;
+  z-index: 0;
+}
+
+.side-panel h3 {
+  color: lightgray;
+  font-size: 15px;
+}
+
+.s-p-follow-list {
+  height: 230px;
+  width: 258px;
+  border: 1px solid white;
+  margin-bottom: 15px;
+}
+
+.tracks-panel {
+  width: 830px;
+  height: 225px;
+  margin-bottom: 30px;
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgb(43, 0, 173) 100%);
+}
+
+.s-p-track-list {
+  height: 230px;
+  width: 258px;
+  border: 1px solid white;
+  margin-bottom: 15px;
+}
+
+.tracks-panel .playlist-cover {
+  top: 20px;
+  position: relative;
+  width: 185px;
+  height: 185px;
+  background: rgba(255, 255, 255, 0.166);
+  margin: 20px;
+}
+
+.best-of .tracks {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -185px;
+  left: 230px;
+}
+
+.soundshroud-weekly .tracks {
+  position: relative;
+  top: -185px;
+  left: 230px;
+}
+
+.tracks-panel .tracks li {
+  display: flex;
+  width: 580px;
+  padding-left: 8px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  border-bottom: .5px solid rgba(255, 255, 255, 0.639);
+  font-size: 14px;
+  color: white;
+  white-space: pre;
+}
+
+.tracks-panel .tracks li:hover {
+  background: rgba(255, 255, 255, 0.098);
+  cursor: pointer;
+}
+
+.tracks-panel .tracks {
+  height: 200px;
+  width: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tracks-panel .tracks::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.tracks-panel .tracks::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: transparent;
+}
+
+.tracks-panel .tracks::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, 0.344);
+}
+
+.tracks-panel .tracks .artist {
+  color: rgba(255, 255, 255, 0.434);
+}
+
+.tracks-panel .tracks .track {
+  color: white;
+}

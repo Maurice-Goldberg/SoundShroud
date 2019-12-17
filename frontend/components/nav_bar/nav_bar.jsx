@@ -48,7 +48,7 @@ class NavBar extends React.Component {
           </figure>
           <div className="nav-tabs">
             <div className="nav-tab-wrapper">
-              <h2 id="home-tab">Home</h2>
+              <Link className="home-tab" to="/discover">Home</Link>
             </div>
             <div className="nav-tab-wrapper">
               <h2 id="stream-tab">Stream</h2>
