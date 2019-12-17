@@ -8,7 +8,6 @@ class TrackShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchTrack(this.props.match.params.trackId);
-        // this.props.fetchUser(this.props.track.account_id);
     }
 
     render() {

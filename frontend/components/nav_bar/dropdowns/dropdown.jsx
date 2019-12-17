@@ -15,7 +15,7 @@ class Dropdown extends React.Component {
   }
 
   handleClickOutside() {
-    // debugger
+    debugger
     this.setState({
       open: false
     });
