@@ -24,6 +24,19 @@ class Discover extends React.Component {
       </>
     );
 
+    let placeholderArtists = (
+      <>
+        <li className="artist">Caroline Polachek</li>
+        <li className="artist">Charli XCX</li>
+        <li className="artist">Oneohtrix Point Never</li>
+        <li className="artist">100 Gecs</li>
+        <li className="artist">Dorian Electra</li>
+        <li className="artist">Tim Hecker</li>
+        <li className="artist">Floating Points</li>
+        <li className="artist">Galen Tipton</li>
+      </>
+    )
+
     return (
       <div className="discover-container">
         <div className="discover-wrapper">
@@ -49,12 +62,20 @@ class Discover extends React.Component {
             <div className="new-music-now">
               <h2 className="discover-panel-header">New Music Now</h2>
               <h3 className="discover-panel-subtitle">The latest hits, updated all the time</h3>
-              <div className="tracks-panel"></div>
+              <div className="tracks-carousel">
+                <ul className="tracks">
+                  {placeholderTracks}
+                </ul>
+              </div>
             </div>
             <div className="artists-you-should-know">
               <h2 className="discover-panel-header">Artists You Should Know</h2>
               <h3 className="discover-panel-subtitle">Top tracks from artists similar to Oneohtrix Point Never</h3>
-              <div className="tracks-panel"></div>
+              <div className="tracks-carousel">
+                <ul className="artists">
+                  {placeholderArtists}
+                </ul>
+              </div>
             </div>
           </div>
           {this.props.currentUserId &&

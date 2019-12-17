@@ -7,10 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 demouser = User.create({account_name: "Demo User", email: "demouser@gmail.com", password: "password123"});
 oneohtrix = User.create({account_name: "Oneohtrix Point Never", email: "opn@aol.com", password: "gardenofdelete"})
+charli_xcx = User.create({account_name: "Charli XCX", email: "itscharlibaby@hotmail.com", password:"xcxcharli"})
 
 chrome_country = Track.create({
   private: false,
   title: "Chrome Country",
   account_id: oneohtrix.id,
-  description: "A expansive abstract electronic landscape",
+  description: "Track 8 on R+7",
+})
+
+gone = Track.create({
+  private: false,
+  title: "Gone",
+  account_id: charli_xcx.id,
+  description: "Track 3 on Charli (self-titled)"
 })

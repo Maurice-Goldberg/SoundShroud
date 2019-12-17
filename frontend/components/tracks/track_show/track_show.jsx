@@ -10,6 +10,12 @@ class TrackShow extends React.Component {
         this.props.fetchTrack(this.props.match.params.trackId);
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.params.trackId !== this.props.match.params.trackId) {
+            this.props.fetchTrack(this.props.match.params.trackId);
+        }
+    }
+
     render() {
         const { track, artist, currentUser, currentTrackId, trackPlaying } = this.props;
         debugger
@@ -24,7 +30,7 @@ class TrackShow extends React.Component {
                             <p className="artist-name">{artist.account_name}</p>
                             <h2 className="track-name">{track.title}</h2>
                             <img className="track-cover"/>
-                            <span class="play-btn"></span>
+                            <span className="play-btn"></span>
                             <div className="play-sign"></div>
                             <div className="pause-sign"></div>
                             <p className="creation-time-elapsed">{formatTime(track.created_at)}</p>
