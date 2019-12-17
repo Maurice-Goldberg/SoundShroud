@@ -11,7 +11,7 @@ import {ProtectedRoute} from '../../util/route_util';
 
 const App = (props) => {
   return (
-    <>
+    <div className="app-container">
       {props.currentUserId ?
       <NavBarContainer /> :
       <SplashContainer />}
@@ -23,7 +23,7 @@ const App = (props) => {
         <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} /> */}
         {/* <ProtectedRoute exact path='/logout' component={LogoutNavBarContainer} /> */}
       </div>
-    </>
+    </div>
   );
 };
 
