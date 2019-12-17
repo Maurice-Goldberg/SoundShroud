@@ -7,7 +7,7 @@ export const receiveTrack = (track) => {
     debugger
     return {
         type: RECEIVE_TRACK,
-        track
+        trackResponse: track
     }
 }
 
@@ -21,7 +21,7 @@ export const receiveTracks = (tracks) => {
 export const fetchTrack = (trackId) => (dispatch) => {
     debugger
     return TrackAPIUtil.fetchTrack(trackId).then(
-        track => dispatch(receiveTrack(track))
+        trackResponse => dispatch(receiveTrack(trackResponse))
     )
 }
 

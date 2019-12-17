@@ -3,30 +3,21 @@ export const findTrack = ({entities}, trackId) => {
     if(tracksArr.length === 0) {
         return {};
     }
-    debugger
-    let users = entities.users;
-    debugger
     for(let i = 0; i < tracksArr.length; i++) {
-        debugger
         let track = tracksArr[i];
         if(track.id === parseInt(trackId)) {
-            debugger
             return track;
         }
     }
-    debugger
     return {};
 }
 
-export const findTrackArtist = ({entities}, trackId) => {
+export const findTrackArtist = (users, trackId) => {
     if(trackId) {
-        let usersArr = Object.values(entities.users);
-        debugger
+        let usersArr = Object.values(users);
         for (let i = 0; i < usersArr.length; i++) {
-            debugger
             let user = usersArr[i];
-            debugger
-            if (user.authoredTrackIds[trackId]) {
+            if (user.track_ids[trackId]) {
                 return user;
             }
         }

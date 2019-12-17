@@ -1,43 +1,25 @@
 import {connect} from 'react-redux';
 import TrackShow from './track_show';
-import {findTrack, findTrackArtist, currentUser} from '../../../reducers/selectors';
-import {fetchArtist} from '../../../actions/artist_actions';
+import {fetchUser, fetchUsers} from '../../../actions/user_actions';
 import {fetchTrack} from '../../../actions/track_actions';
+import {currentUser} from '../../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
-    //finding track from track component's own state
-    // let componentTrack;
-    // if(ownProps.location.state) {
-    //     componentTrack = ownProps.location.state.track;
-    // }
-
-    debugger
-    //finding track from url path
-    // const urlTrack = findTrack(state, ownProps.match.params.trackId);
-
-    // let track;
-    // if(componentTrack) {
-    //     track = componentTrack;
-    // } else if (urlTrack) {
-    //     track = urlTrack;
-    // } else {
-    //     track = {};
-    // }
-
     let track = state.entities.tracks[ownProps.match.params.trackId] || {};
+    let artist = state.entities.users[track.account_id];
     return {
         track: track,
-        artist: findTrackArtist(state, track.id),
+        artist: artist,
         currentUser: currentUser(state),
         currentTrackId: state.ui.trackPlaying.track_id,
         trackPlaying: state.ui.trackPlaying,
-    }
-}
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchArtist: (artist) => dispatch(fetchArtist(artist)),
-        fetchTrack: (trackId) => dispatch(fetchTrack(trackId))
+        fetchTrack: (trackId) => dispatch(fetchTrack(trackId)),
+        fetchUser: (account_id) => dispatch(fetchUser(account_id))
     }
 }
 

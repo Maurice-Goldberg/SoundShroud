@@ -8,7 +8,6 @@ class NavBar extends React.Component {
   }
 
   accountNav() {
-    // debugger
     let account_name = this.props.currentUser.account_name;
     let list = (
       <>
@@ -44,7 +43,6 @@ class NavBar extends React.Component {
       <nav className="nav-bar">
         <figure className="logo">
           <img id="logo-img" src={window.logo}/>
-          <h1 id="site-title">SOUNDSHROUD</h1>
         </figure>
         <div className="nav-tabs">
           <div className="nav-tab-wrapper">
