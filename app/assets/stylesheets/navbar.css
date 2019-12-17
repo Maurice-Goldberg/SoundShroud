@@ -1,9 +1,17 @@
-.nav-bar {
+.nav-bar-container {
   display: flex;
+  justify-content: center;
+  background-color: rgb(60, 64, 67);
+  height: 46px;
+
+}
+
+.nav-bar {
+  width: 1230px;
+  display: flex;
+  margin: 0 auto;
   align-items: center;
   background-color: rgb(60, 64, 67);
-  padding-right: 30%;
-  padding-left: 25%;
   height: 46px;
   position: relative;
 }
@@ -40,125 +48,27 @@
    flex-shrink: 0;
  }
 
- .dropdown-header {
-  background-color: rgb(60, 64, 67);
-  border-color: rgb(60, 64, 67);
-  color: rgba(255, 255, 255, 0.673);
- }
-
- .dropdown-header:hover {
-   cursor: pointer;
- }
-
- .settings-dropdown button {
-   font-size: 35px;
-   font-family: Georgia, 'Times New Roman', Times, serif;
-   margin-top: 0px;
-   height: 64px;
-   width: 45px;
-   padding-bottom: 5px;
-   top: -18px;
-   border: none;
-   border-radius: 0px;
-   position: absolute;
-   overflow: hidden;
- }
-
- .account-dropdown button {
-   color: white;
-  border: none;
-   border-radius: 0px;
-   position: absolute;
-   overflow: hidden;
-    margin-top: 0px;
-   height: 45px;
-   width: 90px;
-   padding-bottom: 5px;
-   top: 0px;
- }
-
- .account-dropdown li {
-    position: relative;
-    color: white;
-    background: darkslateblue;
-    width: 60px;
-    height: 20px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-    padding-top: 7.5px;
-    top: 58px;
-    left: 35px;
- }
-
- .account-dropdown li:first-child {
-    padding-bottom: 7.5px;
-    padding-top: 10px;  
- }
-
- .account-dropdown li:hover {
-   background: darkslateblue;
- }
-
-
-.settings-dropdown button:active:hover, .account-dropdown button:active:hover {
-    background-color: darkslateblue;
-}
-
- .settings-dropdown button:hover {
-  color: white;
- }
-
-
- #search-bar {
-   width: 375px;
-   height: 28px;
-   margin-left: 15px;
-   margin-right: 15px;
-   margin-top: auto;
-   margin-bottom: auto;
-   flex-shrink: 0;
-   background-color: #181a1b;
-   border: none;
-   border-radius: 5px;
-   font-size: 14px;
-   padding-left: 6px;
-   font-weight: lighter;
-   color: white;
- }
-
 .logo {
   display: flex;
   justify-content: space-evenly;
   background-color: rgb(26, 26, 26);
   margin-right: 15px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 17px;
+  padding-left: 17px;
   left: -150px;
 }
-
-#site-title {
-   padding-top: 15px;
-   padding-bottom: 10px;
-   color: white;
-   height: 20px;
- }
 
  #logo-img {
    width: 45px;
  }
-
- #search-bar:focus-within {
-    background-color: #0c0d18;
-    outline-color: darkslateblue;
-    color: white;
-}
-
  
  .nav-tabs {
    display: flex;
    justify-content: space-evenly;
    color: white;
    height: 100%;
+   left: -15px;
+   position: relative;
   }
   
   .nav-tab-wrapper {
@@ -178,11 +88,114 @@
     color: white;
   }
 
+  
+ #search-bar {
+   width: 500px;
+   height: 28px;
+   margin-left: 15px;
+   margin-right: 15px;
+   margin-top: auto;
+   margin-bottom: auto;
+   flex-shrink: 0;
+   background-color: #181a1b;
+   border: none;
+   border-radius: 5px;
+   font-size: 14px;
+   padding-left: 6px;
+   font-weight: lighter;
+   color: white;
+ }
+
+ #search-bar:focus-within {
+    background-color: #0c0d18;
+    outline-color: darkslateblue;
+    color: white;
+}
+
+  .upload-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    left: 15px;
+    position: relative;
+  }
+
+   .dropdown-header {
+  background-color: rgb(60, 64, 67);
+  border-color: rgb(60, 64, 67);
+  color: rgba(255, 255, 255, 0.673);
+ }
+
+ .dropdown-header:hover {
+   cursor: pointer;
+ }
+
+ .account-dropdown button {
+   color: white;
+    border: none;
+   border-radius: 0px;
+   position: relative;
+   overflow: hidden;
+    margin-top: 0px;
+   height: 45px;
+   width: 90px;
+   padding-bottom: 5px;
+   top: 0px;
+   left: 30px;
+   font-size: 14px;
+ }
+
+ .account-dropdown li {
+    position: relative;
+    color: white;
+    background: darkslateblue;
+    width: 60px;
+    height: 20px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 7.5px;
+    top: 58px;
+    left: 45px;
+ }
+
+ .account-dropdown li:first-child {
+    padding-bottom: 7.5px;
+    padding-top: 10px;  
+ }
+
+ .account-dropdown li:hover {
+   background: darkslateblue;
+ }
+
+ .settings-dropdown button {
+   font-size: 35px;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   margin-top: 0px;
+   height: 64px;
+   width: 45px;
+   padding-bottom: 5px;
+   top: -20px;
+   left: 1138px;
+   border: none;
+   border-radius: 0px;
+   position: absolute;
+   overflow: hidden;
+ }
+
+.settings-dropdown button:active:hover, .account-dropdown button:active:hover {
+    background-color: darkslateblue;
+}
+
+ .settings-dropdown button:hover {
+  color: white;
+ }
+
+
   #signOutListItem {
     position: relative;
-    top: 40px;
+    top: 37px;
     color: white;
-    left: -18px;
+    left: 14.5px;
     background: darkslateblue;
     padding-bottom: 5px;
     padding-left: 9px;
@@ -194,3 +207,5 @@
   #signOutListItem:hover {
     background: darkslateblue;
   }
+
+  
