@@ -12,7 +12,6 @@ class TrackShow extends React.Component {
 
     render() {
         const { track, artist, currentUser, currentTrackId, trackPlaying } = this.props;
-
         debugger
         
         if (Object.entries(track).length === 0) {
