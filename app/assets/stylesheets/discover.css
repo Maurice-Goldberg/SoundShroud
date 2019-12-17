@@ -130,3 +130,75 @@
 .tracks-panel .tracks .track {
   color: white;
 }
+
+.tracks-carousel .tracks {
+  border: 1px solid white;
+  display: flex;
+  width: 825px;
+  height: 200px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tracks-carousel .tracks li {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 1px solid white;
+}
+
+.tracks-carousel .artists {
+  border: 1px solid white;
+  display: flex;
+  width: 825px;
+  height: 200px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tracks-carousel .artists li {
+  color: white;
+  margin: 10px;
+  border: 1px solid white;
+}
+
+.tracks-carousel .tracks::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.tracks-carousel .tracks::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: transparent;
+}
+
+.tracks-carousel .tracks::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgba(255, 255, 255, 0.344);
+}
+
+.tracks-carousel .artists::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.tracks-carousel .artists::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: transparent;
+}
+
+.tracks-carousel .artists::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgba(255, 255, 255, 0.344);
+}

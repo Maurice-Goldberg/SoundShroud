@@ -24,7 +24,7 @@
 .track-name {
   color: white;
   position: relative;
-  left: 5px;
+  left: -70px;
   top: -243px;
   font-size: 22px;
   padding: 5px;
@@ -37,7 +37,7 @@
   border: 2px solid white;
   width: 320px;
   height: 320px;
-  left: 615px;
+  left: 540px;
   top: 26px;
 }
 
@@ -61,8 +61,8 @@
 
 .play-btn {
   position: relative;
-  top: -237px;
-  left: -576px;
+  top: -230px;
+  left: -650px;
   height: 56px;
   width: 56px;
   background-color: rgb(255, 255, 255);

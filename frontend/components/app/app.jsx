@@ -18,12 +18,9 @@ const App = (props) => {
       <div className="content">
         <ProtectedRoute exact path='/discover' component={DiscoverContainer} />
         <ProtectedRoute exact path='/' component={DiscoverContainer} />
-
         <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} />
         {/* <ProtectedRoute exact path='/users/:userId' component={UserShowContainer} />
-        <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} />
-        <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} /> */}
-        {/* <ProtectedRoute exact path='/logout' component={LogoutNavBarContainer} /> */}
+        <ProtectedRoute exact path='/logout' component={LogoutNavBarContainer} /> */}
       </div>
     </div>
   );
