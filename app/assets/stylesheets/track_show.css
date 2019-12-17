@@ -1,14 +1,166 @@
+.track-show-center-panel {
+  margin: 0 auto;
+  width: 1230px;
+}
+
+.track-hero {
+  width: 1230px;
+  height: 372px;
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgba(69,0,173,1) 100%);
+}
+
 .artist-name {
   color: white;
-  margin: 0 auto;
+  position: relative;
+  left: 90px;
+  top: -280px;
+  font-size: 14px;
+  padding: 5px;
+  display: inline-block;
+  background-color: rgba(87, 74, 171, 0.468);
 }
 
 .track-name {
   color: white;
-  margin: 0 auto;
+  position: relative;
+  left: 5px;
+  top: -243px;
+  font-size: 22px;
+  padding: 5px;
+  display: inline-block;
+  background-color: rgba(89, 76, 176, 0.468);
+}
+
+.track-cover {
+  position: relative;
+  border: 2px solid white;
+  width: 320px;
+  height: 320px;
+  left: 615px;
+  top: 26px;
+}
+
+.creation-time-elapsed {
+  color: white;
+  position: relative;
+  left: 740px;
+  top: -300px;
+  font-size: 15px;
+}
+
+.show-track-player {
+  color: white;
+  position: relative;
+  left: 40px;
+  top: -100px;
+  width: 815px;
+  height: 100px;
+  border: 2px solid white;
+}
+
+.play-btn {
+  position: relative;
+  top: -237px;
+  left: -576px;
+  height: 56px;
+  width: 56px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.play-sign {
+
+}
+
+.pause-sign {
+
+}
+
+.track-response-bar {
+  margin-top: 30px;
+  margin-left: 28px;
+
+}
+
+
+.current-user-avatar {
+  position: relative;
+  left: -8px;
+  top: 0px;
+  width: 31px;
+  height: 31px;
+  border: 1px solid white;
+}
+
+.comment-bar {
+
+}
+
+.comment-input {
+  background: black;
+  border: gray;
+  position: relative;
+  width: 650px;
+  height: 27px;
+  left: 0px;
+  top: -12px;
+}
+
+.comment-input::placeholder {
+  font-size: 14px;
+  padding: 6px;
+}
+
+.comment-input:focus {
+  outline-color: darkslateblue;
+}
+
+.t-s-artist-profile {
+
+}
+
+.circular-profile-picture {
+  position: relative;
+  left: 20px;
+  top: 67px;
+  height: 115px;
+  width: 115px;
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgb(43, 0, 173) 100%);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.t-s-artist-name {
+  color: white;
+  position: relative;
+  top: 78px;
+  left: 17px;
+  font-size: 14px;
 }
 
 .track-description {
   color: white;
-  margin: 0 auto;
+  position: relative;
+  top: -70px;
+  left: 160px;
+}
+
+.response-buttons-bar {
+  border: 1px solid white;
+  width: 1210px;
+  height: 20px;
+  position: relative;
+  left: -8px;
+  top: -8px;
+}
+
+.track-comments {
+
+}
+
+.logo-footer {
+
 }

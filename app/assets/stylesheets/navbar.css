@@ -1,6 +1,5 @@
 .nav-bar {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   background-color: rgb(60, 64, 67);
   padding-right: 30%;
@@ -134,6 +133,7 @@
   margin-right: 15px;
   padding-right: 10px;
   padding-left: 10px;
+  left: -150px;
 }
 
 #site-title {
@@ -145,7 +145,6 @@
 
  #logo-img {
    width: 45px;
-   margin-right: 8px;
  }
 
  #search-bar:focus-within {
