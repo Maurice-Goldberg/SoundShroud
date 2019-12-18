@@ -1,31 +1,73 @@
 .track-show-center-panel {
-  margin: 0 auto;
-  width: 1230px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* padding: 0 18%; */
 }
 
 .track-hero {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
   width: 1230px;
-  height: 372px;
+  height: 380px;
   background: rgb(0,0,0);
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgba(69,0,173,1) 100%);
 }
 
-.artist-name {
-  color: white;
+.bottom-info {
+  flex-basis: 64.2%;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+  margin: 0 auto;
   position: relative;
-  left: 90px;
-  top: -280px;
+  left: -180px;
+}
+
+.left-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.play-btn-track-text-and-creation-time {
+  display: flex;
+}
+
+.track-text-and-creation-time {
+  display: flex;
+}
+
+.play-btn-and-track-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.creation-time-and-track-cover {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.track-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.artist-name {
+  color: rgb(181, 180, 180);
   font-size: 14px;
   padding: 5px;
-  display: inline-block;
+  display: inline;
   background-color: rgba(87, 74, 171, 0.468);
 }
 
 .track-name {
+  margin-top: 12px;
   color: white;
-  position: relative;
-  left: -70px;
-  top: -243px;
   font-size: 22px;
   padding: 5px;
   display: inline-block;
@@ -33,36 +75,36 @@
 }
 
 .track-cover {
-  position: relative;
-  border: 2px solid white;
-  width: 320px;
-  height: 320px;
-  left: 540px;
-  top: 26px;
+  width: 335px;
+  height: 335px;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .creation-time-elapsed {
   color: white;
-  position: relative;
-  left: 740px;
-  top: -300px;
   font-size: 15px;
+  margin-top: 30px;
+  position: absolute;
+  left: -150px;
 }
 
 .show-track-player {
   color: white;
-  position: relative;
-  left: 40px;
-  top: -100px;
+  border: 2px solid white;
   width: 815px;
   height: 100px;
-  border: 2px solid white;
+  margin-top: 165px;
+  margin-left: 35px;
+  margin-right: 20px;
+}
+
+.show-track-player {
 }
 
 .play-btn {
-  position: relative;
-  top: -230px;
-  left: -650px;
+  margin-left: 30px;
+  margin-top: 30px;
   height: 56px;
   width: 56px;
   background-color: rgb(255, 255, 255);
@@ -79,52 +121,55 @@
 }
 
 .track-response-bar {
-  margin-top: 30px;
-  margin-left: 28px;
-
+  padding: 25px 0 0 30px;
+  margin-bottom: 30px;
 }
 
 
 .current-user-avatar {
-  position: relative;
-  left: -8px;
-  top: 0px;
   width: 31px;
   height: 31px;
   border: 1px solid white;
 }
 
 .comment-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+.response-buttons-bar {
+  border: 1px solid white;
+  width: 820px;
+  height: 20px;
 }
 
 .comment-input {
+  height: 29px;
+  width: 780px;
+  padding-left: 10px;
   background: black;
   border: gray;
-  position: relative;
-  width: 650px;
-  height: 27px;
-  left: 0px;
-  top: -12px;
+  border-radius: 2px;
 }
 
 .comment-input::placeholder {
   font-size: 14px;
-  padding: 6px;
 }
 
 .comment-input:focus {
   outline-color: darkslateblue;
 }
 
-.t-s-artist-profile {
+.profile-and-description {
+  display: flex;
+}
 
+.t-s-artist-profile {
+  margin-left: 25px;
 }
 
 .circular-profile-picture {
-  position: relative;
-  left: 20px;
-  top: 67px;
   height: 115px;
   width: 115px;
   background: rgb(0,0,0);
@@ -135,26 +180,13 @@
 
 .t-s-artist-name {
   color: white;
-  position: relative;
-  top: 78px;
-  left: 17px;
   font-size: 14px;
+  margin-top: 15px;
 }
 
 .track-description {
   color: white;
-  position: relative;
-  top: -70px;
-  left: 160px;
-}
-
-.response-buttons-bar {
-  border: 1px solid white;
-  width: 1210px;
-  height: 20px;
-  position: relative;
-  left: -8px;
-  top: -8px;
+  margin-left: 30px;
 }
 
 .track-comments {
