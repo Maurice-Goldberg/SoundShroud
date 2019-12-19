@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Discover from './discover';
 import {fetchTracks} from '../../actions/track_actions';
+import {findTrackByTitle} from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   debugger

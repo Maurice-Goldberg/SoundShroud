@@ -4,36 +4,40 @@ import {formatTime} from '../../../util/track_util';
 class TrackShow extends React.Component {
     constructor(props) {
         super(props);
+        debugger
+        this.state = {
+            audioTag: null
+        };
     }
 
     componentDidMount() {
-        this.props.fetchTrack(this.props.match.params.trackId);
-        this.audioPlayer = (
-            <audio className="audio-player" controls>
-                <source src={this.props.track.trackUrl} type="audio/mpeg" />
-            </audio>
-        );
-        
-    }
-
-    componentDidUpdate(prevProps) {
-        if(prevProps.match.params.trackId !== this.props.match.params.trackId) {
-            this.props.fetchTrack(this.props.match.params.trackId);
-        }
-        this.audioPlayer = (
-            <audio className="audio-player" controls>
-                <source src={this.props.track.trackUrl} type="audio/mpeg" />
-            </audio>
+        this.props.fetchTrack(this.props.match.params.trackId)
+            .then(() => {return this.setState({ audioTag: this.generatePlayer() });
+            }
         );
     }
 
-    render() {
-        const { track, artist, currentUser, currentTrackId, trackPlaying } = this.props;
-        this.audioPlayer = (
+    generatePlayer() {
+        const {track} = this.props;
+        return (
             <audio className="audio-player" controls>
                 <source src={track.trackUrl} type="audio/mpeg" />
             </audio>
         );
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.params.trackId !== this.props.match.params.trackId) {
+            this.props.fetchTrack(this.props.match.params.trackId)
+                .then(() => {
+                    return this.setState({ audioTag: this.generatePlayer() })
+                });
+        }
+    }
+
+    render() {
+        const { track, artist, currentUser, currentTrackId, trackPlaying } = this.props;
+        debugger
         if (Object.entries(track).length === 0) {
             return null;
         } else {
@@ -60,7 +64,7 @@ class TrackShow extends React.Component {
                                     </div>
                                     
                                     <div className="show-track-player">
-                                            {this.audioPlayer}
+                                            {this.state.audioTag}
                                     </div>
                                 </div>
                                 <div className="creation-time-and-track-cover">
