@@ -10,10 +10,10 @@ const Modal = (props) => {
   let component;
   switch (modal) {
     case "Sign in":
-      component = <LoginFormContainer />;
+      component = <LoginFormContainer closeModal={closeModal} />;
       break;
     case "Create account":
-      component = <SignupFormContainer />;
+      component = <SignupFormContainer closeModal={closeModal} />;
       break;
   }
   

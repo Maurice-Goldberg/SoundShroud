@@ -1,3 +1,5 @@
+import React from 'react';
+
 const ModalUpload = ({handleTrackFile, closeModal}) => {
   return (
 
@@ -8,6 +10,7 @@ const ModalUpload = ({handleTrackFile, closeModal}) => {
         
           {/* MAKE THIS INPUT DISPLAY NONE AND TAKE UP THE ENTIRE SCREEN */}
           <input type="file"
+            className="upload-modal-input"
             onDrop={(event) => {
               handleTrackFile(event);
               closeModal();

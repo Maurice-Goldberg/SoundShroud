@@ -1,0 +1,89 @@
+.upload-prompt-page {
+  display: flex;
+  justify-content: center;
+}
+
+.first-form-box {
+  margin: 100px;
+  background-color: rgb(59, 62, 65);;
+  padding: 15px 75px 25px 75px;
+}
+
+.first-form {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.privacy-radio-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.file-upload-group {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.upload-prompt-header {
+  font-size: 21px;
+}
+
+.upload-btn-text {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 260px;
+  height: 20px;
+  padding: 15px 15px 15px 15px;
+  background: darkslateblue;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.upload-btn-text:active {
+  background-color: rgb(55, 47, 104);
+}
+
+.track-upload-btn {
+  z-index: 2;
+  position: relative;
+  left: -230px;
+  top: -15px;
+  width: 289px;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid white;
+  display: none;
+}
+
+.privacy-radio-inputs label, .privacy-radio-inputs p {
+  font-size: 12px;
+}
+
+.privacy-radio-inputs label, .privacy-radio-inputs input {
+  margin: 5px;
+}
+
+.privacy-radio-inputs p {
+  margin: 11px 5px 5px 5px;
+}
+
+.privacy-radio-inputs {
+  margin-bottom: 120px;
+}
+
+.soundfile-disclaimer {
+  font-size: 10px;
+}
+
+.upload-modal-input {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
