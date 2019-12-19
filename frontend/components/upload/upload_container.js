@@ -6,7 +6,7 @@ const mapStateToProps = ({ui}) => {
   return {
     modal: ui.modal
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -14,6 +14,6 @@ const mapDispatchToProps = dispatch => {
     openUploadModal: () => dispatch(openModal('Upload')),
     closeModal: () => dispatch(closeModal())
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Upload);

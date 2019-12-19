@@ -30,6 +30,7 @@ class SessionForm extends React.Component {
       },
       formToRender: "First form"
     });
+    setTimeout(this.props.closeModal, 1000);
   }
 
   update(formField) {

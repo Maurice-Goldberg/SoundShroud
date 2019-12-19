@@ -50,6 +50,14 @@ class Upload extends React.Component {
     this.props.uploadTrack(formData);
   }
 
+  handleRadioInput(e) {
+    if(e.currentTarget.value === "Public") {
+      this.setState({ private: false });
+    } else {
+      this.setState({ private: true });
+    }
+  }
+
   uploadPromptPage() {
     return (
       <>
@@ -57,22 +65,32 @@ class Upload extends React.Component {
           <ModalUpload handleTrackFile={this.handleTrackFile} closeModal={this.props.closeModal}/>
           : <></>}
 
-        <div className="uploadPromptPage" onDragOver={this.props.openUploadModal()} onDragEnd={this.props.closeModal()}>
+        <div className="upload-prompt-page" onDragOver={this.props.openUploadModal} onDragEnd={this.props.closeModal}>
           <div className="first-form-box">
-            <form onSubmit={this.handleFirstSubmit}>
-              <h2>Drag and drop your track here</h2>
-              <input className="track-upload-btn"
-                onChange={this.handleTrackFile}
-                value={this.state.trackFile}
-              >or choose a file to upload</input>
+            <form className="first-form" onSubmit={this.handleFirstSubmit}>
+              <div className="file-upload-group">
+                <h2 className="upload-prompt-header">Drag and drop your track here</h2>
+                <label className="upload-btn-text">or choose a track to upload
+                  <input className="track-upload-btn"
+                    onChange={this.handleTrackFile}
+                    type="file"
+                  />
+                </label>
+              </div>
               <div className="privacy-radio-inputs">
                 <p>Privacy:</p>
-                <input type="radio" value="Public" defaultChecked onClick={this.setState({private: false})}></input>
-                <input type="radio" value="Private" onClick={this.setState({private: true})}></input>
-                <p className="soundfile-disclaimer">
-                  We recommend uploading a lossless HD file format such as FLAC, WAV, ALAC, or AIFF for highest sound quality.
-                </p>
+                <label>
+                  <input type="radio" name="privacy" value="Public" defaultChecked onClick={this.updateRadioInput}/>
+                  Public
+                </label>
+                <label>
+                  <input type="radio" name="privacy" value="Private" onClick={this.updateRadioInput}/>
+                  Private
+                </label>
               </div>
+              <p className="soundfile-disclaimer">
+                We recommend uploading a lossless HD file format such as FLAC, WAV, ALAC, or AIFF for highest sound quality.
+              </p>
             </form>
           </div>
         </div>
@@ -106,8 +124,8 @@ class Upload extends React.Component {
             </label>
             <label>Privacy:
               {/* HOW DO I PERSIST THE CHOICE OF PRIVATE VS PUBLIC FROM THE FIRST FORM?? */}
-              <input type="radio" value="Public" onClick={this.setState({ private: false })}></input>
-              <input type="radio" value="Private" onClick={this.setState({ private: true })}></input>
+              <input type="radio" name="privacy" value="Public" onClick={this.updateRadioInput}/>
+              <input type="radio" name="privacy" value="Private" onClick={this.updateRadioInput}/>
             </label>
           </form>
           <div className="upload-bottom-bar">
