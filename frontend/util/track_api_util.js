@@ -13,10 +13,12 @@ export const fetchTracks = () => {
     });
 }
 
-export const uploadTrack = (track) => {
+export const uploadTrack = (formData) => {
     return $.ajax({
         method: 'POST',
         url: '/api/tracks',
-        data: track
-    })
+        data: formData,
+        contentType: false,
+        processData: false
+    });
 }
