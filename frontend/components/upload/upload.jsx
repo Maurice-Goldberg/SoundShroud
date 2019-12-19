@@ -1,5 +1,4 @@
 import React from 'react';
-import ModalUpload from './modal_upload';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -10,10 +9,10 @@ class Upload extends React.Component {
       private: false,
       photoFile: null,
       trackFile: null,
-
+      errorMsg: false,
       formPage: "prompt page"
     };
-    this.handleFirstSubmit = this.handleFirstSubmit.bind(this);
+    this.handleFirstFileUpload = this.handleFirstFileUpload.bind(this);
     this.handleSecondSubmit = this.handleSecondSubmit.bind(this);
     this.uploadPromptPage = this.uploadPromptPage.bind(this);
     this.uploadDetailsPage = this.uploadDetailsPage.bind(this);
@@ -29,14 +28,28 @@ class Upload extends React.Component {
     this.setState({photoFile: e.currentTarget.files[0]});
   }
 
-  handleFirstSubmit(e) {
-    e.preventDefault();
-    //check to make sure it's a valid music file
-        //if no, return error message
-    //else
-    this.setState({
-      formPage: "details page"
+  //to be used once I can dynamically generate audio tags based on file type
+  fileTypeChecker(file) {
+    let allowableFileStrs = ["audio/mp3", "audio/wav", "audio/flac", "audio/alac", "audio/aiff", "audio/ogg", "audio/mp2", "audio/aac", "audio/amr", "audio/wma"];
+    allowableFileStrs.forEach((fileType) => {
+      if(file.type === fileType) {
+        return true;
+      }
     });
+    return false;
+  }
+
+  handleFirstFileUpload(e) {
+    e.preventDefault();
+    let filesArr = e.currentTarget.files;
+    if (filesArr.length > 1 || !(filesArr[0].type === "audio/mpeg" || filesArr[0].type === "audio/mp3")) {
+      this.setState({errorMsg: true});
+    } else {
+      this.setState({
+        trackFile: e.currentTarget.files[0],
+        formPage: "details page"
+      });
+    }
   }
 
   handleSecondSubmit(e) {
@@ -59,20 +72,27 @@ class Upload extends React.Component {
   }
 
   uploadPromptPage() {
+    let errorMsg = (<input className="error-msg"
+      readOnly
+      autoFocus={true}
+      value="This file type is not supported."
+      type="text"
+      onBlur={() => this.setState({ errorMsg: null })}
+      onClick={() => this.setState({ errorMsg: null })}
+      />);
+
     return (
       <>
-        {this.props.modal ?
-          <ModalUpload handleTrackFile={this.handleTrackFile} closeModal={this.props.closeModal}/>
-          : <></>}
-
-        <div className="upload-prompt-page" onDragOver={this.props.openUploadModal} onDragEnd={this.props.closeModal}>
+        {this.state.errorMsg &&
+          errorMsg}
+        <div className="upload-prompt-page">
           <div className="first-form-box">
-            <form className="first-form" onSubmit={this.handleFirstSubmit}>
+            <form className="first-form">
               <div className="file-upload-group">
-                <h2 className="upload-prompt-header">Drag and drop your track here</h2>
-                <label className="upload-btn-text">or choose a track to upload
+                <h2 className="upload-prompt-header">Upload your track here</h2>
+                <label className="upload-btn-text">Choose a track to upload
                   <input className="track-upload-btn"
-                    onChange={this.handleTrackFile}
+                    onChange={this.handleFirstFileUpload}
                     type="file"
                   />
                 </label>

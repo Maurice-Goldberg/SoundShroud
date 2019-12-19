@@ -18,7 +18,8 @@ class Api::TracksController < ApplicationController
   end
 
   def index
-
+    @tracks = Track.all
+    render "api/tracks/index"
   end
 
   private

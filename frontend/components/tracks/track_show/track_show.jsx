@@ -8,17 +8,32 @@ class TrackShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchTrack(this.props.match.params.trackId);
+        this.audioPlayer = (
+            <audio className="audio-player" controls>
+                <source src={this.props.track.trackUrl} type="audio/mpeg" />
+            </audio>
+        );
+        
     }
 
     componentDidUpdate(prevProps) {
         if(prevProps.match.params.trackId !== this.props.match.params.trackId) {
             this.props.fetchTrack(this.props.match.params.trackId);
         }
+        this.audioPlayer = (
+            <audio className="audio-player" controls>
+                <source src={this.props.track.trackUrl} type="audio/mpeg" />
+            </audio>
+        );
     }
 
     render() {
         const { track, artist, currentUser, currentTrackId, trackPlaying } = this.props;
-        
+        this.audioPlayer = (
+            <audio className="audio-player" controls>
+                <source src={track.trackUrl} type="audio/mpeg" />
+            </audio>
+        );
         if (Object.entries(track).length === 0) {
             return null;
         } else {
@@ -45,9 +60,7 @@ class TrackShow extends React.Component {
                                     </div>
                                     
                                     <div className="show-track-player">
-                                        <audio className="audio-player" controls>
-                                            <source src={track.trackUrl} type="audio/mpeg"/>
-                                        </audio>
+                                            {this.audioPlayer}
                                     </div>
                                 </div>
                                 <div className="creation-time-and-track-cover">

@@ -1,15 +1,19 @@
 import {connect} from 'react-redux';
 import Discover from './discover';
+import {fetchTracks} from '../../actions/track_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  debugger
   return {
-    currentUserId: state.session.currentUserId
+    currentUserId: state.session.currentUserId,
+    trackPhoto1: state.entities.tracks[ownProps.match.params.trackId],
+
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    fetchTracks: () => dispatch(fetchTracks())
   }
 }
 

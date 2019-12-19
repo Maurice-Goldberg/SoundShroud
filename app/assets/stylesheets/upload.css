@@ -50,6 +50,11 @@
   background-color: rgb(55, 47, 104);
 }
 
+.upload-btn-text:hover {
+    cursor: pointer;
+  background: rgb(55, 48, 104);
+}
+
 .track-upload-btn {
   z-index: 2;
   position: relative;
@@ -84,6 +89,35 @@
 
 .upload-modal-input {
   display: none;
+  width: 100vh;
+  height: 100vh;
+}
+
+.error-msg-wrapper {
   width: 100%;
-  height: 100%;
+}
+
+.error-msg {
+  text-align: center;
+  display: flex;
+  word-wrap: normal;
+  position: absolute;
+  margin-top: 15px;
+  left: 1500px;
+  width: 200px;
+  z-index: 3;
+  padding: 12px;
+  font-size: 12px;
+  background-color: darkslateblue;
+  border: none;
+  color: white;
+}
+
+.error-msg:focus{ 
+  outline: none;
+}
+
+.error-msg:hover {
+  cursor: pointer;
+  background: rgb(97, 84, 186);
 }

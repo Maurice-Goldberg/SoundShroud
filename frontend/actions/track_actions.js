@@ -24,6 +24,7 @@ export const fetchTrack = (trackId) => (dispatch) => {
 }
 
 export const fetchTracks = () => (dispatch) => {
+    debugger
     return TrackAPIUtil.fetchTracks().then(
         tracks => dispatch(receiveTracks(tracks))
     )
