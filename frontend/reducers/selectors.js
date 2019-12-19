@@ -30,3 +30,12 @@ export const findTrackArtist = (users, trackId) => {
 export const currentUser = ({entities, session}) => {
     return entities.users[session.currentUserId];
 }
+
+export const findTrackByTitle = ({entities}, title) => {
+    Object.values(entities.tracks).forEach((track) => {
+        if(track.title === title) {
+            return track;
+        } 
+    });
+    return null;
+}

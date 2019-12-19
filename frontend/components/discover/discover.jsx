@@ -9,7 +9,7 @@ class Discover extends React.Component {
 
   componentDidMount() {
     this.props.history.push('/discover');
-    debugger
+    // debugger
     this.props.fetchTracks();
   }
 
