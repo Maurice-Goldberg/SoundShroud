@@ -20,4 +20,9 @@ class Api::TracksController < ApplicationController
   def index
 
   end
+
+  private
+  def track_params
+    params.require(:track).permit(:title, :description, :private, :track_file, :photo)
+  end
 end
