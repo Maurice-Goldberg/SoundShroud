@@ -17,7 +17,7 @@ The following technologies were used:
 
 ### Discover Page
 
-### Authentication: Log-in & Sign-up
+### User Authentication
 - User can log in to a pre-existing account through a modal form
 - User can sign up for a new account through a modal form
 - User can sign in as a demo user for quick access to the site's core features
