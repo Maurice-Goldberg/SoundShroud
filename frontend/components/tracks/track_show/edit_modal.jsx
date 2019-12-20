@@ -1,5 +1,5 @@
 import React from 'react';
-import UploadContainer from '../../upload/upload_container';
+import UploadDetails from '../../upload/upload_details';
 
 class EditModal extends React.Component {
     constructor(props) {
@@ -7,14 +7,13 @@ class EditModal extends React.Component {
     }
 
     render() {
+        const {currentUserId, track, closeModal} = this.props;
         return (
-            <div className="modal-background" onClick={this.props.closeModal}>
-                <div className="modal-child">
-                    <div className="edit-modal-form-wrapper">
-                        <form className="edit-modal-form">
-                            <UploadContainer/>
-                        </form>
-                    </div>
+            <div className="modal-background" onClick={closeModal}>
+                <div className="edit-modal-form-wrapper">
+                    <form className="edit-modal-form">
+                        <UploadDetails className=".edit-upload-details" private={track.private} currentUserId={currentUserId}/>
+                    </form>
                 </div>
             </div>
         )

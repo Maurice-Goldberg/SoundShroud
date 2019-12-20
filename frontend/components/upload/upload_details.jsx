@@ -10,6 +10,10 @@ class UploadDetails extends React.Component {
             photoUrl: null,
             photoFile: null,
             private: props.private,
+
+            //how is edit modal's upload details going to have access to the trackfile so it can submit it?
+            //do we need to store it on the state somehow? how is that possible?
+            //or can I make submitting the track file optional (only when it's NOT an edit form?)
             trackFile: props.trackFile,
         }
 

@@ -24,8 +24,8 @@ class TrackShow extends React.Component {
         } else {
             return (
                 <>
-                    {modal=== "Edit" && <EditModalContainer/>}
                     <div className="track-show-container">
+                    {modal=== "Edit" && <EditModalContainer track={track} currentUserId={currentUser.id}/>}
                         <div className="track-show-center-panel">
                             <div className="track-hero-wrapper">
                                 <div className="track-hero">
