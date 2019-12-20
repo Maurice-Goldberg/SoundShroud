@@ -9,7 +9,6 @@ class Discover extends React.Component {
 
   componentDidMount() {
     this.props.history.push('/discover');
-    // debugger
     this.props.fetchTracks();
   }
 
@@ -40,10 +39,10 @@ class Discover extends React.Component {
       </>
     )
 
-    const {track} = this.props;
+    const {track1, track2} = this.props;
     debugger
 
-    if(!track) {
+    if(!track1) {
       debugger
       return null;
     } else {
@@ -57,7 +56,9 @@ class Discover extends React.Component {
                   <h3 className="discover-panel-subtitle">Our top SoundShroud 2019 picks.</h3>
                   <div className="tracks-panel-wrapper">
                     <div className="tracks-panel">
-                      <div className="playlist-cover"></div>
+                      <div className="playlist-cover">
+                        <img src={track1.photoUrl} alt="Caroline Polachek" className="playlist-cover-img"/>
+                      </div>
                       <ul className="tracks">{placeholderTracks}</ul>
                     </div>
                   </div>
@@ -67,7 +68,7 @@ class Discover extends React.Component {
                   <h3 className="discover-panel-subtitle">All of SoundShroud. Just for you.</h3>
                   <div className="tracks-panel">
                     <div className="playlist-cover">
-                      <img src={track.photoUrl} alt="Caroline Polachek" />
+                      <img src={track2.photoUrl} alt="Oneohtrix Point Never" className="playlist-cover-img" />
                     </div>
                     <ul className="tracks">{placeholderTracks}</ul>
                   </div>

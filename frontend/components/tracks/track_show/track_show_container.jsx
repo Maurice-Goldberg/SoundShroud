@@ -6,7 +6,7 @@ import {currentUser} from '../../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
     let track = state.entities.tracks[ownProps.match.params.trackId] || {};
-    let artist = state.entities.users[track.account_id];
+    let artist = state.entities.users[track.account_id] || {};
     debugger
     return {
         track: track,

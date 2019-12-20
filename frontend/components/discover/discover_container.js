@@ -7,8 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   debugger
   return {
     currentUserId: state.session.currentUserId,
-    trackPhoto1: state.entities.tracks[ownProps.match.params.trackId],
-
+    track1: findTrackByTitle(state, "Ocean of Tears"),
+    track2: findTrackByTitle(state, "Chrome Country")
   }
 }
 

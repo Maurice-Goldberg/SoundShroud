@@ -32,10 +32,11 @@ export const currentUser = ({entities, session}) => {
 }
 
 export const findTrackByTitle = ({entities}, title) => {
-    Object.values(entities.tracks).forEach((track) => {
-        if(track.title === title) {
-            return track;
-        } 
-    });
+    let tracksArr = Object.values(entities.tracks);
+    for(let i = 0; i < tracksArr.length; i++) {
+        if(tracksArr[i].title === title) {
+            return tracksArr[i];
+        }
+    }
     return null;
 }

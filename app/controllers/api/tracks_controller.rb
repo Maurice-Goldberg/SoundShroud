@@ -3,7 +3,7 @@ class Api::TracksController < ApplicationController
     @track = Track.new(track_params)
     if @track.save
       render "api/tracks/show"
-    else 
+    else
       render json: @track.errors.full_messages, status: 422
     end
   end
@@ -24,6 +24,6 @@ class Api::TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:title, :description, :private, :track_file, :photo)
+    params.require(:track).permit(:title, :description, :private, :track_file, :photo, :account_id)
   end
 end
