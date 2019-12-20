@@ -2,9 +2,10 @@ import EditModal from './edit_modal';
 import {closeModal} from '../../../actions/modal_actions';
 import {connect} from 'react-redux';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        
+        track: ownProps.track,
+        currentUserId: ownProps.currentUserId
     }
 }
 
