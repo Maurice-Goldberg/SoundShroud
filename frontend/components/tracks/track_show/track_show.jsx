@@ -64,7 +64,10 @@ class TrackShow extends React.Component {
                                     type="text"
                                     placeholder="Write a comment"/>
                                 </div>
-                                <div className="response-buttons-bar"></div>
+                                <div className="response-buttons-bar">
+                                    <img className="pencil-png" src={window.pencil}/>
+                                    <button className="edit-btn">Edit</button>
+                                </div>
                             </div>
                             <div className="profile-and-description">
                                 <div className="t-s-artist-profile">
