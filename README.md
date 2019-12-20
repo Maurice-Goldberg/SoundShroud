@@ -40,12 +40,12 @@ The following technologies were used:
 - User can continuously listen to music through an audio player footer as they navigate from page to page
 - Song's progress in time is directly mimicked by the display of the individual song page's audio player
 
-### Profile page
+### Profile Page
 - User profile page displays all posted tracks, a short user bio, and widget links to the user's social media
 - User can view other users' profile pages
 - User can view and edit their own profile page
 
-### Comment functionality
+### Comment Functionality
 - User can comment underneath a song on the song's individual show page
 - User can remove a previously posted commment
 - User can reply to another user's comment
