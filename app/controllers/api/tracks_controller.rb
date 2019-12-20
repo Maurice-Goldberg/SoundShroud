@@ -13,8 +13,18 @@ class Api::TracksController < ApplicationController
     render "api/tracks/show"
   end
 
-  def destroy
+  def edit
+    @track = Track.find_by_id(params[:id])
+    if @track.update_attributes(track_params)
+      render "api/tracks/show"
+    else
+      render @track.errors.full_messages, status: 422
+    end
+  end
 
+  def destroy
+    @track = Track.find_by_id(params[:id])
+    @track.destroy
   end
 
   def index

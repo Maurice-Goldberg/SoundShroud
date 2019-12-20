@@ -91,7 +91,7 @@
 
 .show-track-player {
   color: white;
-  border: 2px solid white;
+  /* border: 2px solid white; */
   width: 815px;
   height: 100px;
   margin-top: 165px;
@@ -99,7 +99,8 @@
   margin-right: 20px;
 }
 
-.show-track-player {
+.show-track-player:focus {
+  outline: none;
 }
 
 .play-btn {
@@ -125,6 +126,34 @@
   margin-bottom: 30px;
 }
 
+.edit-btn {
+  font-size: 13px;
+  border: 1px solid black;
+  background: gray;
+  color: white;
+  padding: 5px 5px 5px 25px;
+  top: -35px;
+  left: -68px;
+  position: relative;
+}
+
+.edit-btn:active {
+  background: rgb(94, 94, 94);
+}
+
+.edit-btn, .pencil-png {
+  cursor: pointer;
+}
+
+.pencil-png {
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: -15px;
+  top: -15px;
+}
+
 
 .current-user-avatar {
   width: 31px;
@@ -138,8 +167,17 @@
   margin-bottom: 10px;
 }
 
+audio {
+  width: 815px;
+  height: 75px;
+}
+
+audio:focus {
+  outline: none;
+}
+
 .response-buttons-bar {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   width: 820px;
   height: 20px;
 }
