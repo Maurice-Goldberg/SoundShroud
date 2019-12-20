@@ -1,24 +1,4 @@
-# README
+# SoundShroud
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[SoundShroud](http://soundshroud000.herokuapp.com/#/discover) is my dark-mode clone of [SoundCloud](https://soundcloud.com/discover), the popular audio streaming platform. In making this clone, I looked to exactly replicate most of the core functionality of the app, while reconceptualizing its color scheme to be more pleasing to the eye.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
