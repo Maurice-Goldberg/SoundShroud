@@ -30,7 +30,7 @@ export const fetchTracks = () => (dispatch) => {
     )
 }
 
-export const uploadTrack = (track) => (dispatch) => {
+export const uploadTrack = (formData) => (dispatch) => {
     return TrackAPIUtil.uploadTrack(formData).then(
         uploadedTrack => (dispatch(receiveTrack(uploadedTrack))
     ));

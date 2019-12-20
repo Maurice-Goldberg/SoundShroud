@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Upload extends React.Component {
       private: false,
       photoFile: null,
       trackFile: null,
+      photoUrl: null,
       errorMsg: false,
       formPage: "prompt page"
     };
@@ -21,11 +23,20 @@ class Upload extends React.Component {
   }
 
   handleTrackFile(e) {
+    e.preventDefault();
     this.setState({trackFile: e.currentTarget.files[0]});
   }
 
   handlePhotoFile(e) {
-    this.setState({photoFile: e.currentTarget.files[0]});
+    e.preventDefault();
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () =>  {
+      this.setState({photoFile: file, photoUrl: fileReader.result });
+    };
+    if(file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   //to be used once I can dynamically generate audio tags based on file type
@@ -54,13 +65,16 @@ class Upload extends React.Component {
 
   handleSecondSubmit(e) {
     e.preventDefault();
-    const formData = newFormData();
+    const formData = new FormData();
     formData.append('track[title]', this.state.title);
     formData.append('track[description]', this.state.description);
     formData.append('track[private]', this.state.private);
     formData.append('track[photo]', this.state.photoFile);
     formData.append('track[track_file]', this.state.trackFile);
-    this.props.uploadTrack(formData);
+    formData.append('track[account_id]', this.props.currentUserId);
+    this.props.uploadTrack(formData).then(
+      ({trackResponse}) => this.props.history.push(`/tracks/${trackResponse.track.id}`)
+    );
   }
 
   handleRadioInput(e) {
@@ -121,37 +135,80 @@ class Upload extends React.Component {
   uploadDetailsPage() {
     let coverSquare;
     if(this.state.photoUrl) {
-      coverSquare = <img className="cover-art" />
+      coverSquare = 
+        (<div className="left-div">
+          <img className="cover-art" src={this.state.photoUrl}/>
+          <div>
+            <div className="image-input-text-bar">
+              <label className="image-input-text">Upload image
+                <img className="camera-png" src={window.camera} />
+                <input className="image-input" type="file" accept="image/jpeg,image/pjpeg,image/gif,image/png" onChange={this.handlePhotoFile} />
+              </label>       
+            </div>
+          </div>
+        </div>)
     } else {
       coverSquare = (
-        <>
-          <div className="black-image-square"></div>
-          <input className="image-input" onChange={this.handlePhotoFile}/>
-        </>
+        <div className="left-div">
+          <div className="blank-image-square"></div>
+          <div>
+            <div className="image-input-text-bar">
+              <label className="image-input-text">Upload image
+                <img className="camera-png" src={window.camera}/>
+                <input className="image-input" type="file" accept="image/jpeg,image/pjpeg,image/gif,image/png" onChange={this.handlePhotoFile}/>
+              </label>            
+            </div>
+          </div>
+        </div>
       );
     }
 
     return (
       <div className="upload-details-page">
         <div className="upload-details-box">
-          <form onSubmit={this.handleSecondSubmit}>
-            {coverSquare}
-            <label>Title *
-              <input type="text"/>
-            </label>
-            <label>Description
-              <input type="textarea"/>
-            </label>
-            <label>Privacy:
-              {/* HOW DO I PERSIST THE CHOICE OF PRIVATE VS PUBLIC FROM THE FIRST FORM?? */}
-              <input type="radio" name="privacy" value="Public" onClick={this.updateRadioInput}/>
-              <input type="radio" name="privacy" value="Private" onClick={this.updateRadioInput}/>
-            </label>
+          <h2 className="upload-details-header">Basic info</h2>
+          <form className="upload-details-form">
+            <div className="upload-details-content">
+              {coverSquare}
+              <div className="right-div">
+                <div className="title-div">
+                  <label className="title-input-label">Title *
+                    <br></br>
+                    <input className="title-input"
+                      type="text"
+                      onChange={(e) => this.setState({title: e.currentTarget.value })}/>
+                  </label>
+                </div>
+                <div className="description-div">
+                  <label className="description-input-label">Description
+                    <br></br>
+                    <textarea className="description-input"
+                      rows="10"
+                      onChange={(e) => this.setState({description: e.currentTarget.value })}></textarea>
+                  </label>
+                </div>
+                <div className="privacy-div">
+                  <label>Privacy:
+                  </label>
+                    {/* HOW DO I PERSIST THE CHOICE OF PRIVATE VS PUBLIC FROM THE FIRST FORM?? */}
+                    <label className="public-label">
+                      <input type="radio" name="privacy" value={false} onClick={this.updateRadioInput}/>
+                      Public
+                    </label>
+                    <label className="private-label">
+                      <input type="radio" name="privacy" value={true} onClick={this.updateRadioInput}/>
+                      Private
+                    </label>
+                </div>
+              </div>
+            </div>
           </form>
           <div className="upload-bottom-bar">
             <p>* Required field</p>
-            <button className="cancel-upload-btn">Cancel</button>
-            <button className="save-upload-btn">Save</button>
+            <div className="second-upload-btns">
+              <button className="cancel-upload-btn" onClick={() => this.setState({formPage: "prompt page"})}>Cancel</button>
+              <button className="save-upload-btn" onClick={this.handleSecondSubmit}>Save</button>
+            </div>
           </div>
         </div>
       </div>
@@ -170,4 +227,4 @@ class Upload extends React.Component {
   }
 }
 
-export default Upload;
+export default withRouter(Upload);
