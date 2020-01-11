@@ -1,6 +1,6 @@
 class Api::TracksController < ApplicationController
   def create
-    @track = Track.new(track_params)
+    @track = Track.new(create_track_params)
     if @track.save
       render "api/tracks/show"
     else
@@ -13,9 +13,10 @@ class Api::TracksController < ApplicationController
     render "api/tracks/show"
   end
 
-  def edit
+  def update
     @track = Track.find_by_id(params[:id])
-    if @track.update_attributes(track_params)
+    debugger
+    if @track.update_attributes(edit_track_params)
       render "api/tracks/show"
     else
       render @track.errors.full_messages, status: 422
@@ -24,7 +25,11 @@ class Api::TracksController < ApplicationController
 
   def destroy
     @track = Track.find_by_id(params[:id])
-    @track.destroy
+    if @track
+      @track.destroy
+    else
+      render json: ["Track not found"], status: 422
+    end
   end
 
   def index
@@ -33,7 +38,11 @@ class Api::TracksController < ApplicationController
   end
 
   private
-  def track_params
+  def create_track_params
     params.require(:track).permit(:title, :description, :private, :track_file, :photo, :account_id)
+  end
+  
+  def edit_track_params
+    params.require(:track).permit(:title, :description, :private, :photo, :account_id)
   end
 end

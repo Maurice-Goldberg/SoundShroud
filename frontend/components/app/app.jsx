@@ -5,6 +5,7 @@ import SplashContainer from '../splash/splash_container';
 import TrackShowContainer from '../tracks/track_show/track_show_container';
 import DiscoverContainer from '../discover/discover_container';
 import UploadContainer from '../upload/upload_container';
+import CurrentTrackPlayerContainer from '../tracks/current_track/current_track_container'
 // import LogoutNavBarContainer from '../nav_bar/logout_nav_bar_container';
 // import UserShowContainer from '../user/user_show_container';
 
@@ -24,6 +25,7 @@ const App = (props) => {
         {/* <ProtectedRoute exact path='/users/:userId' component={UserShowContainer} />
         <ProtectedRoute exact path='/logout' component={LogoutNavBarContainer} /> */}
       </div>
+      <CurrentTrackPlayerContainer/>
     </div>
   );
 };

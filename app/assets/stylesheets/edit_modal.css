@@ -1,10 +1,19 @@
 .edit-modal-child { 
-margin: 0 auto;
-  z-index: 11;
+    animation-name: edit-modal-swoop-in;
+    animation-duration: 0.5s;
+    margin: 0 auto;
+    position: relative;
+    top: -12%;
+    z-index: 11;
 }
 
-/* I can't currently get the modal swoop to work... just need to find the right div to put the animation on... */
-.edit-modal-child .upload-details-page {
-  animation-name: modal-swoop-in;
-  animation-duration: 0.5s;
+@keyframes edit-modal-swoop-in {
+  from {
+    top: -100%;
+    bottom: -100%;
+  }
+  to {
+    top: -12%;
+    bottom: 0%;
+  }
 }

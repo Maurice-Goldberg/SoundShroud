@@ -1,5 +1,4 @@
 export const fetchTrack = (trackId) => {
-    debugger
     return $.ajax({
         method: 'GET',
         url: `/api/tracks/${trackId}`
@@ -7,7 +6,6 @@ export const fetchTrack = (trackId) => {
 };
 
 export const fetchTracks = () => {
-    debugger;
     return $.ajax({
         method: 'GET',
         url: '/api/tracks'
@@ -24,4 +22,21 @@ export const uploadTrack = (formData) => {
         contentType: false,
         processData: false
     });
+}
+
+export const updateTrack = (formData, id) => {
+    return $.ajax({
+        method: 'PATCH',
+        url: `/api/tracks/${id}`,
+        data: formData,
+        contentType: false,
+        processData: false
+    })
+}
+
+export const deleteTrack = (id) => {
+    return $.ajax({
+        method: 'DELETE',
+        url: `/api/tracks/${id}`
+    })
 }

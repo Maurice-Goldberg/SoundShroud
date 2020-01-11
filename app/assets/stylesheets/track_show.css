@@ -65,6 +65,11 @@
   background-color: rgba(87, 74, 171, 0.468);
 }
 
+.artist-name:hover {
+  color: white;
+  cursor: pointer;
+}
+
 .track-name {
   margin-top: 12px;
   color: white;
@@ -108,17 +113,32 @@
   margin-top: 30px;
   height: 56px;
   width: 56px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(49, 42, 95);
   border-radius: 50%;
   display: inline-block;
 }
 
-.play-sign {
-
+.play-btn:hover {
+  cursor: pointer;
+  background-color: rgb(37, 32, 73);
 }
 
-.pause-sign {
+.play-sign, .pause-sign {
+  position: relative;
+  left: 18.5px;
+  top: 15px;
+  height: 25px;
+  width: 25px;
+  z-index: 3;
+}
 
+audio {
+  width: 815px;
+  height: 75px;
+}
+
+audio:focus {
+  outline: none;
 }
 
 .track-response-bar {
@@ -140,6 +160,7 @@
   flex-direction: row;
   justify-content: center;
 }
+
 .edit-btn:active {
   background: rgb(94, 94, 94);
 }
@@ -162,6 +183,42 @@
   left: 10px;
 }
 
+.delete-btn {
+  margin-left: 10px;
+  width: 30px;
+  height: 20px;
+  font-size: 13px;
+  border: 1px solid black;
+  background: gray;
+  color: white;
+  padding: 5px 5px 5px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.delete-btn:active {
+  background: rgb(94, 94, 94);
+}
+
+.delete-btn, .trashcan-png {
+  cursor: pointer;
+}
+
+.delete-btn-ele {
+  margin-right: 30px;
+  margin-top: 3px;
+}
+
+.trashcan-png {
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  left: -5px;
+  top: 2px;
+}
+
 
 .current-user-avatar {
   width: 31px;
@@ -175,19 +232,12 @@
   margin-bottom: 10px;
 }
 
-audio {
-  width: 815px;
-  height: 75px;
-}
-
-audio:focus {
-  outline: none;
-}
-
 .response-buttons-bar {
   /* border: 1px solid white; */
   width: 820px;
   height: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .comment-input {
