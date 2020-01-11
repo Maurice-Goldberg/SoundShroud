@@ -61,6 +61,7 @@
   margin-right: 15px;
   padding-right: 17px;
   padding-left: 17px;
+  padding-top: 5px;
   left: -150px;
 }
 
@@ -130,8 +131,21 @@
     color:rgba(255, 255, 255, 0.673);
     text-decoration: none;
     font-size: 14px;
-    left: 15px;
+    left: 8px;
     position: relative;
+  }
+
+  .user-profile-link {
+    text-decoration: none;
+    color:rgba(255, 255, 255, 0.673);
+    text-decoration: none;
+    font-size: 14px;
+    left: 33px;
+    position: relative;
+  }
+
+  .user-profile-link:hover {
+    color: white;
   }
 
    .dropdown-header {
@@ -144,7 +158,7 @@
    cursor: pointer;
  }
 
- .account-dropdown button {
+ /* .account-dropdown button {
    color:  rgba(255, 255, 255, 0.673);
     border: none;
    border-radius: 0px;
@@ -171,8 +185,8 @@
     top: 57.3px;
     left: 70px;
     z-index: 8;
- }
-
+ } */
+/* 
  .account-dropdown li:first-child {
     padding-bottom: 7.5px;
     padding-top: 10px;  
@@ -180,7 +194,7 @@
 
  .account-dropdown li:hover {
    background: darkslateblue;
- }
+ } */
 
  .settings-dropdown button {
    font-size: 35px;
@@ -190,7 +204,7 @@
    width: 45px;
    padding-bottom: 5px;
    top: -19px;
-   left: 1138px;
+   left: 1093px;
    border: none;
    border-radius: 0px;
    position: absolute;

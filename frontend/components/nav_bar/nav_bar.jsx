@@ -8,29 +8,13 @@ class NavBar extends React.Component {
     super(props);
   }
 
-  accountNav() {
-    let account_name = this.props.currentUser.account_name;
-    let list = (
-      <>
-        <li className="dropdown-list-item">Profile</li>
-        <li className="dropdown-list-item">Tracks</li>
-      </>
-    );
-
-    return (
-        <DropdownContainer
-          classStr="account-dropdown"
-          title={account_name}
-          list={list}  
-        />
-    );
-  }
-
   render() {
     let userNavItem;
     const {logout, currentUser} = this.props;
     if (currentUser) {
-      userNavItem = this.accountNav();
+      userNavItem = <Link className="user-profile-link" to={`/users/${currentUser.id}`}>
+                      {currentUser.account_name}
+                    </Link>;
     } else {
       userNavItem = <Modal />;
     }

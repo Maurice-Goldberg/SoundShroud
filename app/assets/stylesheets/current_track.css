@@ -1,0 +1,20 @@
+.current-track-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: rgba(51, 34, 145, 0.712);
+}
+
+.current-track-box .cover-art {
+    width: 25px;
+    height: 25px;
+}
+
+.current-track-box .artist-name, .current-track-box .track-name {
+    background: none;
+}

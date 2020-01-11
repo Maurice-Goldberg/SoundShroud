@@ -14,6 +14,7 @@ class Upload extends React.Component {
     this.uploadPromptPage = this.uploadPromptPage.bind(this);
     this.handlePromptSubmit = this.handlePromptSubmit.bind(this);
     this.handleTrackFile = this.handleTrackFile.bind(this);
+    this.updateRadioInput = this.updateRadioInput.bind(this);
   }
 
   handleTrackFile(e) {

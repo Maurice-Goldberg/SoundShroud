@@ -1,14 +1,23 @@
 import React from 'react';
 import {formatTime} from '../../../util/track_util';
-import EditModalContainer from './edit_modal_container';
+import EditModalContainer from '../modals/edit_modal_container';
+import DeleteModalContainer from '../modals/delete_modal_container';
+import AudioPlayer from '../audio_player';
 
 class TrackShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            playing: this.props.trackPlaying.playing
+        }
+
+        this.switchPlayPause = this.switchPlayPause.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchTrack(this.props.match.params.trackId);
+        this.trashcan = window.trashcan;
+        this.pencil = window.pencil;
     }
 
     componentDidUpdate(prevProps) {
@@ -17,23 +26,37 @@ class TrackShow extends React.Component {
         }
     }
 
+    switchPlayPause() {
+        if(this.state.playing) {
+            this.props.pauseTrack();
+        } else {
+            this.props.playTrack();
+        }
+
+        this.setState({ playing: !this.props.trackPlaying.playing });
+        this.props.receiveCurrentTrack(this.props.track);
+    }
+
     render() {
-        const { track, artist, modal, currentUser, currentTrackId, trackPlaying } = this.props;
+        const { track, artist, modal, currentUser, currentTrackId } = this.props;
         if (Object.entries(track).length === 0) {
             return null;
         } else {
             return (
                 <>
                     <div className="track-show-container">
-                    {modal=== "Edit" && <EditModalContainer track={track} currentUserId={currentUser.id}/>}
+                    {modal === "Edit" && <EditModalContainer track={track} currentUserId={currentUser.id}/>}
+                    {modal === "Delete" && <DeleteModalContainer track={track} currentUserId={currentUser.id} artist={artist} />}
                         <div className="track-show-center-panel">
                             <div className="track-hero-wrapper">
                                 <div className="track-hero">
                                     <div className="left-wrapper">
                                         <div className="play-btn-track-text-and-creation-time">
-                                            <span className="play-btn"></span>
-                                            <div className="play-sign"></div>
-                                            <div className="pause-sign"></div>
+                                            <span className="play-btn">
+                                                {this.state.playing ?
+                                                    <img src={window.pause_btn} className="pause-sign" onClick={this.switchPlayPause}/>
+                                                    : <img src={window.play_btn} className="play-sign" onClick={this.switchPlayPause}/>}
+                                            </span>
                                             <div className="track-text-and-creation-time">
                                                 <div className="track-text">
                                                     <div className="artist-name-wrapper">
@@ -47,9 +70,7 @@ class TrackShow extends React.Component {
                                         </div>
                                         
                                         <div className="show-track-player">
-                                            <audio className="audio-player" controls>
-                                                <source src={track.trackUrl} type="audio/mpeg" />
-                                            </audio>
+                                            <AudioPlayer track={track}/>
                                         </div>
                                     </div>
                                     <div className="creation-time-and-track-cover">
@@ -66,12 +87,17 @@ class TrackShow extends React.Component {
                                         type="text"
                                         placeholder="Write a comment"/>
                                     </div>
+                                    {currentUser.id === artist.id &&
                                     <div className="response-buttons-bar">
                                         <div className="edit-btn" onClick={this.props.openEditModal}>
-                                            <img className="pencil-png" src={window.pencil}/>
+                                            <img className="pencil-png" src={this.pencil}/>
                                             <p className="edit-btn-ele" >Edit</p>
                                         </div>
-                                    </div>
+                                        <div className="delete-btn" onClick={this.props.openDeleteModal}>
+                                            <img className="trashcan-png" src={this.trashcan} />
+                                            <p className="delete-btn-ele">Delete</p>
+                                        </div>
+                                    </div>}
                                 </div>
                                 <div className="profile-and-description">
                                     <div className="t-s-artist-profile">

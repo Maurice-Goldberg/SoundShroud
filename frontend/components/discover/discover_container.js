@@ -4,7 +4,6 @@ import {fetchTracks} from '../../actions/track_actions';
 import {findTrackByTitle} from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     currentUserId: state.session.currentUserId,
     track1: findTrackByTitle(state, "Ocean of Tears"),

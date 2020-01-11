@@ -42,7 +42,7 @@ class Discover extends React.Component {
     const {track1, track2} = this.props;
     debugger
 
-    if(!track1) {
+    if(!(track1 && track2)) {
       debugger
       return null;
     } else {

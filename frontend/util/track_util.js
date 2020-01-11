@@ -4,7 +4,7 @@ export const formatTime = (sqlTime) => {
 
   let yearsAgo = currentTime.getFullYear() - timeOfCreation.getFullYear();
   let monthsAgo = currentTime.getMonth() - timeOfCreation.getMonth();
-  let weeksAgo = currentTime.getDate()/7 - timeOfCreation.getDate()/7;
+  let weeksAgo = Math.floor(currentTime.getDate()/7 - timeOfCreation.getDate()/7);
   let daysAgo = currentTime.getDate() - timeOfCreation.getDate();
   let hoursAgo = currentTime.getHours() - timeOfCreation.getHours();
   let minutesAgo = currentTime.getMinutes() - timeOfCreation.getMinutes();
