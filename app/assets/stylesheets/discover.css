@@ -1,11 +1,15 @@
-.discover-wrapper {
+.discover-container {
   margin: 0 auto;
   width: 1230px;
   height: 1300px;
   overflow: hidden;
   padding: 30px;
-  position: relative;
   left: 22px;
+  background: rgb(36, 36, 36);
+}
+
+.discover-wrapper {
+  margin-left: 17%;
 }
 
 .discover-panel-header {
@@ -20,27 +24,26 @@
   margin-bottom: 20px;
 }
 
-
+/* 
 .side-panel {
-  position: relative;
   top: -1158px;
   left: 900px;
   display: inline-block;
   border: 1px solid white;
   z-index: 0;
-}
+} */
 
-.side-panel h3 {
+/* .side-panel h3 {
   color: lightgray;
   font-size: 15px;
-}
-
+} */
+/* 
 .s-p-follow-list {
   height: 230px;
   width: 258px;
   border: 1px solid white;
   margin-bottom: 15px;
-}
+} */
 
 .tracks-panel {
   width: 830px;
@@ -48,6 +51,7 @@
   margin-bottom: 30px;
   background: rgb(0,0,0);
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgb(43, 0, 173) 100%);
+  display: flex;
 }
 
 .s-p-track-list {
@@ -58,8 +62,8 @@
 }
 
 .tracks-panel .playlist-cover {
-  top: 20px;
-  position: relative;
+  /* top: 20px;
+  position: relative; */
   width: 185px;
   height: 185px;
   background: rgba(255, 255, 255, 0.166);
@@ -69,15 +73,17 @@
 .best-of .tracks {
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative;
   top: -185px;
-  left: 230px;
+  left: 230px; */
+  margin-top: 12px;
 }
 
 .soundshroud-weekly .tracks {
-  position: relative;
+  /* position: relative;
   top: -185px;
-  left: 230px;
+  left: 230px; */
+  margin-top: 12px;
 }
 
 .tracks-panel .tracks li {

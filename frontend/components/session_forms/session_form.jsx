@@ -12,25 +12,39 @@ class SessionForm extends React.Component {
       },
       formToRender: "First form"
     };
+    this.userExists;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoSignIn = this.handleDemoSignIn.bind(this);
     this.userExists = this.userExists.bind(this);
     this.returnToFirstForm = this.returnToFirstForm.bind(this);
+    this.enterPressed = this.enterPressed.bind(this);
+    this.processFirstContinue = this.processFirstContinue.bind(this);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(formType) {
     const { submitUser } = this.props;
-    submitUser(this.state.userParams);
+    submitUser(this.state.userParams).then(() => {
+      if(this.props.errors.length === 0) {
+        this.setState({
+          userParams: {
+            email: "",
+            password: "",
+            account_name: ""
+          },
+          formToRender: formType
+        });
+        setTimeout(this.props.closeModal, 1000);
+      }
+    });
+  }
+
+  handleDemoSignIn() {
     this.setState({
       userParams: {
-        email: "",
-        password: "",
-        account_name: ""
-      },
-      formToRender: "First form"
-    });
-    setTimeout(this.props.closeModal, 1000);
+        email: "demouser@gmail.com",
+        password: "password123"
+      }
+    }, () => this.handleSubmit("Log in"));
   }
 
   update(formField) {
@@ -67,7 +81,7 @@ class SessionForm extends React.Component {
   showErrors() {
     let errors = this.props.errors.map((error, i) => {
       return (
-        <li key={`err${i}`}>
+        <li className={`${this.state.formToRender.toLowerCase().split(" ").join("-")}-error`} key={`err${i}`}>
           {error}
         </li>
       );
@@ -80,81 +94,140 @@ class SessionForm extends React.Component {
     );
   }
 
-  handleDemoSignIn() {
-    this.setState({userParams: {
-      email: "demouser@gmail.com",
-      password: "password123"
-    }});
+  checkValidEmail(email) {
+    if(email.split("@").length === 2) {
+      if (email.split(".").length === 2) {
+        if (email.split("").indexOf("@") < email.split("").indexOf(".")) {
+          return true;
+        }
+      }
+    } else {
+      return false;
+    }
   }
 
   userExists(email) {
-    debugger
+    let exists;
     findByEmail(email).then(
-      () => true
+      () => {
+        exists = true;
+      }
     ).fail(
-      () => false
+      () => {
+        exists = false;
+      }
     )
+    return exists;
   }
 
   processFirstContinue(email) {
-    debugger
     const formType = this.props.formType;
-    if(formType === "Sign in" || (formType === "Create account" && this.userExists(email))) {
-      debugger
+    this.userExists(email);
+    if (!this.checkValidEmail(email)) {
+      this.setState({formToRender: "First form"});
+      this.props.setErrors(["Enter a valid email address."]);
+    } else if((formType === "Log in") || (formType === "Create account" && this.userExists(email))) {
       this.setState({formToRender: "Log in"});
-      debugger
+      this.props.setErrors([]);
     } else {
-      debugger
       this.setState({formToRender: "Create account"});
-      debugger
+      this.props.setErrors([]);
+    }
+  }
+
+  enterPressed(event) {
+    let code = event.keyCode || event.which;
+    if(code === 13) {
+        switch (this.state.formToRender) {
+          case "First form":
+            this.processFirstContinue(this.state.userParams.email);
+            break;
+          case "Log in":
+            this.handleSubmit("Log in");
+            break;
+          case "Create account":
+            debugger
+            this.processSignUpContinue();
+            break;
+          case "Account name":
+            this.handleSubmit("Sign up");
+            break;
+          default:
+            break;
+        }
     }
   }
 
   processSignUpContinue() {
-    this.setState({formToRender: "Account name"});
+    if(this.state.userParams.password.length === 0) {
+      this.props.setErrors(["Enter a password."]);
+    } else if(this.state.userParams.password.length < 6) {
+      this.props.setErrors(["Use at least 6 characters"]);
+    } else {
+      this.setState({formToRender: "Account name"});
+      this.props.setErrors([]);
+    }
   }
 
   returnToFirstForm() {
-    debugger
     this.setState({
       formToRender: 'First form'
+    }, () => {
+      this.props.setErrors([]);
     });
   }
 
   firstForm() {
     return (
       <div id="first-form">
-        {this.props.formType === "Sign in" &&
-        <button
-          type="submit"
-          id="demo-login-btn"
-          onClick={this.handleDemoSignIn}
-          className="session-button"
-        >Demo User</button>}
-        
-        <a id="github-btn"
-          href="https://github.com/Maurice-Goldberg/SoundShroud">
-          Soundshroud GitHub
-        </a>
+        <div id="top-section">
+          {this.props.formType === "Log in" &&
+          <p
+            id="demo-login-btn"
+            onClick={this.handleDemoSignIn}
+            className="session-button"
+          >Demo User</p>}
 
-        <div id="or-border">
-          <p id="line">____________________</p>
-          <p id="modal-or">or</p>
-          <p id="line">____________________</p>
+          <a id="github-btn"
+            target="_blank"
+            href="https://github.com/Maurice-Goldberg/SoundShroud">
+            Soundshroud GitHub
+          </a>
         </div>
 
-        <input type="text"
-          id="email-input"
-          placeholder="Your email address *"
-          value={this.state.userParams.email}
-          onChange={this.update('email')}
-        />
+        <div id="or-row">
+          <p id="line">___________________________</p>
+          <p id="modal-or">or</p>
+          <p id="line">___________________________</p>
+        </div>
 
-        <p
-          id="continue-btn"
-          className="session-button"
-          onClick={() => this.processFirstContinue(this.state.userParams.email)}
-        >Continue</p>
+        <div id="bottom-section">
+          {this.props.errors.length > 0 ?
+            <input type="text"
+              id="errored-email-input"
+              placeholder="Your email address *"
+              value={this.state.userParams.email}
+              onChange={this.update('email')}
+              onKeyPress={this.enterPressed}
+            />
+          : 
+            <input type="text"
+              id="email-input"
+              placeholder="Your email address *"
+              value={this.state.userParams.email}
+              onChange={this.update('email')}
+              onKeyPress={this.enterPressed}
+            /> 
+          }
+
+          {this.showErrors()}
+          <button
+            id="continue-btn"
+            className="session-button"
+            onClick={() => this.processFirstContinue(this.state.userParams.email)}
+          >Continue</button>
+        </div>
+
       </div>
     );
   }
@@ -162,23 +235,39 @@ class SessionForm extends React.Component {
   pwLoginForm() {
     return (
       <div id="pw-login-form">
-        <p
-          id="second-email-input"
-          onClick={this.returnToFirstForm}
-        >{this.state.userParams.email}</p>
-        <div className="left-arrow" onClick={this.returnToFirstForm}></div>
-        
-        <input
-          id="password-input"
-          type="password"
-          autoFocus
-          value={this.state.userParams.password}
-          onChange={this.update('password')}
-        />
+        <div id="dummy-input">
+          <p
+            id="second-email-input"
+            onClick={this.returnToFirstForm}
+          >{this.state.userParams.email}</p>
+          <div className="left-arrow" onClick={this.returnToFirstForm}></div>
+        </div>
+        {this.props.errors.length > 0 ?
+          <input
+            id="errored-password-input"
+            type="password"
+            placeholder="Your password *"
+            autoFocus
+            value={this.state.userParams.password}
+            onChange={this.update('password')}
+            onKeyPress={this.enterPressed}
+          />
+          :
+          <input
+            id="password-input"
+            type="password"
+            placeholder="Your password *"
+            autoFocus
+            value={this.state.userParams.password}
+            onChange={this.update('password')}
+            onKeyPress={this.enterPressed}
+          />
+        }
+        {this.showErrors()}
         
         <button
           id="signin-button"
-          type="submit"
+          onClick={() => this.handleSubmit("Log in")} 
           className="session-button"
         >Sign in</button>
       </div>
@@ -190,25 +279,39 @@ class SessionForm extends React.Component {
       <div id="pw-signup-form">
         <h2 id="signup-header">Create your SoundShroud</h2>
         <h2 id="signup-header">account</h2>
-        
-        <p
-          id="second-email-input"
-          onClick={this.returnToFirstForm}
-        >{this.state.userParams.email}</p>
-        <div className="left-arrow" onClick={this.returnToFirstForm}></div>
+        <div id="dummy-input">
+          <p
+            id="second-email-input"
+            onClick={this.returnToFirstForm}
+          >{this.state.userParams.email}</p>
+          <div className="left-arrow" onClick={this.returnToFirstForm}></div>
+        </div>
 
+        <p id="password-prompt">Choose a password *</p>
+
+        {this.props.errors.length > 0 ?
+          <input
+            id="errored-password-input"
+            type="password"
+            autoFocus
+            value={this.state.userParams.password}
+            onChange={this.update('password')}
+            onKeyPress={this.enterPressed}
+          />
+        :
         <input
           id="password-input"
           type="password"
+          placeholder="Choose a password *"
           autoFocus
           value={this.state.userParams.password}
           onChange={this.update('password')}
-        />
-        
-        <p id="password-prompt">Choose a password *</p>
+          onKeyPress={this.enterPressed}
+        />}
+
+        {this.showErrors()}
         <p
           id="accept-continue-btn"
-          type="submit"
           className="session-button"
           onClick={() => this.processSignUpContinue()}
         >Accept {"&"} Continue</p>
@@ -223,19 +326,33 @@ class SessionForm extends React.Component {
         <h2 id="acc-name-header">about yourself</h2>
 
         <p id="name-prompt">Choose your display name *</p>
+        {this.props.errors.length > 0 ? 
+        <input
+          id="errored-name-input"
+          type="text" autoFocus
+          value={this.state.userParams.account_name}
+          onChange={this.update('account_name')}
+          onKeyPress={this.enterPressed}
+        />
+        :
         <input
           id="name-input"
           type="text" autoFocus
           value={this.state.userParams.account_name}
           onChange={this.update('account_name')}
-        />
-        <p id="name-explanation1">Your display name can be anything you like. Your name or artist</p>
-        <p id="name-explanation2">name are good choices.</p>
+          onKeyPress={this.enterPressed}
+        />}
+        {this.showErrors()}
+
+          <div id="name-explanation">
+            <p id="line1">Your display name can be anything you like. Your name or artist</p>
+            <p id="line2">name are good choices.</p>
+          </div>
 
         <button
           id="get-started-btn"
-          type="submit"
           className="session-button"
+          onClick={() => this.handleSubmit("Account name")} 
         >Get started</button>
       </div>
     )
@@ -245,31 +362,26 @@ class SessionForm extends React.Component {
     let form;
     switch (this.state.formToRender) {
       case "First form":
-        debugger
         form = this.firstForm();
         break;
       case "Create account":
-        debugger
         form = this.pwSignupForm();
         break;
       case "Log in":
-        debugger
         form = this.pwLoginForm();
         break;
       case "Account name":
-        debugger
         form = this.accountNameForm();
         break;
       default:
-        debugger
         form = this.firstForm();
         break;
     }
 
     return (
-        <form onSubmit={event => this.handleSubmit(event)} className="session-form" >
+        <div className="session-form" >
           {form}
-        </form>
+        </div>
     );
   }
 }

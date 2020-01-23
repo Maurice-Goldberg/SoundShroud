@@ -10,6 +10,15 @@ class Splash extends React.Component {
     return (
       <div className="splash-div">
         <div className="top-border"></div>
+        <nav className="nav-bar">
+          <figure className="logo">
+            <img id="logo-img" src={window.logo} />
+            <h1 id="site-title">SOUNDSHROUD</h1>
+          </figure>
+          <div className="splash-modal-btns">
+            <Modal />
+          </div>
+        </nav>
         <div className="splash-content">
           <div className="splash-panel">
             <div className="splash-panel-wrapper">
@@ -37,28 +46,22 @@ class Splash extends React.Component {
                 </figure>
               </div>
             </div>
-            <nav className="nav-bar">
-              <figure className="logo">
-                <img id="logo-img" src={window.logo} />
-                <h1 id="site-title">SOUNDSHROUD</h1>
-              </figure>
-              <div className="splash-modal-btns">
-                <Modal />
-              </div>
-            </nav>
           </div>
-            <input id="search-bar" type="text"
+            <div className="search-bar-row">
+              <input id="search-bar" type="text"
+              autoComplete="off"
               placeholder="Search for artists, bands, tracks, podcasts" />
-              <p id="or">or</p>
-              <button id="upload-btn">Upload for free</button>
+            </div>
             <h1 id="banner-text">Hear what's trending for free in the SoundShroud community</h1>
             <div id="trending-tracks">
             </div>
             <div id="splash-footer">
-              <Modal />
               <h2 id="thank-you-text">Thanks for listening. Now join in.</h2>
               <h3 id="thank-you-subheader">Save tracks, follow artists, and build playlists. All for free.</h3>
-              <p id="small-text">Already have an account?</p>
+              <div id="sign-in-footer">
+                <p id="small-text">Already have an account?</p>
+                 <Modal />
+              </div>
             </div>
         </div>
       </div>
