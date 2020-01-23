@@ -26,6 +26,7 @@ export const logoutCurrentUser = () => {
 
 
 export const login = user => dispatch => {
+  debugger
   return SessionAPIUtil.loginUser(user).then(
     user => dispatch(receiveCurrentUser(user))
   ).fail(

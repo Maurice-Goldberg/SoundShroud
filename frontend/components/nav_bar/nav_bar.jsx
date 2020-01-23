@@ -12,20 +12,20 @@ class NavBar extends React.Component {
     let userNavItem;
     const {logout, currentUser} = this.props;
     if (currentUser) {
-      userNavItem = <Link className="user-profile-link" to={`/users/${currentUser.id}`}>
-                      {currentUser.account_name}
-                    </Link>;
+      userNavItem = <div className="user-nav-item">
+                      <Link className="avatar" to={`/users/${currentUser.id}`}>
+                          <img />
+                      </Link>
+                      <Link className="user-profile-link" to={`/users/${currentUser.id}`}>
+                        {currentUser.account_name}
+                      </Link>
+                    </div>
     } else {
       userNavItem = <Modal />;
     }
-  
-    let settings = (
-        <>
-        </>
-    );
 
     return (
-      <header className="nav-bar-container">
+      <div className="nav-bar-container">
         <nav className="nav-bar">
           <figure className="logo">
             <img id="logo-img" src={window.logo}/>
@@ -35,10 +35,10 @@ class NavBar extends React.Component {
               <Link className="home-tab" to="/discover">Home</Link>
             </div>
             <div className="nav-tab-wrapper">
-              <h2 id="stream-tab">Stream</h2>
+              <a target="_blank" href="https://www.linkedin.com/in/goldbergmaurice/" className="linkedin-tab">LinkedIn</a>
             </div>
             <div className="nav-tab-wrapper">
-              <h2 id="library-tab">Library</h2>
+              <a target="_blank" href="https://mauricegoldberg.dev" className="portfolio-tab">Portfolio</a>
             </div>
           </div>
           <input id="search-bar"
@@ -49,15 +49,14 @@ class NavBar extends React.Component {
           {userNavItem}
           <div>
             {currentUser && <DropdownContainer
-              classStr = "settings-dropdown"
+              className = "settings-dropdown"
               title="..."
-              list={settings}
               currentUser={currentUser}
               logout={logout}
             />}
           </div>
         </nav>
-      </header>
+      </div>
     );
   }
 }

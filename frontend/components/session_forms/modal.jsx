@@ -21,10 +21,10 @@ const Modal = (props) => {
     <>
       <button id="sign-in-btn" onClick={() => openSignInModal()}>
         Sign in
-        </button>
+      </button>
       <button id="create-acc-btn" onClick={() => openCreateAccModal()}>
         Create account
-        </button>
+      </button>
     </>
   );
 

@@ -92,7 +92,7 @@ class Discover extends React.Component {
                   </div>
                 </div>
               </div>
-              {this.props.currentUserId &&
+              {/* {this.props.currentUserId &&
                 <div className="side-panel">
                   <div className="who-to-follow-panel">
                     <h3 className="side-panel-header">Who to follow</h3>
@@ -106,7 +106,7 @@ class Discover extends React.Component {
                     <h3 className="side-panel-header">Listening history</h3>
                     <div className="s-p-track-list"></div>
                   </div>
-                </div>}
+                </div>} */}
             </div>
           </div>
         );
