@@ -31,15 +31,15 @@ class NavBar extends React.Component {
             <img id="logo-img" src={window.logo}/>
           </figure>
           <div className="nav-tabs">
-            <div className="nav-tab-wrapper">
-              <Link className="home-tab" to="/discover">Home</Link>
-            </div>
-            <div className="nav-tab-wrapper">
-              <a target="_blank" href="https://www.linkedin.com/in/goldbergmaurice/" className="linkedin-tab">LinkedIn</a>
-            </div>
-            <div className="nav-tab-wrapper">
-              <a target="_blank" href="https://mauricegoldberg.dev" className="portfolio-tab">Portfolio</a>
-            </div>
+            <Link className="nav-tab-wrapper" to="/discover">
+              <p className="home-tab" >Home</p>
+            </Link>
+            <a className="nav-tab-wrapper" target="_blank" href="https://www.linkedin.com/in/goldbergmaurice/">
+              <p className="linkedin-tab">LinkedIn</p>
+            </a>
+            <a className="nav-tab-wrapper" target="_blank" href="https://mauricegoldberg.dev" >
+              <p className="portfolio-tab">Portfolio</p>
+            </a>
           </div>
           <input id="search-bar"
             type="text"

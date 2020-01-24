@@ -4,9 +4,12 @@
 }
 
 .first-form-box {
-  margin: 60px;
+  margin: 0 auto;
+  margin-top: 35px;
   background-color: rgb(59, 62, 65);;
   padding: 15px 75px 25px 75px;
+  border-radius: 3px;
+  box-shadow: 0 -1px 5px rgb(59, 59, 59);
 }
 
 .first-form {
@@ -52,7 +55,7 @@
 
 .upload-btn-text:hover {
   cursor: pointer;
-  background: rgb(55, 48, 104);
+  background: rgb(65, 56, 121);
 }
 
 .track-upload-btn {

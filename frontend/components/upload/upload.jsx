@@ -8,13 +8,15 @@ class Upload extends React.Component {
       private: false,
       trackFile: null,
       errorMsg: false,
-      formPage: "prompt page"
+      formPage: "prompt page",
+      fileName: ""
     };
 
     this.uploadPromptPage = this.uploadPromptPage.bind(this);
     this.handlePromptSubmit = this.handlePromptSubmit.bind(this);
     this.handleTrackFile = this.handleTrackFile.bind(this);
     this.updateRadioInput = this.updateRadioInput.bind(this);
+    this.returnToPromptPage = this.returnToPromptPage.bind(this);
   }
 
   handleTrackFile(e) {
@@ -39,9 +41,11 @@ class Upload extends React.Component {
     if (filesArr.length > 1 || !(filesArr[0].type === "audio/mpeg" || filesArr[0].type === "audio/mp3")) {
       this.setState({errorMsg: true});
     } else {
+      let formattedFilename = e.currentTarget.files[0].name.split(".")[0].split("-").map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
       this.setState({
         trackFile: e.currentTarget.files[0],
-        formPage: "details page"
+        fileName: formattedFilename,
+        formPage: "details page",
       });
     }
   }
@@ -52,6 +56,10 @@ class Upload extends React.Component {
     } else {
       this.setState({ private: true });
     }
+  }
+
+  returnToPromptPage() {
+    this.setState({ formPage: "prompt page" });
   }
 
   uploadPromptPage() {
@@ -111,6 +119,8 @@ class Upload extends React.Component {
                 private={this.state.private}
                 currentUserId={this.props.currentUserId}
                 uploadTrack={this.props.uploadTrack}
+                fileName={this.state.fileName}
+                returnToPromptPage={this.returnToPromptPage}
               />;
       default:
         return null;

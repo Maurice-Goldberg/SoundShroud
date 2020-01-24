@@ -4,20 +4,37 @@
 }
 
 .upload-details-box {
-  margin: 100px;
+  margin: 0 auto;
+  margin-top: 10px;
   background-color: rgb(59, 62, 65);
-  box-shadow: 2px 2px 2px 2px rgb(40, 46, 91);
-  padding: 30px 30px 20px 30px;
+  padding: 20px 30px 20px 30px;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  align-items: center;
+  width: 750px;
+  border-radius: 3px;
+  box-shadow: 0 -1px 5px rgb(59, 59, 59);
+}
+
+.edit-modal-child .upload-details-box {
+  margin-top: 120px;
+}
+
+.upload-header-wrapper {
+  padding-top: 30px;
+  width: 750px;
+  border-bottom: 1px solid rgb(49, 49, 49);
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
 }
 
 .upload-details-header {
+  position: absolute;
+  top: -4px;
   font-size: 23px;
   padding-bottom: 10px;
-  margin-bottom: 25px;
-  margin-left: 250px;
   width: 105px;
   border-bottom: 2px solid rgb(98, 82, 203);
 }
@@ -45,6 +62,7 @@
   width: 250px;
   height: 250px;
   margin-right: 20px;
+  object-fit: cover;
 }
 
 .camera-png {
@@ -101,7 +119,46 @@
 
 .title-input, .description-input {
   margin-top: 10px;
-  width: 300px;
+  width: 480px;
+  height: 20px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.title-input:focus, .description-input:focus {
+  outline-color: darkslateblue;
+} 
+
+.description-input {
+  height: 120px;
+}
+
+.errored-title-group .title-input {
+  border: 1px solid red;
+}
+
+.errored-title-group .title-error {
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+  animation-name: slide-down;
+  animation-duration: 0.25s;
+}
+
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    margin-top: -10px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 10px;
+  }
 }
 
 .title-input-label, .description-input-label {
@@ -117,6 +174,10 @@
   flex-direction: column;
 }
 
+.privacy-div input:hover {
+  cursor: pointer;
+}
+
 .privacy-div label {
   margin-bottom: 13px;
 }
@@ -127,8 +188,15 @@
 }
 
 .upload-bottom-bar {
-  margin-top: 80px;
+  border-top: 1px solid rgb(49, 49, 49);
+  width: 770px;
+  padding: 10px 10px 0px 30px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.cancel-upload-btn:hover, .save-upload-btn:hover {
+  cursor: pointer;
 }
