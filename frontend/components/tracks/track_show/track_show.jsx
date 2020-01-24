@@ -90,11 +90,11 @@ class TrackShow extends React.Component {
                                     {currentUser.id === artist.id &&
                                     <div className="response-buttons-bar">
                                         <div className="edit-btn" onClick={this.props.openEditModal}>
-                                            <img className="pencil-png" src={this.pencil}/>
+                                            <p className="pencil-png">✏️</p>
                                             <p className="edit-btn-ele" >Edit</p>
                                         </div>
                                         <div className="delete-btn" onClick={this.props.openDeleteModal}>
-                                            <img className="trashcan-png" src={this.trashcan} />
+                                            <p className="trashcan-png">🗑</p>
                                             <p className="delete-btn-ele">Delete</p>
                                         </div>
                                     </div>}

@@ -78,19 +78,20 @@
   
   .nav-tab-wrapper {
     border-right: 1px solid white;
-    height: 100%;
+    text-decoration: none;
   }
  
   .portfolio-tab, .linkedin-tab,  .home-tab {
     color: rgba(255, 255, 255, 0.673);
     padding-right: 25px;
     padding-left: 25px;
+    padding-top: 17px;
+    padding-bottom: 17px;
     text-decoration: none;
-    position: relative;
-    top: 13px;
+    font-size: 14px;
   }
   
-  .portfolio-tab:hover, .linkedin-tab:hover,
+  .nav-tab-wrapper:hover, .portfolio-tab:hover, .linkedin-tab:hover,
   .home-tab:hover, .account-dropdown button:hover,
   .settings-dropdown:hover, .upload-link:hover {
     cursor: pointer;
@@ -125,7 +126,7 @@
     color:rgba(255, 255, 255, 0.673);
     text-decoration: none;
     font-size: 14px;
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   .user-nav-item {

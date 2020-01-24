@@ -35,6 +35,17 @@
   display: flex;
 }
 
+.delete-modal-box .play-btn-track-text-and-creation-time {
+  position: relative;
+}
+
+.delete-modal-box .play-sign, .delete-modal-box .pause-sign {
+  position: absolute;
+  z-index: 12;
+  left: 35px;
+  top: 35px;
+}
+
 .track-text-and-creation-time {
   display: flex;
 }
@@ -153,12 +164,13 @@ audio:focus {
   height: 20px;
   font-size: 13px;
   border: 1px solid black;
-  background: gray;
+  background: rgb(109, 109, 109);
   color: white;
   padding: 5px 5px 5px 25px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  border-radius: 3px;
 }
 
 .edit-btn:active {
@@ -170,7 +182,7 @@ audio:focus {
 }
 
 .edit-btn-ele {
-  margin-right: 50px;
+  margin-right: 25px;
   margin-top: 3px;
 }
 
@@ -178,9 +190,8 @@ audio:focus {
   z-index: 2;
   width: 50px;
   height: 50px;
-  position: relative;
-  top: -15px;
-  left: 10px;
+  margin-right: 3px;
+  margin-top: 3px;
 }
 
 .delete-btn {
@@ -189,19 +200,20 @@ audio:focus {
   height: 20px;
   font-size: 13px;
   border: 1px solid black;
-  background: gray;
+  background: rgb(109, 109, 109);
   color: white;
   padding: 5px 5px 5px 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  border-radius: 3px;
 }
 
 .delete-btn:active {
   background: rgb(94, 94, 94);
 }
 
-.delete-btn, .trashcan-png {
+.delete-btn:hover {
   cursor: pointer;
 }
 
@@ -219,6 +231,10 @@ audio:focus {
   top: 2px;
 }
 
+.trashcan-png:hover, .pencil-png:hover {
+  cursor: pointer;
+}
+
 
 .current-user-avatar {
   width: 31px;
@@ -233,7 +249,6 @@ audio:focus {
 }
 
 .response-buttons-bar {
-  /* border: 1px solid white; */
   width: 820px;
   height: 20px;
   display: flex;

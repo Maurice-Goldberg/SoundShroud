@@ -11,14 +11,15 @@ class DeleteModal extends React.Component {
     deleteTrackHelper(id) {
         this.props.deleteTrack(id);
         this.props.history.push('/discover');
+        this.props.closeModal();
     }
 
     render() {
         const {closeModal, track, artist} = this.props;
         return (
             <div className="modal-background" onClick={closeModal}>
-                <div className="delete-modal-child" onClick={e => e.stopPropagation()}>
-                    <div className="delete-modal-box">
+                <div className="delete-modal-child">
+                    <div className="delete-modal-box" onClick={e => e.stopPropagation()}>
                         <div className="delete-modal-track-preview">
                             <img className="track-cover" src={track.photoUrl} />
                             <div className="track-player">
@@ -55,7 +56,7 @@ class DeleteModal extends React.Component {
                             </div>
                         </div>
                         <div className="divider"></div>
-                        <div className="bottom-half">
+                        <div className="bottom-half" >
                             <h2 className="delete-prompt">Permanently delete this track?</h2>
                             <div className="choice-box">
                                 <p className="delete-warning">
@@ -64,7 +65,7 @@ class DeleteModal extends React.Component {
                                     comments for this track with no way <br/>
                                     to get them back.
                                 </p>
-                                <div className="btns" onClick={e => e.stopPropagation()}>
+                                <div className="btns">
                                     <button className="cancel-delete" onClick={closeModal}>Cancel</button>
                                     <button onClick={() => this.deleteTrackHelper(track.id)}>Delete forever</button>
                                 </div>

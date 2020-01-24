@@ -1,10 +1,11 @@
 .edit-modal-child { 
     animation-name: edit-modal-swoop-in;
     animation-duration: 0.5s;
-    margin: 0 auto;
     position: relative;
     top: -12%;
     z-index: 11;
+    width: 810px;
+    margin: 0 auto;
 }
 
 @keyframes edit-modal-swoop-in {

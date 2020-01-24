@@ -7,7 +7,7 @@ class UploadDetails extends React.Component {
 
         if(props.formType !== "edit") {
             this.state = {
-                title: "",
+                title: this.props.fileName,
                 description: "",
                 photoUrl: "",
                 photoFile: null,
@@ -16,21 +16,26 @@ class UploadDetails extends React.Component {
                 formType: props.formType,
             }
         } else {
-            // $.get(props.photoUrl).then(photo => {
-                this.state = {
-                    title: props.title,
-                    description: props.description,
-                    photoUrl: props.photoUrl,
-                    photoFile: null,
-                    private: props.private,
-                    trackFile: null,
-                    formType: props.formType,
-                }
-            // })
+            this.state = {
+                title: props.title,
+                description: props.description,
+                photoUrl: props.photoUrl,
+                photoFile: null,
+                private: props.private,
+                trackFile: null,
+                formType: props.formType,
+            }
         }
 
         this.handlePhotoFile = this.handlePhotoFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    preventEnter(event) {
+        let code = event.keyCode || event.which;
+        if(code === 13) {
+            event.preventDefault();
+        }
     }
 
     handleSubmit(e) {
@@ -49,14 +54,8 @@ class UploadDetails extends React.Component {
                     ({ trackResponse }) => this.props.history.push(`/tracks/${trackResponse.track.id}`)
                 )
         } else {
-            //ASK TA
-            //NOT SURE HOW TO COMMUNICATE WITH AWS HERE FOR UPDATING.
-            //I KEEP GETTING AN "INVALID SIGNATURE" ERROR BC IM SENDING UP AN URL AND NOT A FILE??
-
             formData.append('track[track_file]', this.state.trackUrl);
             formData.append('track[photo]', this.state.photoUrl);
-            // formData.append('track[track_file]', new File(this.state.trackUrl));
-            // formData.append('track[photo]', new File(this.state.photoUrl));
             this.props.updateTrack(formData, this.props.id)
                 .then(
                     ({ trackResponse }) => this.props.history.push(`/tracks/${trackResponse.track.id}`)
@@ -88,14 +87,19 @@ class UploadDetails extends React.Component {
         let coverSquare;
     
         if (this.state.photoUrl) {
-            coverSquare =
-                (<div className="left-div">
+            coverSquare = (
+                <div className="left-div">
                     <img className="cover-art" src={this.state.photoUrl} />
                     <div>
                         <div className="image-input-text-bar">
                             <label className="image-input-text">Upload image
                     <img className="camera-png" src={window.camera} />
-                                <input className="image-input" type="file" accept="image/jpeg,image/pjpeg,image/gif,image/png" onChange={this.handlePhotoFile} />
+                                <input
+                                    className="image-input"
+                                    type="file"
+                                    accept="image/jpeg,image/pjpeg,image/gif,image/png"
+                                    onChange={this.handlePhotoFile}
+                                />
                             </label>
                         </div>
                     </div>
@@ -125,7 +129,9 @@ class UploadDetails extends React.Component {
         return (
             <div className="upload-details-page">
                 <div className="upload-details-box">
-                    <h2 className="upload-details-header">Basic info</h2>
+                    <div className="upload-header-wrapper">
+                        <h2 className="upload-details-header">Basic info</h2>
+                    </div>
                     <form className="upload-details-form" >
                         <div className="upload-details-content">
                             {coverSquare}
@@ -133,10 +139,28 @@ class UploadDetails extends React.Component {
                                 <div className="title-div">
                                     <label className="title-input-label">Title *
                                         <br></br>
-                                        <input className="title-input"
-                                            type="text"
-                                            value={this.state.title}
-                                            onChange={(e) => this.setState({ title: e.currentTarget.value })} />
+                                        {this.state.title.length > 0 ?
+                                            <input
+                                                className="title-input"
+                                                type="text"
+                                                value={this.state.title}
+                                                onChange={(e) => this.setState({ title: e.currentTarget.value })}
+                                                onKeyPress={this.preventEnter}
+                                                autoFocus
+                                            />
+                                            :
+                                            <div className="errored-title-group">
+                                                <input
+                                                    className="title-input"
+                                                    type="text"
+                                                    value={this.state.title}
+                                                    onChange={(e) => this.setState({ title: e.currentTarget.value })}
+                                                    onKeyPress={this.preventEnter}
+                                                    autoFocus
+                                                />
+                                                <p className="title-error">Enter a title.</p>
+                                            </div>
+                                        }
                                     </label>
                                 </div>
                                 <div className="description-div">
@@ -145,30 +169,54 @@ class UploadDetails extends React.Component {
                                         <textarea className="description-input"
                                             value={this.state.description}
                                             rows="10"
-                                            onChange={(e) => this.setState({ description: e.currentTarget.value })}></textarea>
+                                            onChange={(e) => this.setState({ description: e.currentTarget.value })}
+                                            onKeyPress={this.preventEnter}
+                                        ></textarea>
                                     </label>
                                 </div>
-                                <div className="privacy-div">
+                                <div className="privacy-div" onClick={e => e.stopPropagation()}>
                                     <label>Privacy:</label>
                                     {this.state.private ? 
                                     <>
                                         <label className="public-label">
-                                            <input type="radio" name="privacy" value={false} onClick={this.updateRadioInput} />
+                                            <input
+                                                type="radio"
+                                                name="privacy"
+                                                value={false}
+                                                onClick={this.updateRadioInput}
+                                            />
                                             Public
                                         </label>
                                         <label className="private-label">
-                                            <input defaultChecked type="radio" name="privacy" value={true} onClick={this.updateRadioInput} />
+                                            <input
+                                                defaultChecked
+                                                type="radio"
+                                                name="privacy"
+                                                value={true}
+                                                onClick={this.updateRadioInput}
+                                            />
                                             Private
                                         </label>
                                     </>
                                     :
                                     <>
                                         <label className="public-label">
-                                            <input defaultChecked type="radio" name="privacy" value={false} onClick={this.updateRadioInput} />
+                                            <input
+                                                defaultChecked
+                                                type="radio"
+                                                name="privacy"
+                                                value={false}
+                                                onClick={this.updateRadioInput}
+                                            />
                                             Public
                                         </label>
                                         <label className="private-label">
-                                            <input type="radio" name="privacy" value={true} onClick={this.updateRadioInput} />
+                                            <input
+                                                type="radio"
+                                                name="privacy"
+                                                value={true}
+                                                onClick={this.updateRadioInput}
+                                            />
                                             Private
                                         </label>
                                     </>
@@ -183,7 +231,7 @@ class UploadDetails extends React.Component {
                             {this.props.formType === "edit" ? 
                                 <button className="cancel-upload-btn" onClick={this.props.closeModal}>Cancel</button>
                                 :
-                                <button className="cancel-upload-btn" onClick={() => this.setState({ formPage: "prompt page" })}>Cancel</button>
+                                <button className="cancel-upload-btn" onClick={this.props.returnToPromptPage}>Cancel</button>
                             }
                             <button className="save-upload-btn" onClick={this.handleSubmit}>Save</button>
                         </div>

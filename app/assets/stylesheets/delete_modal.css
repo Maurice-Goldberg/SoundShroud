@@ -6,24 +6,30 @@
     top: 10%;
     z-index: 11;
     background: rgb(20, 17, 40);
+    border-radius: 3px;
     height: 400px;
     width: 600px;
+}
+
+.delete-modal-box {
+  height: 400px;
 }
 
 .delete-modal-track-preview {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 560px;
   justify-content: center;
   margin-left: 30px;
 }
 
-.track-player {
+.delete-modal-box .track-player {
   display: flex;
   flex-direction: column;
   align-items: start;
   position: relative;
   left: -25px;
+  width: 420px;
 }
 
 .track-player-top-row {
@@ -57,7 +63,7 @@
 }
 
 .delete-modal-child .show-track-player {
-  width: 400px;
+  width: 365px;
   height: 100px;
   position: relative;
   top: -180px;
