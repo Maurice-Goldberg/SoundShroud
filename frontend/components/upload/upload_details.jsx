@@ -7,13 +7,14 @@ class UploadDetails extends React.Component {
 
         if(props.formType !== "edit") {
             this.state = {
-                title: this.props.fileName,
+                title: this.props.trackName,
                 description: "",
-                photoUrl: "",
-                photoFile: null,
+                photoUrl: props.photoUrl,
+                photoFile: props.photoFile,
                 private: props.private,
                 trackFile: props.trackFile,
                 formType: props.formType,
+                loading: false
             }
         } else {
             this.state = {
@@ -24,6 +25,7 @@ class UploadDetails extends React.Component {
                 private: props.private,
                 trackFile: null,
                 formType: props.formType,
+                loading: false
             }
         }
 
@@ -35,31 +37,6 @@ class UploadDetails extends React.Component {
         let code = event.keyCode || event.which;
         if(code === 13) {
             event.preventDefault();
-        }
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('track[title]', this.state.title);
-        formData.append('track[description]', this.state.description);
-        formData.append('track[private]', this.state.private);
-        formData.append('track[account_id]', this.props.currentUserId);
-        
-        if (this.props.formType !== "edit") {
-            formData.append('track[track_file]', this.state.trackFile);
-            formData.append('track[photo]', this.state.photoFile);
-            this.props.uploadTrack(formData)
-                .then(
-                    ({ trackResponse }) => this.props.history.push(`/tracks/${trackResponse.track.id}`)
-                )
-        } else {
-            formData.append('track[track_file]', this.state.trackUrl);
-            formData.append('track[photo]', this.state.photoUrl);
-            this.props.updateTrack(formData, this.props.id)
-                .then(
-                    ({ trackResponse }) => this.props.history.push(`/tracks/${trackResponse.track.id}`)
-                )
         }
     }
 
@@ -75,17 +52,43 @@ class UploadDetails extends React.Component {
         }
     }
 
-    handleRadioInput(e) {
-        if (e.currentTarget.value === "Public") {
-            this.setState({ private: false });
+    handleSubmit(e) {
+        e.preventDefault();
+        this.setState({
+            loading: true
+        });
+        const formData = new FormData();
+        formData.append('track[title]', this.state.title);
+        formData.append('track[description]', this.state.description);
+        formData.append('track[private]', this.state.private);
+        formData.append('track[account_id]', this.props.currentUserId);
+        
+        if (this.props.formType !== "edit") {
+            formData.append('track[track_file]', this.state.trackFile);
+            formData.append('track[photo]', this.state.photoFile);
+            
+            this.props.uploadTrack(formData)
+                .then(
+                    ({ trackResponse }) => this.props.history.push(`/tracks/${trackResponse.track.id}`)
+                )
         } else {
-            this.setState({ private: true });
+            if(this.state.photoFile) {
+                formData.append('track[photo]', this.state.photoFile);
+            }
+            this.props.updateTrack(formData, this.props.id)
+                .then(
+                    ({ trackResponse }) => {
+                        this.props.history.push(`/tracks/${trackResponse.track.id}`);
+                        this.props.closeModal();
+                    }
+                )
         }
     }
     
     render() {
         let coverSquare;
     
+        console.log(this.state.photoUrl);
         if (this.state.photoUrl) {
             coverSquare = (
                 <div className="left-div">
@@ -129,6 +132,12 @@ class UploadDetails extends React.Component {
         return (
             <div className="upload-details-page">
                 <div className="upload-details-box">
+                    {this.state.loading && this.props.formType !== "edit" && 
+                        <div className="loading-group">
+                            <p className="loading-text">Uploading...</p>
+                            <img className="loading-icon" src={window.loading_icon} />
+                        </div>
+                    }
                     <div className="upload-header-wrapper">
                         <h2 className="upload-details-header">Basic info</h2>
                     </div>
@@ -182,8 +191,7 @@ class UploadDetails extends React.Component {
                                             <input
                                                 type="radio"
                                                 name="privacy"
-                                                value={false}
-                                                onClick={this.updateRadioInput}
+                                                onClick={() => this.setState({private: false})}
                                             />
                                             Public
                                         </label>
@@ -192,8 +200,7 @@ class UploadDetails extends React.Component {
                                                 defaultChecked
                                                 type="radio"
                                                 name="privacy"
-                                                value={true}
-                                                onClick={this.updateRadioInput}
+                                                onClick={() => this.setState({private: true})}
                                             />
                                             Private
                                         </label>
@@ -205,8 +212,7 @@ class UploadDetails extends React.Component {
                                                 defaultChecked
                                                 type="radio"
                                                 name="privacy"
-                                                value={false}
-                                                onClick={this.updateRadioInput}
+                                                onClick={() => this.setState({ private: false })}
                                             />
                                             Public
                                         </label>
@@ -214,8 +220,7 @@ class UploadDetails extends React.Component {
                                             <input
                                                 type="radio"
                                                 name="privacy"
-                                                value={true}
-                                                onClick={this.updateRadioInput}
+                                                onClick={() => this.setState({ private: true })}
                                             />
                                             Private
                                         </label>
@@ -231,7 +236,12 @@ class UploadDetails extends React.Component {
                             {this.props.formType === "edit" ? 
                                 <button className="cancel-upload-btn" onClick={this.props.closeModal}>Cancel</button>
                                 :
-                                <button className="cancel-upload-btn" onClick={this.props.returnToPromptPage}>Cancel</button>
+                                <button className="cancel-upload-btn" onClick={() => {
+                                    this.setState({
+                                        photoFile: null,
+                                        photoUrl: ""
+                                    }, this.props.returnToPromptPage);
+                                }}>Cancel</button>
                             }
                             <button className="save-upload-btn" onClick={this.handleSubmit}>Save</button>
                         </div>

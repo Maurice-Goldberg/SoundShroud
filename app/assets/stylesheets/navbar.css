@@ -114,6 +114,7 @@
    padding-left: 6px;
    font-weight: lighter;
    color: white;
+   border: 1px solid darkslateblue;
  }
 
  #search-bar:focus-within {

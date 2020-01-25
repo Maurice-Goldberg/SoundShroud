@@ -62,6 +62,17 @@
   margin: 25px;
 }
 
+.delete-modal-child .track-name-wrapper {
+  width: 340px;
+}
+
+.delete-modal-child .track-name {
+  width: 310px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .delete-modal-child .show-track-player {
   width: 365px;
   height: 100px;

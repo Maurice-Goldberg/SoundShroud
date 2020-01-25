@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /* padding: 0 18%; */
+  animation-name: fade-in;
+  animation-duration: 0.5s;
 }
 
 .track-hero {
@@ -95,6 +96,7 @@
   height: 335px;
   margin-top: 20px;
   margin-right: 20px;
+  object-fit: cover;
 }
 
 .creation-time-elapsed {

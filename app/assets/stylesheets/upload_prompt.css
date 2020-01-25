@@ -1,6 +1,8 @@
 .upload-prompt-page {
   display: flex;
   justify-content: center;
+  animation-name: fade-in;
+  animation-duration: 0.5s;
 }
 
 .first-form-box {
@@ -10,6 +12,7 @@
   padding: 15px 75px 25px 75px;
   border-radius: 3px;
   box-shadow: 0 -1px 5px rgb(59, 59, 59);
+  position: relative;
 }
 
 .first-form {
@@ -78,6 +81,10 @@
   margin: 5px;
 }
 
+.privacy-radio-inputs label, .privacy-radio-inputs input:hover {
+  cursor: pointer;
+}
+
 .privacy-radio-inputs p {
   margin: 11px 5px 5px 5px;
 }
@@ -114,6 +121,17 @@
   background-color: darkslateblue;
   border: none;
   color: white;
+  animation-name: fade-in;
+  animation-duration: 0.5s; 
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .error-msg:focus{ 

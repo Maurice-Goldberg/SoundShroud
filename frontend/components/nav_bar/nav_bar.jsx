@@ -43,7 +43,7 @@ class NavBar extends React.Component {
           </div>
           <input id="search-bar"
             type="text"
-            placeholder="Search for artists, bands, tracks, podcasts"
+            placeholder="Search bar coming soon..."
           />
           <Link to="/upload" className="upload-link">Upload</Link>
           {userNavItem}
