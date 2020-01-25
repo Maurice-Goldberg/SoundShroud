@@ -50,7 +50,7 @@ class Splash extends React.Component {
             <div className="search-bar-row">
               <input id="search-bar" type="text"
               autoComplete="off"
-              placeholder="Search for artists, bands, tracks, podcasts" />
+              placeholder="Search bar coming soon..." />
             </div>
             <h1 id="banner-text">Hear what's trending for free in the SoundShroud community</h1>
             <div id="trending-tracks">

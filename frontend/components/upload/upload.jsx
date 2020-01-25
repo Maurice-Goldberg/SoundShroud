@@ -1,5 +1,6 @@
 import React from 'react';
 import UploadDetails from './upload_details';
+const jsmediatags = require('jsmediatags');
 
 class Upload extends React.Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class Upload extends React.Component {
       trackFile: null,
       errorMsg: false,
       formPage: "prompt page",
-      fileName: ""
+      trackName: "",
+      photoUrl: "",
+      photoFile: null
     };
 
     this.uploadPromptPage = this.uploadPromptPage.bind(this);
@@ -21,7 +24,10 @@ class Upload extends React.Component {
 
   handleTrackFile(e) {
     e.preventDefault();
-    this.setState({trackFile: e.currentTarget.files[0]});
+
+    this.setState({
+      trackFile: e.currentTarget.files[0],
+    });
   }
 
   //to be used once I can dynamically generate audio tags based on file type
@@ -41,11 +47,45 @@ class Upload extends React.Component {
     if (filesArr.length > 1 || !(filesArr[0].type === "audio/mpeg" || filesArr[0].type === "audio/mp3")) {
       this.setState({errorMsg: true});
     } else {
-      let formattedFilename = e.currentTarget.files[0].name.split(".")[0].split("-").map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
-      this.setState({
-        trackFile: e.currentTarget.files[0],
-        fileName: formattedFilename,
-        formPage: "details page",
+      let file = e.currentTarget.files[0];
+      let formattedTrackname = file.name.split(".")[0].split("-").map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
+
+      let that = this;
+
+      //extracting picture and title from file if it's there
+      jsmediatags.read(file, {
+        onSuccess: function (tag) {
+          if(tag.tags.picture) {
+            const { data, type } = tag.tags.picture;
+            const byteArray = new Uint8Array(data);
+            const photoBlob = new Blob([byteArray], { type });
+            const photoUrl = URL.createObjectURL(photoBlob);
+            that.setState({
+              photoFile: photoBlob,
+              photoUrl: photoUrl,
+              trackName: tag.tags.title
+            }, () => {
+                that.setState({
+                  trackFile: file,
+                  formPage: "details page"
+                }, () => {
+                  that.setState({
+                    photoUrl: "",
+                    photoFile: null,
+                  });
+                });
+            });
+          } else {
+            that.setState({
+              trackName: formattedTrackname,
+            }, () => {
+              that.setState({
+                trackFile: file,
+                formPage: "details page"
+              });
+            });
+          }
+        }
       });
     }
   }
@@ -119,8 +159,11 @@ class Upload extends React.Component {
                 private={this.state.private}
                 currentUserId={this.props.currentUserId}
                 uploadTrack={this.props.uploadTrack}
-                fileName={this.state.fileName}
+                trackName={this.state.trackName}
                 returnToPromptPage={this.returnToPromptPage}
+                photoUrl={this.state.photoUrl}
+                photoFile={this.state.photoFile}
+                closeModal={this.props.closeModal}
               />;
       default:
         return null;

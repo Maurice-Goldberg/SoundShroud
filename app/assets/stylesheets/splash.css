@@ -1,3 +1,8 @@
+.splash-div {
+  animation-name: fade-in;
+  animation-duration: 0.75s;
+}
+
 .top-border {
   margin: 0 auto;
   height: 4px;
@@ -88,7 +93,8 @@
 }
 
 .carousel-text {
-  position: relative;
+  position: absolute;
+  top: 200px;
   color: rgba(255, 255, 255, 0.728);
   text-shadow: 2px 2px rgb(7, 7, 130);
   font-size: 30px;
@@ -97,8 +103,9 @@
   z-index: 8;
 }
 
-.panel-1, .panel-2, .panel-3 {
+.panel-1, .panel-2, .panel-3, .panel-4, .panel-5 {
   width: 1230px;
+  position: relative;
 }
 
 .panel-1 .carousel-text {
@@ -110,7 +117,7 @@
 }
 
 .panel-3 .carousel-text {
-  left: 200px;
+  left: 220px;
 }
 
 .non-carousel-content {
@@ -132,6 +139,7 @@
   left: 170px;
   font-size: 16px;
   background: black;
+  border: 0.5px solid darkslateblue;
 }
 
 .splash-div #upload-btn {

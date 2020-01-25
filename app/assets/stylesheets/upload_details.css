@@ -1,6 +1,8 @@
 .upload-details-page {
     display: flex;
     justify-content: center;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
 }
 
 .upload-details-box {
@@ -16,8 +18,32 @@
   box-shadow: 0 -1px 5px rgb(59, 59, 59);
 }
 
+
 .edit-modal-child .upload-details-box {
   margin-top: 120px;
+  position: relative;
+}
+
+.loading-group {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px 170px 17px 190px;
+  margin-top: -20px;
+  border-radius: 3px;
+  animation-name: fade-in;
+  animation-duration: 0.25s;
+}
+
+.loading-icon {
+  height: 450px;
+}
+
+.loading-text {
+  position: absolute;
+  left: 280px;
+  top: 160px;
+  z-index: 3;
+  font-size: 50px;
 }
 
 .upload-header-wrapper {
@@ -139,6 +165,7 @@
 
 .errored-title-group .title-input {
   border: 1px solid red;
+  outline: none;
 }
 
 .errored-title-group .title-error {
