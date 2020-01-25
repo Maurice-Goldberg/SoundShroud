@@ -6,6 +6,10 @@ class Splash extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    
+  }
+
   render() {
     return (
       <div className="splash-div">
@@ -54,6 +58,18 @@ class Splash extends React.Component {
             </div>
             <h1 id="banner-text">Hear what's trending for free in the SoundShroud community</h1>
             <div id="trending-tracks">
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
+              <span id=""></span>
             </div>
             <div id="splash-footer">
               <h2 id="thank-you-text">Thanks for listening. Now join in.</h2>

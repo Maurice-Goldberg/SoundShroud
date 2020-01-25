@@ -164,11 +164,22 @@
 }
 
 #trending-tracks {
-  height: 450px;
+  padding-left: 15px;
+  padding-top: 15px;
+  height: 420px;
   width: 1170px;
   border: solid 1px rgba(71, 61, 139, 0.81);
   margin-bottom: 75px;
   border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#trending-tracks span {
+  height: 170px;
+  width: 170px;
+  margin: 10px;
+  border: 1px solid darkslateblue;
 }
 
 

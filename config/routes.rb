@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         get '/email' => 'sessions#email'
       end
     end
+    
     resources :users, only: [:create, :show, :update]
     resources :tracks, only: [:show, :index, :create, :destroy, :update] do
       resources :comments, only: [:index, :create]
