@@ -1,6 +1,6 @@
 import React from 'react';
 import UploadDetails from './upload_details';
-const jsmediatags = require('jsmediatags');
+const mm = require('music-metadata-browser');
 
 class Upload extends React.Component {
   constructor(props) {
@@ -53,38 +53,36 @@ class Upload extends React.Component {
       let that = this;
 
       //extracting picture and title from file if it's there
-      jsmediatags.read(file, {
-        onSuccess: function (tag) {
-          if(tag.tags.picture) {
-            const { data, type } = tag.tags.picture;
-            const byteArray = new Uint8Array(data);
-            const photoBlob = new Blob([byteArray], { type });
-            const photoUrl = URL.createObjectURL(photoBlob);
+      mm.parseBlob(file).then(metadata => {
+        if(metadata.common.picture) {
+          const { data, type } = metadata.common.picture[0];
+          const byteArray = new Uint8Array(data);
+          const photoBlob = new Blob([byteArray], { type });
+          const photoUrl = URL.createObjectURL(photoBlob);
+          that.setState({
+            photoFile: photoBlob,
+            photoUrl: photoUrl,
+            trackName: tag.tags.title
+          }, () => {
             that.setState({
-              photoFile: photoBlob,
-              photoUrl: photoUrl,
-              trackName: tag.tags.title
-            }, () => {
-                that.setState({
-                  trackFile: file,
-                  formPage: "details page"
-                }, () => {
-                  that.setState({
-                    photoUrl: "",
-                    photoFile: null,
-                  });
-                });
-            });
-          } else {
-            that.setState({
-              trackName: formattedTrackname,
+              trackFile: file,
+              formPage: "details page"
             }, () => {
               that.setState({
-                trackFile: file,
-                formPage: "details page"
+                photoUrl: "",
+                photoFile: null,
               });
             });
-          }
+          });
+        } else {
+          that.setState({
+            trackName: formattedTrackname,
+          }, () => {
+            that.setState({
+              trackFile: file,
+              formPage: "details page"
+            });
+          });
         }
       });
     }
