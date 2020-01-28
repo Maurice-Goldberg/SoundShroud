@@ -3,15 +3,11 @@ import {formatTime} from '../../../util/track_util';
 import EditModalContainer from '../modals/edit_modal_container';
 import DeleteModalContainer from '../modals/delete_modal_container';
 import AudioPlayer from '../audio_player';
+import TrackPlayPause from '../track_play_pause';
 
 class TrackShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            playing: this.props.trackPlaying.playing
-        }
-
-        this.switchPlayPause = this.switchPlayPause.bind(this);
     }
 
     componentDidMount() {
@@ -24,17 +20,6 @@ class TrackShow extends React.Component {
         if(prevProps.match.params.trackId !== this.props.match.params.trackId) {
             this.props.fetchTrack(this.props.match.params.trackId);
         }
-    }
-
-    switchPlayPause() {
-        if(this.state.playing) {
-            this.props.pauseTrack();
-        } else {
-            this.props.playTrack();
-        }
-
-        this.setState({ playing: !this.props.trackPlaying.playing });
-        this.props.receiveCurrentTrack(this.props.track);
     }
 
     render() {
@@ -52,11 +37,10 @@ class TrackShow extends React.Component {
                                 <div className="track-hero">
                                     <div className="left-wrapper">
                                         <div className="play-btn-track-text-and-creation-time">
-                                            <span className="play-btn">
-                                                {this.state.playing ?
-                                                    <img src={window.pause_btn} className="pause-sign" onClick={this.switchPlayPause}/>
-                                                    : <img src={window.play_btn} className="play-sign" onClick={this.switchPlayPause}/>}
-                                            </span>
+                                            <TrackPlayPause
+                                                track={track}
+                                                currentTrackId={currentTrackId}
+                                            />
                                             <div className="track-text-and-creation-time">
                                                 <div className="track-text">
                                                     <div className="artist-name-wrapper">
@@ -102,7 +86,7 @@ class TrackShow extends React.Component {
                                 <div className="profile-and-description">
                                     <div className="t-s-artist-profile">
                                         <span className="circular-profile-picture">
-                                            <img />
+                                            <img src={artist.photoUrl}/>
                                         </span>
                                         <h3 className="t-s-artist-name">{artist.account_name}</h3>
                                     </div>

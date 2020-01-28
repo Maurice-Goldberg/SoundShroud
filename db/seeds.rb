@@ -4,20 +4,56 @@ Track.destroy_all
 User.destroy_all
 
 demouser = User.create({account_name: "Demo User", email: "demouser@gmail.com", password: "password123"})
+demouser_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/soundshroud_favicon.png')
+demouser.photo.attach(io: demouser_photo, filename: 'soundshroud_favicon.png')
 
 opn = User.create({account_name: "Oneohtrix Point Never", email: "opn@aol.com", password: "gardenofdelete"})
+opn_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/opn.jpg')
+opn.photo.attach(io: opn_photo, filename: 'opn.jpg');
+
 charli_xcx = User.create({account_name: "Charli XCX", email: "itscharlibaby@hotmail.com", password:"xcxcharli"})
+charli_xcx_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/charli_xcx.jpg')
+charli_xcx.photo.attach(io: charli_xcx_photo, filename: 'charli_xcx.jpg');
+
 caroline_polachek = User.create({account_name: "Caroline Polachek", email: "carolinep@gmail.com", password: "intomepang"})
+caroline_polachek_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/caroline_polachek.jpg')
+caroline_polachek.photo.attach(io: caroline_polachek_photo, filename: 'caroline_polachek.jpg');
+
 depeche_mode = User.create({account_name: "Depeche Mode", email: "dpmode@gmail.com", password: "neverletmedown"})
+depeche_mode_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/depeche_mode.jpg')
+depeche_mode.photo.attach(io: depeche_mode_photo, filename: 'depeche_mode.jpg');
+
 janet_jackson = User.create({account_name: "Janet Jackson", email: "jjackson@gmail.com", password: "controller"})
-sunspeaker = User.create({account_name: "Sunspeaker", email: "sunspeaker@gmail.com", password: "ghjlrspm"})
+janet_jackson_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/janet_jackson.jpeg')
+janet_jackson.photo.attach(io: janet_jackson_photo, filename: 'janet_jackson.jpeg');
+
 dorian_electra = User.create({account_name: "Dorian Electra", email: "dorian@gmail.com", password: "adamandsteve"})
+dorian_electra_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/dorian_electra.jpg')
+dorian_electra.photo.attach(io: dorian_electra_photo, filename: 'dorian_electra.jpg');
+
 floating_points = User.create({account_name: "Floating Points", email: "floatingp@gmail.com", password: "anasickmodular"})
+floating_points_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/floating_points.jpg')
+floating_points.photo.attach(io: floating_points_photo, filename: 'floating_points.jpg');
+
 peter_gabriel = User.create({account_name: "Peter Gabriel", email: "peterg@gmail.com", password: "excellentbirds"})
+peter_gabriel_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/peter_gabriel.jpg')
+peter_gabriel.photo.attach(io: peter_gabriel_photo, filename: 'peter_gabriel.jpg');
+
 kate_bush = User.create({account_name: "Kate Bush", email: "kateb@gmail.com", password: "houndsoflove"})
+kate_bush_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/kate_bush.jpg')
+kate_bush.photo.attach(io: kate_bush_photo, filename: 'kate_bush.jpg');
+
 hunnid_gecs = User.create({account_name: "100 Gecs", email: "gecgecgec@gmail.com", password: "800dbcloud"})
+hunnid_gecs_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/100_gecs.jpeg')
+hunnid_gecs.photo.attach(io: hunnid_gecs_photo, filename: '100_gecs.jpeg');
+
 tim_hecker = User.create({account_name: "Tim Hecker", email: "timhecker@gmail.com", password: "konoyo4"})
+tim_hecker_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/tim_hecker.jpg')
+tim_hecker.photo.attach(io: tim_hecker_photo, filename: 'tim_hecker.jpg');
+
 galen_tipton = User.create({account_name: "Galen Tipton", email: "galentipton@gmail.com", password: "fakemeat"})
+galen_tipton_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/galen_tipton.jpg')
+galen_tipton.photo.attach(io: galen_tipton_photo, filename: 'galen_tipton.jpg');
 
 
 chrome_country = Track.create({
@@ -75,17 +111,6 @@ control_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/control.jpg'
 control.photo.attach(io: control_cover, filename: 'control.jpg')
 control_track = open('https://soundshroud000-seeds.s3.amazonaws.com/control.mp3')
 control.track_file.attach(io: control_track, filename: 'control.mp3')
-
-# dark_cartoon = Track.create({
-#   private: false,
-#   title: "Dark Cartoon",
-#   account_id: sunspeaker.id,
-#   description: "A fairly unknown song by a fairly unknown artist"
-# })
-# dark_cartoon_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/dark_cartoon.jpg')
-# dark_cartoon.photo.attach(io: dark_cartoon_cover, filename: 'dark_cartoon.jpg')
-# dark_cartoon_track = open('https://soundshroud000-seeds.s3.amazonaws.com/dark_cartoon.wav')
-# dark_cartoon.track_file.attach(io: dark_cartoon_track, filename: 'dark_cartoon.wav')
 
 flamboyant = Track.create({
   private: false,

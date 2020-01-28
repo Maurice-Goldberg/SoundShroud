@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from '../session_forms/modal';
+import TrackPlayPause from '../tracks/track_play_pause';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -7,10 +8,14 @@ class Splash extends React.Component {
   }
 
   componentDidMount() {
-    
+    this.props.fetchTracks();
   }
 
   render() {
+    if(!this.props.chrome_country) {
+      return null;
+    }
+
     return (
       <div className="splash-div">
         <div className="top-border"></div>
@@ -58,18 +63,54 @@ class Splash extends React.Component {
             </div>
             <h1 id="banner-text">Hear what's trending for free in the SoundShroud community</h1>
             <div id="trending-tracks">
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
-              <span id=""></span>
+              <div id="track-container">
+                <img src={this.props.flamboyant.photoUrl}/>
+                <TrackPlayPause track={this.props.flamboyant}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.chrome_country.photoUrl}/>
+                <TrackPlayPause track={this.props.chrome_country}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.ocean_of_tears.photoUrl}/>
+                <TrackPlayPause track={this.props.ocean_of_tears}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.stripped.photoUrl}/>
+                <TrackPlayPause track={this.props.stripped}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.last_bloom.photoUrl}/>
+                <TrackPlayPause track={this.props.last_bloom}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.hand_crushed_by_a_mallet.photoUrl}/>
+                <TrackPlayPause track={this.props.hand_crushed_by_a_mallet}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.running_up_that_hill.photoUrl}/>
+                <TrackPlayPause track={this.props.running_up_that_hill}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.mercy_street.photoUrl}/>
+                <TrackPlayPause track={this.props.mercy_street}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.that_world.photoUrl}/>
+                <TrackPlayPause track={this.props.that_world}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.control.photoUrl}/>
+                <TrackPlayPause track={this.props.control}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.gone.photoUrl}/>
+                <TrackPlayPause track={this.props.gone}/>
+              </div>
+              <div id="track-container">
+                <img src={this.props.touch.photoUrl}/>
+                <TrackPlayPause track={this.props.touch}/>
+              </div>
             </div>
             <div id="splash-footer">
               <h2 id="thank-you-text">Thanks for listening. Now join in.</h2>

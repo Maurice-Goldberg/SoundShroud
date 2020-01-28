@@ -25,6 +25,8 @@ class User < ApplicationRecord
   # to be used when showing a user's comments on their profile page
   has_many :comments
 
+  has_one_attached :photo
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     if user && user.is_password?(password)

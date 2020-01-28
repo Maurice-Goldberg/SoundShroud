@@ -4,6 +4,7 @@
   flex-direction: column;
   animation-name: fade-in;
   animation-duration: 0.5s;
+  padding-bottom: 100px;
 }
 
 .track-hero {
@@ -289,6 +290,12 @@ audio:focus {
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgb(43, 0, 173) 100%);
   border-radius: 50%;
   display: inline-block;
+}
+
+.circular-profile-picture img {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
 }
 
 .t-s-artist-name {

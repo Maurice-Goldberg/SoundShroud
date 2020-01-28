@@ -20,6 +20,7 @@
   width: 450px;
   animation-name: modal-swoop-in;
   animation-duration: 0.5s;
+  border-radius: 5px;
 }
 
 .session-form {

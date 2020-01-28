@@ -3,6 +3,7 @@
   justify-content: center;
   background-color: rgb(60, 64, 67);
   height: 46px;
+  box-shadow: 0 3px 3px -3px rgba(0,0,0,.2);
 }
 
 .nav-bar {
@@ -14,6 +15,7 @@
   background-color: rgb(60, 64, 67);
   height: 46px;
   z-index: 6;
+  box-shadow: 0 3px 3px -3px rgba(0,0,0,.2);
 }
 
 #site-title {
@@ -56,7 +58,7 @@
 .logo {
   display: flex;
   justify-content: space-evenly;
-  background-color: rgb(26, 26, 26);
+  background-color: rgb(0, 0, 0);
   margin-right: 15px;
   padding-right: 17px;
   padding-left: 17px;
@@ -83,10 +85,10 @@
  
   .portfolio-tab, .linkedin-tab,  .home-tab {
     color: rgba(255, 255, 255, 0.673);
-    padding-right: 25px;
-    padding-left: 25px;
+    padding-right: 29px;
+    padding-left: 29px;
     padding-top: 17px;
-    padding-bottom: 17px;
+    padding-bottom: 16px;
     text-decoration: none;
     font-size: 14px;
   }
@@ -100,9 +102,9 @@
 
   
  #search-bar {
-   width: 500px;
+   width: 540px;
    height: 28px;
-   margin-left: 40px;
+   margin-left: 20px;
    margin-right: 20px;
    margin-top: auto;
    margin-bottom: auto;
@@ -127,7 +129,6 @@
     color:rgba(255, 255, 255, 0.673);
     text-decoration: none;
     font-size: 14px;
-    margin-left: 5px;
   }
 
   .user-nav-item {

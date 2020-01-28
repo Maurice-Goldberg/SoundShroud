@@ -1,9 +1,9 @@
 .discover-container {
   margin: 0 auto;
   width: 1230px;
-  height: 1300px;
   overflow: hidden;
-  padding: 30px;
+  padding-top: 30px;
+  padding-bottom: 60px;
   left: 22px;
   background: rgb(36, 36, 36);
   animation-name: fade-in;
@@ -26,27 +26,6 @@
   margin-bottom: 20px;
 }
 
-/* 
-.side-panel {
-  top: -1158px;
-  left: 900px;
-  display: inline-block;
-  border: 1px solid white;
-  z-index: 0;
-} */
-
-/* .side-panel h3 {
-  color: lightgray;
-  font-size: 15px;
-} */
-/* 
-.s-p-follow-list {
-  height: 230px;
-  width: 258px;
-  border: 1px solid white;
-  margin-bottom: 15px;
-} */
-
 .tracks-panel {
   width: 830px;
   height: 225px;
@@ -64,27 +43,26 @@
 }
 
 .tracks-panel .playlist-cover {
-  /* top: 20px;
-  position: relative; */
   width: 185px;
   height: 185px;
   background: rgba(255, 255, 255, 0.166);
   margin: 20px;
+  position: relative;
+}
+
+.playlist-cover .play-btn {
+  position: absolute;
+  left: 30px;
+  top: 35px;
 }
 
 .best-of .tracks {
   display: flex;
   flex-direction: column;
-  /* position: relative;
-  top: -185px;
-  left: 230px; */
   margin-top: 12px;
 }
 
 .soundshroud-weekly .tracks {
-  /* position: relative;
-  top: -185px;
-  left: 230px; */
   margin-top: 12px;
 }
 
@@ -139,11 +117,33 @@
   color: white;
 }
 
+.tracks-carousel #track-container {
+  margin: 5px 10px 5px 10px;
+  position: relative;
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+
+.tracks-carousel #track-title {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  margin-top: 5px;
+}
+
+.tracks-carousel p {
+  font-size: 11px;
+  color: rgb(192, 189, 189);
+  text-align: center;
+  margin-top: 5px;
+}
+
+
 .tracks-carousel .tracks {
-  border: 1px solid white;
   display: flex;
   width: 825px;
-  height: 200px;
+  height: 230px;
   margin-bottom: 20px;
   overflow-x: auto;
   overflow-y: hidden;
