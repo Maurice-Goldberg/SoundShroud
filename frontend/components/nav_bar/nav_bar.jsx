@@ -10,26 +10,35 @@ class NavBar extends React.Component {
 
   render() {
     let userNavItem;
+    let logo;
     const {logout, currentUser} = this.props;
     if (currentUser) {
-      userNavItem = <div className="user-nav-item">
+      userNavItem = (<div className="user-nav-item">
                       <Link className="avatar" to={`/users/${currentUser.id}`}>
                           <img />
                       </Link>
                       <Link className="user-profile-link" to={`/users/${currentUser.id}`}>
                         {currentUser.account_name}
                       </Link>
-                    </div>
+                    </div>);
+      logo = (
+        <Link className="logo" to="/discover">
+          <img id="logo-img" src={window.logo} />
+        </Link>
+      );
     } else {
       userNavItem = <Modal />;
+      logo = (
+        <Link className="logo" to="/">
+          <img id="logo-img" src={window.logo} />
+        </Link>
+      );
     }
 
     return (
       <div className="nav-bar-container">
         <nav className="nav-bar">
-          <figure className="logo">
-            <img id="logo-img" src={window.logo}/>
-          </figure>
+          {logo}
           <div className="nav-tabs">
             <Link className="nav-tab-wrapper" to="/discover">
               <p className="home-tab" >Home</p>

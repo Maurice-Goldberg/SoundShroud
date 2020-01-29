@@ -1,4 +1,6 @@
 import React from 'react';
+import {formatTrackTime} from '../../../util/track_util';
+import {Link} from 'react-router-dom';
 
 class CurrentTrack extends React.Component {
     constructor(props) {
@@ -21,25 +23,18 @@ class CurrentTrack extends React.Component {
         this.skipTrack = this.skipTrack.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
         this.handleMD = this.handleMD.bind(this);
+        this.handleDrag = this.handleDrag.bind(this);
 
         this.audioPlayer = React.createRef();
     }
 
     handlePlayPauseClick() {
-        if (this.state.playing) {
-            this.setState({ playing: false },
-                () => {
-                    this.props.pauseTrack();
-                    this.audioPlayer.current.pause();
-                }
-            );
+        if(this.props.playing) {
+            this.props.pauseTrack();
+            this.audioPlayer.current.pause();
         } else {
-            this.setState({playing: true},
-                () => {
-                    this.props.playTrack();
-                    this.audioPlayer.current.play();
-                }
-            );
+            this.props.playTrack();
+            this.audioPlayer.current.play();
         }
     }
 
@@ -64,6 +59,10 @@ class CurrentTrack extends React.Component {
 
     }
 
+    handleDrag() {
+
+    }
+
     toggleLoop() {
         if(this.state.looping) {
             this.setState({looping: false});
@@ -80,7 +79,7 @@ class CurrentTrack extends React.Component {
             playing: this.props.playing,
             trackPlaying: this.props.trackPlaying
         });
-        //have it play automatically?
+        //maybe i have to make it play automatically?
     }
 
     componentDidMount() {
@@ -105,6 +104,7 @@ class CurrentTrack extends React.Component {
             return (
                 <>
                     <audio
+                        id="audio-player"
                         preload="auto"
                         type="audio/mp3"
                         ref={this.audioPlayer}
@@ -116,7 +116,7 @@ class CurrentTrack extends React.Component {
                         <div className="current-track-box">
                             <div className="audio-controls">
                                 <img id="rewind-btn" src={window.rewind_btn}/>
-                                {this.state.playing ? 
+                                {this.props.playing ? 
                                     <img id="pause-btn" src={window.pause_btn} onClick={this.handlePlayPauseClick}/>
                                     :
                                     <img id="play-btn" src={window.play_btn} onClick={this.handlePlayPauseClick}/>
@@ -125,18 +125,26 @@ class CurrentTrack extends React.Component {
                                 <img id="loop-btn" src={window.loop_btn}/>
                             </div>
                             <div className="audio-scrollbar-wrapper">
-                                <p>start</p>
+                                <p>{formatTrackTime(this.state.timeElapsed)}</p>
                                 <input
                                     className="audio-scrollbar"
                                     type="range"
+                                    value="0"
+                                    onChange={this.handleDrag}
+                                    min="0"
+                                    max={this.state.duration}
                                 />
-                                <p>end</p>
+                                <p>{formatTrackTime(this.state.duration)}</p>
                             </div>
                             <img src={window.speaker_btn} className="vol-control"/>
-                            <img className="cover-art"/>
-                            <div className="track-info">
-                                <p className="artist-name">{this.props.artist.name}</p>
-                                <p className="track-name">{this.props.trackPlaying.title}</p>
+                            <div className="track-info-and-art">
+                                <Link to={`/tracks/${this.props.trackPlaying.id}`}>
+                                    <img className="cover-art" src={this.props.trackPlaying.photoUrl} />
+                                </Link>
+                                <div className="track-info">
+                                    <p className="artist-name">{this.props.trackPlaying.artist}</p>
+                                    <Link className="track-name" to={`/tracks/${this.props.trackPlaying.id}`}>{this.props.trackPlaying.title}</Link>
+                                </div>
                             </div>
                         </div>
                     </div>

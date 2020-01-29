@@ -3,31 +3,38 @@ import React from 'react';
 class TrackPlayPause extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            playing: false
-        }
 
-        this.switchPlayPause = this.switchPlayPause.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    switchPlayPause() {
-        if (this.state.playing) {
-            this.props.pauseTrack();
-        } else {
-            this.props.playTrack();
+    handleClick() {
+        let audioPlayer = document.getElementById("audio-player");
+
+        //vertical select not working yet for some reason
+        if(this.props.verticalSelect) {
+            this.props.verticalSelect();
         }
 
-        this.setState({ playing: !this.props.trackPlaying.playing });
-        this.props.receiveCurrentTrack(this.props.track);
+        if (this.props.playing && this.props.track.id === this.props.trackPlayingId) {
+            this.props.pauseTrack();
+            audioPlayer.pause();
+        } else {
+            this.props.receiveCurrentTrack(this.props.track);
+            this.props.playTrack();
+            audioPlayer.setAttribute("autoPlay", "");
+            audioPlayer.play();
+        }
     }
 
     render() {
         return (
-        <span className="play-btn">
-            {this.state.playing ?
-                <img src={window.pause_btn} className="pause-sign" onClick={this.switchPlayPause} />
-                : <img src={window.play_btn} className="play-sign" onClick={this.switchPlayPause} />}
-        </span>
+            <div id="play-btn-wrapper" onClick={e => e.stopPropagation()}>
+                <span className="play-btn" onClick={this.handleClick}>
+                    {this.props.playing && this.props.track.id === this.props.trackPlayingId ?
+                        <img src={window.pause_btn} className="pause-sign" />
+                        : <img src={window.play_btn} className="play-sign" />}
+                </span>
+            </div>
         )
     }
 }

@@ -55,17 +55,17 @@ class Api::TracksController < ApplicationController
       default_photo = ActionController::Base.helpers.asset_path('loading-icon.svg')
       # default_photo = default_photo.split('.')[0].split('-')[0..1].join("-") + '.svg'
       # debugger
-      params.require(:track).permit(:title, :description, :private, :track_file, :photo, :account_id)
+      params.require(:track).permit(:title, :artist, :description, :private, :track_file, :photo, :account_id)
         .merge(photo: default_photo)
         #results in "invalid signature error"
     else
       # debugger
-      params.require(:track).permit(:title, :description, :private, :track_file, :photo, :account_id)
+      params.require(:track).permit(:title, :artist, :description, :private, :track_file, :photo, :account_id)
       .merge(photo: params[:track][:photo])
     end
   end
   
   def edit_track_params
-    params.require(:track).permit(:title, :description, :private, :track_file, :photo, :account_id)
+    params.require(:track).permit(:title, :artist, :description, :private, :track_file, :photo, :account_id)
   end
 end

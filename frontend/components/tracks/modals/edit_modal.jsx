@@ -5,11 +5,9 @@ class EditModal extends React.Component {
     constructor(props) {
         super(props);
     }
-
-    //close on click of modal-background doesn't work, something having to do with the stopPropagation....
-    //ok to leave it the way it is in the meantime
+    
     render() {
-        const {currentUserId, track, closeModal, updateTrack} = this.props;
+        const {currentUserId, currentUser, track, closeModal, updateTrack} = this.props;
         return (
             <div className="modal-background" onClick={closeModal}>
                 <div className="edit-modal-child" onClick={e => e.stopPropagation()}>
@@ -22,6 +20,7 @@ class EditModal extends React.Component {
                         trackUrl={track.trackUrl}
                         private={track.private}
                         currentUserId={currentUserId}
+                        currentUser={currentUser}
                         closeModal={closeModal}
                         updateTrack={updateTrack}
                         id={track.id}

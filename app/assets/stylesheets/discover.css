@@ -78,9 +78,13 @@
   white-space: pre;
 }
 
-.tracks-panel .tracks li:hover {
+.tracks-panel .tracks li:hover, .tracks-panel .tracks li:active {
   background: rgba(255, 255, 255, 0.098);
   cursor: pointer;
+}
+
+.tracks-panel .tracks #selected {
+    background: rgba(255, 255, 255, 0.158);
 }
 
 .tracks-panel .tracks {
@@ -117,11 +121,53 @@
   color: white;
 }
 
+.best-of {
+  margin-top: 30px;
+}
+
 .tracks-carousel #track-container {
-  margin: 5px 10px 5px 10px;
+  margin: 0px 10px 5px 0px;
   position: relative;
   animation-name: fade-in;
   animation-duration: 1s;
+  inset: 0 0 0 1px rgba(0,0,0,.1);
+}
+
+#play-pause-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 170px;
+  height: 170px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.playlist-cover #play-pause-wrapper {
+  width: 185px;
+  height: 185px;
+}
+
+#play-pause-wrapper:hover {
+  animation-name: fade-in;
+  animation-duration: 0.1s;
+  opacity: 1;
+  cursor: pointer;
+  -moz-box-shadow:    inset 0 -100px 100px -100px rgba(0,0,0,0.9);
+  -webkit-box-shadow: inset 0 -100px 100px -100px rgba(0,0,0,0.9);
+  box-shadow:         inset 0 -100px 100px -100px rgba(0,0,0,0.9);
+}
+
+.playlist-cover #play-pause-wrapper:hover {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.playlist-cover .play-btn {
+  margin-left: 40px;
+  margin-top: 40px;
 }
 
 .tracks-carousel #track-title {
@@ -153,22 +199,6 @@
   color: white;
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  border: 1px solid white;
-}
-
-.tracks-carousel .artists {
-  border: 1px solid white;
-  display: flex;
-  width: 825px;
-  height: 200px;
-  margin-bottom: 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.tracks-carousel .artists li {
-  color: white;
   margin: 10px;
   border: 1px solid white;
 }

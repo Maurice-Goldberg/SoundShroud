@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router';
-import {formatTime} from '../../../util/track_util';
+import {formatUploadTime} from '../../../util/track_util';
 
 class DeleteModal extends React.Component {
     constructor(props) {
@@ -39,7 +39,7 @@ class DeleteModal extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className="creation-time-elapsed">{formatTime(track.created_at)}</p>
+                                    <p className="creation-time-elapsed">{formatUploadTime(track.created_at)}</p>
                                 </div>
 
                                 <div className="show-track-player">

@@ -5,11 +5,9 @@ import {fetchTracks} from '../../../actions/track_actions';
 import {fetchUser} from '../../../actions/user_actions';
 
 const mapStateToProps = (state) => {
-    let currentTrack = state.entities.tracks[state.ui.trackPlaying.track_id];
     return {
         currentUser: state.entities.users[state.session.currentUserId],
-        trackPlaying: currentTrack,
-        artist: currentTrack.artist,
+        trackPlaying: state.entities.tracks[state.ui.trackPlaying.track_id],
         timeElapsed: state.ui.trackPlaying.timeElapsed,
         playing: state.ui.trackPlaying.playing
     };

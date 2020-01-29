@@ -1,5 +1,6 @@
 import React from 'react';
 import {findByEmail} from '../../util/session_api_util';
+import {withRouter} from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class SessionForm extends React.Component {
             password: "",
             account_name: ""
           },
-          formToRender: formType
+          formToRender: formType,
+          loading: false
         });
         setTimeout(this.props.closeModal, 1000);
       }
@@ -43,8 +45,16 @@ class SessionForm extends React.Component {
       userParams: {
         email: "demouser@gmail.com",
         password: "password123"
-      }
-    }, () => this.handleSubmit("Log in"));
+      },
+      loading: true
+    }, () => {
+      this.handleSubmit("First form");
+      this.setState({ loading: false });
+      setTimeout(() => {
+        this.props.closeModal();
+        this.props.history.push('/discover');
+      }, 1000);
+    });
   }
 
   update(formField) {
@@ -180,6 +190,12 @@ class SessionForm extends React.Component {
   firstForm() {
     return (
       <div id="first-form">
+        {this.state.loading &&
+          <div className="loading-group">
+            <p className="loading-text">Logging in...</p>
+            <img className="loading-icon" src={window.loading_icon} />
+          </div>
+        }
         <div id="top-section">
           {this.props.formType === "Log in" &&
           <p
@@ -386,4 +402,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

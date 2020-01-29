@@ -13,22 +13,30 @@
 .current-track-box {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: start;
   align-items: center;
   margin: 0 auto;
   width: 1230px;
 }
 
 
-.current-track-box .artist-name, .current-track-box .track-name {
+.current-track-box .artist-name {
   background: none;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  color: rgb(143, 143, 143);
+  text-decoration: none;
 }
 
 .current-track-box .track-name {
   font-size: 13px;
   margin-top: -3px;
+  text-decoration: none;
+  background: none;
+  color: rgb(194, 194, 194);
+}
+
+.current-track-box .track-name:hover {
+  color: white;
+  cursor: pointer;
 }
 
 .current-track-box .artist-name {
@@ -42,16 +50,20 @@
   margin-right: 10px;
 }
 
+.track-info-and-art {
+  display: flex;
+}
+
 .current-track-box .cover-art {
-  margin-top: 1px;
-  width: 32px;
-  height: 32px;
+  margin-top: 5px;
+  width: 38px;
+  height: 38px;
   margin-right: 5px;
 }
 
 .vol-control {
-  margin-right: 25px;
-  margin-left: 50px;
+  margin-right: 50px;
+  margin-left: 45px;
   height: 18px;
   width: 18px;
 }
@@ -61,7 +73,7 @@
 }
 
 .audio-scrollbar-wrapper {
-  width: 700px;
+  width: 600px;
   height: 30px;
   display: flex;
   flex-direction: row;
@@ -111,6 +123,7 @@ input[type=range]::-moz-slider-thumb {
   background: black;
   cursor: pointer;
   margin-top: -4px;
+  opacity: 0;
 }
 
 input[type=range]::-ms-thumb {
@@ -121,6 +134,7 @@ input[type=range]::-ms-thumb {
   background: black;
   cursor: pointer;
   margin-top: -4px;
+  opacity: 0;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -151,9 +165,9 @@ input[type=range]::-ms-track {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 30px;
+  margin-right: 48px;
   margin-left: 10px;
-  width: 120px;
+  width: 125px;
 }
 
 .audio-controls img {

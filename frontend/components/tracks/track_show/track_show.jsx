@@ -1,13 +1,32 @@
 import React from 'react';
-import {formatTime} from '../../../util/track_util';
+import {formatUploadTime} from '../../../util/track_util';
 import EditModalContainer from '../modals/edit_modal_container';
 import DeleteModalContainer from '../modals/delete_modal_container';
 import AudioPlayer from '../audio_player';
-import TrackPlayPause from '../track_play_pause';
+import TrackPlayPauseContainer from '../track_play_pause_container';
+import NavBarContainer from '../../nav_bar/nav_bar_container';
 
 class TrackShow extends React.Component {
     constructor(props) {
         super(props);
+        this.responseButtons = this.responseButtons.bind(this);
+    }
+
+    responseButtons() {
+        if(this.props.currentUser.id === this.props.artist.id) {
+            return (
+                <div className="response-buttons-bar">
+                    <div className="edit-btn" onClick={this.props.openEditModal}>
+                        <p className="pencil-png">✏️</p>
+                        <p className="edit-btn-ele" >Edit</p>
+                    </div>
+                    <div className="delete-btn" onClick={this.props.openDeleteModal}>
+                        <p className="trashcan-png">🗑</p>
+                        <p className="delete-btn-ele">Delete</p>
+                    </div>
+                </div>
+            )
+        }
     }
 
     componentDidMount() {
@@ -29,6 +48,7 @@ class TrackShow extends React.Component {
         } else {
             return (
                 <>
+                    <NavBarContainer />
                     <div className="track-show-container">
                     {modal === "Edit" && <EditModalContainer track={track} currentUserId={currentUser.id}/>}
                     {modal === "Delete" && <DeleteModalContainer track={track} currentUserId={currentUser.id} artist={artist} />}
@@ -36,8 +56,8 @@ class TrackShow extends React.Component {
                             <div className="track-hero-wrapper">
                                 <div className="track-hero">
                                     <div className="left-wrapper">
-                                        <div className="play-btn-track-text-and-creation-time">
-                                            <TrackPlayPause
+                                        <div id="play-btn-track-text-and-creation-time">
+                                            <TrackPlayPauseContainer
                                                 track={track}
                                                 currentTrackId={currentTrackId}
                                             />
@@ -58,7 +78,7 @@ class TrackShow extends React.Component {
                                         </div>
                                     </div>
                                     <div className="creation-time-and-track-cover">
-                                        <p className="creation-time-elapsed">{formatTime(track.created_at)}</p>
+                                        <p className="creation-time-elapsed">{formatUploadTime(track.created_at)}</p>
                                         <img className="track-cover" src={track.photoUrl}/>
                                     </div>
                                 </div>
@@ -71,17 +91,7 @@ class TrackShow extends React.Component {
                                         type="text"
                                         placeholder="Write a comment"/>
                                     </div>
-                                    {currentUser.id === artist.id &&
-                                    <div className="response-buttons-bar">
-                                        <div className="edit-btn" onClick={this.props.openEditModal}>
-                                            <p className="pencil-png">✏️</p>
-                                            <p className="edit-btn-ele" >Edit</p>
-                                        </div>
-                                        <div className="delete-btn" onClick={this.props.openDeleteModal}>
-                                            <p className="trashcan-png">🗑</p>
-                                            <p className="delete-btn-ele">Delete</p>
-                                        </div>
-                                    </div>}
+                                    {currentUser ? this.responseButtons : <></>}
                                 </div>
                                 <div className="profile-and-description">
                                     <div className="t-s-artist-profile">

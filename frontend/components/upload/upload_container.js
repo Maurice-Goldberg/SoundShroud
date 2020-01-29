@@ -2,11 +2,13 @@ import {connect} from 'react-redux';
 import {openModal, closeModal} from '../../actions/modal_actions';
 import Upload from './upload';
 import {uploadTrack} from '../../actions/track_actions';
+import {currentUser} from '../../reducers/selectors';
 
-const mapStateToProps = ({ui, session}, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    modal: ui.modal,
-    currentUserId: session.currentUserId,
+    modal: state.ui.modal,
+    currentUserId: state.session.currentUserId,
+    currentUser: currentUser(state)
   };
 };
 

@@ -33,12 +33,25 @@
   flex-direction: column;
 }
 
-.play-btn-track-text-and-creation-time {
+#play-btn-track-text-and-creation-time {
   display: flex;
 }
 
-.delete-modal-box .play-btn-track-text-and-creation-time {
+.delete-modal-box #play-btn-track-text-and-creation-time {
   position: relative;
+}
+
+#play-btn-track-text-and-creation-time .play-btn {
+  position: relative;
+  margin-left: 0px;
+  margin-top: 0px;
+  height: 60px;
+  width: 60px;
+}
+
+#play-btn-track-text-and-creation-time .play-sign, #play-btn-track-text-and-creation-time .pause-sign {
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 .delete-modal-box .play-sign, .delete-modal-box .pause-sign {
@@ -50,6 +63,7 @@
 
 .track-text-and-creation-time {
   display: flex;
+  margin-left: 30px;
 }
 
 .play-btn-and-track-name {
@@ -293,6 +307,7 @@ audio:focus {
 }
 
 .circular-profile-picture img {
+  object-fit: cover;
   height: 100%;
   width: 100%;
   border-radius: 100%;

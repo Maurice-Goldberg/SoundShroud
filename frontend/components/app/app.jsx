@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavBarContainer from '../nav_bar/nav_bar_container';
+import {Route} from 'react-router-dom';
 import SplashContainer from '../splash/splash_container';
 import TrackShowContainer from '../tracks/track_show/track_show_container';
 import DiscoverContainer from '../discover/discover_container';
@@ -11,16 +11,19 @@ import CurrentTrackPlayerContainer from '../tracks/current_track/current_track_c
 
 import {ProtectedRoute} from '../../util/route_util';
 
+import { createBrowserHistory } from 'history'
+export const history = createBrowserHistory();
+history.listen((location, action) => {
+  window.scrollTo(0, 0)
+});
+
 const App = (props) => {
   return (
     <div className="app-container">
-      {props.currentUserId ?
-      <NavBarContainer /> :
-      <SplashContainer />}
       <div className="content">
-        <ProtectedRoute exact path='/discover' component={DiscoverContainer} />
-        <ProtectedRoute exact path='/' component={DiscoverContainer} />
-        <ProtectedRoute exact path='/tracks/:trackId' component={TrackShowContainer} />
+        <Route exact path='/' component={SplashContainer} />
+        <Route exact path='/discover' component={DiscoverContainer} />
+        <Route exact path='/tracks/:trackId' component={TrackShowContainer} />
         <ProtectedRoute exact path='/upload' component={UploadContainer} />
         {/* <ProtectedRoute exact path='/users/:userId' component={UserShowContainer} />
         <ProtectedRoute exact path='/logout' component={LogoutNavBarContainer} /> */}

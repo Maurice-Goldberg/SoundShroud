@@ -12,7 +12,7 @@ let defaultState = {
   timeElapsed: 0,
 
   //just for testing purposes right now
-  track_id: 117
+  track_id: 3
 }
 const trackPlayingReducer = (oldState = defaultState, action) => {
   Object.freeze(oldState);

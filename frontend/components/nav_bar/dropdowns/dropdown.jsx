@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router';
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class Dropdown extends React.Component {
     this.props.logout();
     this.toggleList();
     this.props.closeModal();
+    this.props.history.push('/');
   }
 
   render() {
@@ -64,4 +66,4 @@ class Dropdown extends React.Component {
   }
 }
 
-export default Dropdown;
+export default withRouter(Dropdown);

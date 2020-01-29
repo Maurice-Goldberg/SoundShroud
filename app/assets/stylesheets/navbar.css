@@ -1,6 +1,4 @@
 .nav-bar-container {
-  display: flex;
-  justify-content: center;
   background-color: rgb(60, 64, 67);
   height: 46px;
   box-shadow: 0 3px 3px -3px rgba(0,0,0,.2);
@@ -11,7 +9,7 @@
   display: flex;
   margin: 0 auto;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   background-color: rgb(60, 64, 67);
   height: 46px;
   z-index: 6;
@@ -49,10 +47,14 @@
    border: 1px solid rgb(122, 128, 130);
  }
 
- #create-acc-btn {
+#create-acc-btn {
    font-size: 14px;
    width: 125px;
    flex-shrink: 0;
+ }
+
+ .nav-bar-container #create-acc-btn {
+   margin-left: 0px;
  }
 
 .logo {
@@ -64,6 +66,10 @@
   padding-left: 17px;
   padding-top: 5px;
   margin-top: -5px;
+}
+
+.logo:hover {
+  cursor: pointer;
 }
 
  #logo-img {
@@ -102,7 +108,7 @@
 
   
  #search-bar {
-   width: 540px;
+   width: 485px;
    height: 28px;
    margin-left: 20px;
    margin-right: 20px;

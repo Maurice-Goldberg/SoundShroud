@@ -1,6 +1,7 @@
 import React from 'react';
 import UploadDetails from './upload_details';
 const jsmediatags = require('jsmediatags');
+import NavBarContainer from '../nav_bar/nav_bar_container';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -114,6 +115,7 @@ class Upload extends React.Component {
 
     return (
       <>
+        <NavBarContainer />
         {this.state.errorMsg &&
           errorMsg}
         <div className="upload-prompt-page">
@@ -154,17 +156,23 @@ class Upload extends React.Component {
       case "prompt page":
         return this.uploadPromptPage();
       case "details page":
-        return <UploadDetails
-                trackFile={this.state.trackFile}
-                private={this.state.private}
-                currentUserId={this.props.currentUserId}
-                uploadTrack={this.props.uploadTrack}
-                trackName={this.state.trackName}
-                returnToPromptPage={this.returnToPromptPage}
-                photoUrl={this.state.photoUrl}
-                photoFile={this.state.photoFile}
-                closeModal={this.props.closeModal}
-              />;
+        return (
+          <>
+            <NavBarContainer />
+            <UploadDetails
+              trackFile={this.state.trackFile}
+              private={this.state.private}
+              currentUserId={this.props.currentUserId}
+              currentUser={this.props.currentUser}
+              uploadTrack={this.props.uploadTrack}
+              trackName={this.state.trackName}
+              returnToPromptPage={this.returnToPromptPage}
+              photoUrl={this.state.photoUrl}
+              photoFile={this.state.photoFile}
+              closeModal={this.props.closeModal}
+            />
+          </>
+        );
       default:
         return null;
     }

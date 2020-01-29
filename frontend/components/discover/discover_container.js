@@ -2,10 +2,13 @@ import {connect} from 'react-redux';
 import Discover from './discover';
 import {fetchTracks} from '../../actions/track_actions';
 import {findTrackByTitle, findTrackArtist, findTrack} from '../../reducers/selectors';
+import {receiveCurrentTrack, playTrack} from '../../actions/track_playing_actions';
 
 const mapStateToProps = (state, ownProps) => {
+
   return {
     currentUserId: state.session.currentUserId,
+
     chrome_country: findTrackByTitle(state, "Chrome Country"),
     ocean_of_tears: findTrackByTitle(state, "Ocean of Tears"),
     gone: findTrackByTitle(state, "Gone"),
@@ -32,7 +35,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTracks: () => dispatch(fetchTracks())
+    fetchTracks: () => dispatch(fetchTracks()),
+    receiveCurrentTrack: (track) => dispatch(receiveCurrentTrack(track)),
+    playTrack: () => dispatch(playTrack())
   }
 }
 

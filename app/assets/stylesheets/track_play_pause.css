@@ -1,0 +1,26 @@
+#play-btn-wrapper .play-btn {
+  position: absolute;
+  z-index: 4;
+  left: 30px;
+  top: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+#play-btn-wrapper .play-sign {
+  position: relative;
+  left: 15px;
+  top: 12px;
+  height: 25px;
+  width: 25px;
+  z-index: 3;
+}
+
+#play-btn-wrapper .pause-sign {
+  position: relative;
+  left: 14px;
+  top: 14px;
+  height: 22px;
+  width: 22px;
+  z-index: 3;
+}

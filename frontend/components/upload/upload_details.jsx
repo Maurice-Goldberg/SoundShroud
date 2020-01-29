@@ -62,6 +62,7 @@ class UploadDetails extends React.Component {
         formData.append('track[description]', this.state.description);
         formData.append('track[private]', this.state.private);
         formData.append('track[account_id]', this.props.currentUserId);
+        formData.append('track[artist]', this.props.currentUser.account_name);
         
         if (this.props.formType !== "edit") {
             formData.append('track[track_file]', this.state.trackFile);

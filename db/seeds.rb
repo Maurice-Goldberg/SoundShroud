@@ -60,6 +60,7 @@ chrome_country = Track.create({
   private: false,
   title: "Chrome Country",
   account_id: opn.id,
+  artist: "Oneohtrix Point Never",
   description: "Track 8 on R+7",
 })
 chrome_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/chrome_country.jpg')
@@ -71,6 +72,7 @@ gone = Track.create({
   private: false,
   title: "Gone",
   account_id: charli_xcx.id,
+  artist: "Charli XCX",
   description: "Track 3 on Charli (self-titled)"
 })
 gone_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/gone.jpg')
@@ -82,6 +84,7 @@ ocean = Track.create({
   private: false,
   title: "Ocean of Tears",
   account_id: caroline_polachek.id,
+  artist: "Caroline Polachek",
   description: "The new dark art-pop track from the former singer of Chairlift"
 })
 ocean_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/ocean.jpg')
@@ -94,6 +97,7 @@ stripped = Track.create({
   private: false,
   title: "Stripped",
   account_id: depeche_mode.id,
+  artist: "Depeche Mode",
   description: "From Depeche Mode's under-appreciated album 'Black Celebration'"
 })
 stripped_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/stripped.jpg')
@@ -105,6 +109,7 @@ control = Track.create({
   private: false,
   title: "Control",
   account_id: janet_jackson.id,
+  artist: "Janet Jackson",
   description: "The standout song that birthed the classic 80's genre of 'New Jack Swing'"
 })
 control_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/control.jpg')
@@ -116,6 +121,7 @@ flamboyant = Track.create({
   private: false,
   title: "Flamboyant",
   account_id: dorian_electra.id,
+  artist: "Dorian Electra",
   description: "The powerful new banger from genderqueer wunderkind Dorian Electra"
 })
 flamboyant_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/flamboyant.jpg')
@@ -126,6 +132,7 @@ flamboyant.track_file.attach(io: flamboyant_track, filename: 'flamboyant.mp3')
 last_bloom = Track.create({
   private: false,
   title: "Last Bloom",
+  artist: "Floating Points",
   account_id: floating_points.id,
   description: "A dark and frantic dance track from U.K.-based modular wizard Floating Points"
 })
@@ -137,6 +144,7 @@ last_bloom.track_file.attach(io: last_bloom_track, filename: 'last_bloom.mp3')
 mercy_street = Track.create({
   private: false,
   title: "Mercy Street",
+  artist: "Peter Gabriel",
   account_id: peter_gabriel.id,
   description: "The soothing and contemplative song by 80s sophisti-pop weirdo Peter Gabriel"
 })
@@ -148,6 +156,7 @@ mercy_street.track_file.attach(io: mercy_street_track, filename: 'mercy_street.m
 running_up_that_hill = Track.create({
   private: false,
   title: "Running Up That Hill",
+  artist: "Kate Bush",
   account_id: kate_bush.id,
   description: "The stormy, legendary earworm by Kate Bush, art-pop's mystical sound witch"
 })
@@ -159,6 +168,7 @@ running_up_that_hill.track_file.attach(io: running_up_that_hill_track, filename:
 hand_crushed_by_a_mallet = Track.create({
   private: false,
   title: "Hand Crushed By a Mallet",
+  artist: "100 Gecs",
   account_id: hunnid_gecs.id,
   description: "The strange and inscrutable banger from emo-electro-pop newcomers 100 Gecs"
 })
@@ -170,6 +180,7 @@ hand_crushed_by_a_mallet.track_file.attach(io: hand_crushed_by_a_mallet_track, f
 that_world = Track.create({
   private: false,
   title: "That World",
+  artist: "Tim Hecker",
   account_id: tim_hecker.id,
   description: "A meditative ambient track from producer Tim Hecker"
 })
@@ -181,6 +192,7 @@ that_world.track_file.attach(io: that_world_track, filename: 'that_world.mp3')
 touch = Track.create({
   private: false,
   title: "Touch",
+  artist: "Galen Tipton",
   account_id: galen_tipton.id,
   description: "A frantic and expansive electronic piece from producer and visual artist Galen Tipton"
 })

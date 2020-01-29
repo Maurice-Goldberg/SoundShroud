@@ -39,6 +39,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+#first-form .loading-group {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px 170px 17px 190px;
+  border-radius: 3px;
+  animation-name: fade-in;
+  animation-duration: 0.25s;
+  z-index: 13;
+}
+
+#first-form .loading-icon {
+  height: 450px;
+}
+
+#first-form .loading-text {
+  position: absolute;
+  left: 280px;
+  top: 160px;
+  z-index: 14;
+  font-size: 50px;
 }
 
 #top-section {
