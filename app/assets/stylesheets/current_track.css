@@ -179,7 +179,7 @@ input[type=range]::-ms-track {
   cursor: pointer;
 }
 
-#play-btn, #pause-btn {
+#play-btn, #pause-btn, #loop-btn {
   height: 16px;
   width: 16px;
 }

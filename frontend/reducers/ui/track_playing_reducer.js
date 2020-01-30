@@ -31,7 +31,7 @@ const trackPlayingReducer = (oldState = defaultState, action) => {
       newState.timeElapsed = 0;
       return newState;
     case UPDATE_PLAYPOINT:
-      newState.timeElapsed = action.time;
+      newState.timeElapsed = action.newTime;
       return newState;
     default:
       return oldState;

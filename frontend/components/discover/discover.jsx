@@ -33,6 +33,7 @@ class Discover extends React.Component {
     }, () => {
       this.props.receiveCurrentTrack(track);
       this.props.playTrack();
+      audioPlayer.setAttribute("autoPlay", "");
       audioPlayer.play();
     });
   }
@@ -99,11 +100,11 @@ class Discover extends React.Component {
     let scrollbarTracks = trackArr.map((track) => {
       if(track.id === this.state.selectedTrackId) {
         return (
-          <li id="selected"><p className="artist">{track.artist}</p> - <p className="track">{track.title}</p></li>
+          <li key={track.id} id="selected"><p className="artist">{track.artist}</p> - <p className="track">{track.title}</p></li>
         );
       } else {
         return (
-          <li onClick={() => this.handleClick(track)}><p className="artist">{track.artist}</p> - <p className="track">{track.title}</p></li>
+          <li key={track.id} onClick={() => this.handleClick(track)}><p className="artist">{track.artist}</p> - <p className="track">{track.title}</p></li>
         )
       }
     });
