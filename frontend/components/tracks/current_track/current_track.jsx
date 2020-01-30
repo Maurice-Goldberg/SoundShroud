@@ -24,12 +24,13 @@ class CurrentTrack extends React.Component {
         this.skipTrack = this.skipTrack.bind(this);
         this.toggleLoop = this.toggleLoop.bind(this);
         this.handleMD = this.handleMD.bind(this);
-        this.handleDrag = this.handleDrag.bind(this);
         this.updatePlayingTime = this.updatePlayingTime.bind(this);
         this.clearPlayingTimeUpdates = this.clearPlayingTimeUpdates.bind(this);
         this.handleAudioEnd = this.handleAudioEnd.bind(this);
 
         this.audioPlayer = React.createRef();
+        this.scrollbar = React.createRef();
+        this.volumebar = React.createRef();
     }
 
     handlePlayPauseClick() {
@@ -44,6 +45,7 @@ class CurrentTrack extends React.Component {
 
     updatePlayingTime() {
         this.intervalId = setInterval(() => {
+            this.scrollbar.current.value = this.audioPlayer.current.currentTime;
             this.setState({timeElapsed: this.audioPlayer.current.currentTime - 0.5});
             this.props.updatePlaypoint(this.state.timeElapsed);
 
@@ -61,14 +63,11 @@ class CurrentTrack extends React.Component {
 
     handleAudioEnd() {
         clearInterval(this.intervalId);
+        this.props.pauseTrack();
         this.setState({
             timeElapsed: 0,
             playing: false
         });
-    }
-
-    changePlaypoint(e) {
-
     }
 
     restartTrack() {
@@ -96,13 +95,19 @@ class CurrentTrack extends React.Component {
         this.props.updatePlaypoint(0);
     }  
 
-
-    handleDrag() {
-
+    changePlaypoint(e) {
+        e.persist();
+        this.setState({ timeElapsed: e.target.value }, () => {
+            this.audioPlayer.current.currentTime = e.target.value;
+        });
     }
 
-    changeVol() {
-
+    changeVol(e) {
+        e.persist();
+        this.setState({ volume: e.target.value / 1000.0 }, () => {
+            this.volumebar.current.value = e.target.value;
+            this.audioPlayer.current.volume = e.target.value / 1000.0;
+        });
     }
 
     toggleMute() {
@@ -113,12 +118,14 @@ class CurrentTrack extends React.Component {
                 volume: 0.0
             }, () => {
                 this.audioPlayer.current.volume = this.state.volume;
+                this.volumebar.current.value = 0;
             });
         } else {
             this.setState({
                 volume: this.state.mutedVolume
             }, () => {
                 this.audioPlayer.current.volume = this.state.volume;
+                this.volumebar.current.value = this.state.volume * 1000;
             });
         }
     }
@@ -190,17 +197,45 @@ class CurrentTrack extends React.Component {
                                 <input
                                     className="audio-scrollbar"
                                     type="range"
-                                    value={this.state.timeElapsed}
-                                    onChange={this.handleDrag}
+                                    onInput={(e) => this.changePlaypoint(e)}
+                                    ref={this.scrollbar}
                                     min="0"
+                                    defaultValue="0"
                                     max={this.state.duration}
                                 />
                                 <p>{formatTrackTime(this.state.duration)}</p>
                             </div>
+                            {this.state.volumeHovered && 
+                                <div
+                                    className="volume-bar-wrapper" 
+                                    onMouseEnter={() => this.setState({ volumeHovered: true })}
+                                    onMouseLeave={() => this.setState({ volumeHovered: false })}
+                                >
+                                    <input
+                                        type="range"
+                                        className="volume-bar"
+                                        ref={this.volumebar}
+                                        min="0"
+                                        max="1000"
+                                        defaultValue={this.state.volume * 1000}
+                                        onChange={(e) => this.changeVol(e)}
+                                    />
+                                </div>
+                            }
                             {this.state.volume === 0.0 ? 
-                                <img src={window.muted_speaker_btn} className="vol-control" onClick={this.toggleMute}/>
+                                <img src={window.muted_speaker_btn}
+                                    className="vol-control"
+                                    onClick={this.toggleMute}
+                                    onMouseEnter={() => this.setState({ volumeHovered: true })}
+                                    onMouseLeave={() => this.setState({ volumeHovered: false })}
+                                />
                                 :
-                                <img src={window.speaker_btn} className="vol-control" onClick={this.toggleMute}/>
+                                <img src={window.speaker_btn}
+                                    className="vol-control"
+                                    onClick={this.toggleMute}
+                                    onMouseEnter={() => this.setState({ volumeHovered: true })}
+                                    onMouseLeave={() => this.setState({ volumeHovered: false })}
+                                />
                             }
                             <div className="track-info-and-art">
                                 <Link to={`/tracks/${this.props.trackPlaying.id}`}>

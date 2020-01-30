@@ -62,14 +62,55 @@
 }
 
 .vol-control {
-  margin-right: 50px;
-  margin-left: 45px;
+  margin-right: 40px;
+  margin-left: 35px;
+  padding: 10px 10px 10px 10px;
   height: 18px;
   width: 18px;
 }
 
 .vol-control:hover {
   cursor: pointer;
+}
+
+.volume-bar {
+  animation-name: fade-in;
+  animation-duration: 1s; 
+}
+
+.volume-bar-wrapper {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+  position: absolute;
+  left: 1135px;
+  top: -80px;
+  width: 130px;
+  z-index: 4;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  background: gray;
+  border-radius: 10px;
+  animation-name: volume-fade-in;
+  animation-duration: 0.4s;  
+}
+
+@keyframes volume-fade-in {
+  from {
+    left: 1185px;
+    top: -30px;
+    width: 30px;
+    opacity: 0;
+  }
+  to {
+    left: 1135px;
+    top: -80px;
+    width: 130px;
+    opacity: 1;
+  }
 }
 
 .audio-scrollbar-wrapper {

@@ -2,9 +2,9 @@ import React from 'react';
 import {formatUploadTime} from '../../../util/track_util';
 import EditModalContainer from '../modals/edit_modal_container';
 import DeleteModalContainer from '../modals/delete_modal_container';
-import AudioPlayer from '../audio_player';
 import TrackPlayPauseContainer from '../track_play_pause_container';
 import NavBarContainer from '../../nav_bar/nav_bar_container';
+import WaveFormContainer from './waveform_container';
 
 class TrackShow extends React.Component {
     constructor(props) {
@@ -74,7 +74,7 @@ class TrackShow extends React.Component {
                                         </div>
                                         
                                         <div className="show-track-player">
-                                            <AudioPlayer track={track}/>
+                                            <WaveFormContainer />
                                         </div>
                                     </div>
                                     <div className="creation-time-and-track-cover">
