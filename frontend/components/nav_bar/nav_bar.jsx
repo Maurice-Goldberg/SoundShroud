@@ -15,7 +15,11 @@ class NavBar extends React.Component {
     if (currentUser) {
       userNavItem = (<div className="user-nav-item">
                       <Link className="avatar" to={`/users/${currentUser.id}`}>
-                          <img />
+                          {currentUser.photoUrl ? 
+                            <img src={currentUser.photoUrl} />
+                            :
+                            <img src={window.logo} />
+                          }
                       </Link>
                       <Link className="user-profile-link" to={`/users/${currentUser.id}`}>
                         {currentUser.account_name}

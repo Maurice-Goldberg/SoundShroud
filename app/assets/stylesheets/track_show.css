@@ -20,9 +20,6 @@
 
 .bottom-info {
   flex-basis: 64.2%;
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column; */
   margin: 0 auto;
   position: relative;
   left: -180px;
@@ -123,17 +120,78 @@
 }
 
 .show-track-player {
-  color: white;
-  /* border: 2px solid white; */
   width: 815px;
   height: 100px;
-  margin-top: 165px;
+  margin-top: 145px;
   margin-left: 35px;
   margin-right: 20px;
 }
 
 .show-track-player:focus {
   outline: none;
+}
+
+#waveform-wrapper {
+  position: relative;
+}
+
+#time-elapsed-bar {
+  position: absolute;
+  padding: 3px;
+  z-index: 4;
+  font-size: 11px;
+  background: rgba(0, 0, 0, 0.719);
+  color: white;
+  top: 45px;
+  left: -2px;
+}
+
+#duration-bar {
+  position: absolute;
+  padding: 3px;
+  z-index: 4;
+  font-size: 11px;
+  background: rgba(0, 0, 0, 0.719);
+  color: white;
+  top: 45px;
+  left: 778px;
+}
+
+#click-barrier {
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#waveform-loading-icon {
+  position: absolute;
+  z-index: 3;
+  top: -60px;
+  left: 300px;
+}
+
+#loading-text {
+  position: absolute;
+  z-index: 4;
+  top: -8px;
+  left: 350px;
+  font-size: 24px;
+  color: white;
+}
+
+#track-show-scrollbar {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  top: 60px;
+  left: -2px;
+}
+
+#track-show-scrollbar-loading {
+  display: none;
 }
 
 .play-btn {
@@ -304,6 +362,8 @@ audio:focus {
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgb(43, 0, 173) 100%);
   border-radius: 50%;
   display: inline-block;
+  animation-name: fade-in;
+  animation-duration: 0.5s;
 }
 
 .circular-profile-picture img {

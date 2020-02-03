@@ -34,8 +34,10 @@ class SessionForm extends React.Component {
           },
           formToRender: formType,
           loading: false
+        }, () => {
+          this.props.closeModal();
+          this.props.history.push('/discover');  
         });
-        setTimeout(this.props.closeModal, 1000);
       }
     });
   }
@@ -48,12 +50,12 @@ class SessionForm extends React.Component {
       },
       loading: true
     }, () => {
-      this.handleSubmit("First form");
-      this.setState({ loading: false });
-      setTimeout(() => {
-        this.props.closeModal();
-        this.props.history.push('/discover');
-      }, 1000);
+      this.setState({ loading: false }, () => {
+        this.handleSubmit("First form");
+      });
+      // setTimeout(() => {
+      //   this.props.history.push('/discover');
+      // }, 1000);
     });
   }
 

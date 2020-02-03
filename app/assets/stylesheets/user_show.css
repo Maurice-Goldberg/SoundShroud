@@ -1,0 +1,81 @@
+.user-show-wrapper {
+    margin: 0 auto;
+    width: 1230px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(36, 36, 36);
+    
+}
+
+#banner {
+    display: flex;
+    align-items: start;
+    width: 100%;
+    height: 260px;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgb(43, 0, 173) 100%);
+}
+
+.user-show-wrapper #account-name {
+    margin-top: 30px;
+    background: rgba(59, 53, 145, 0.589);
+    padding: 10px;
+    font-size: 25px;
+}
+
+.user-show-wrapper #profile-picture {
+    margin: 25px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+#blank-profile-picture {
+    margin: 25px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    background: linear-gradient(200deg, rgb(64, 68, 87) 10%, rgb(104, 104, 147) 80%, rgb(134, 134, 235) 100%);
+}
+
+#profile-picture-form {
+    margin: 25px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    background: linear-gradient(200deg, rgb(64, 68, 87) 10%, rgb(104, 104, 147) 80%, rgb(134, 134, 235) 100%);
+}
+
+.user-show-wrapper .track-hero {
+    background: transparent;
+    margin: 10px 20px 10px 20px;
+}
+
+.user-show-wrapper .track-cover {
+    height: 175px;
+    width: 175px;
+}
+
+.user-show-wrapper .left-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.user-show-wrapper .play-btn-track-text-and-creation-time {
+    width: 100px;
+}
+
+.user-show-wrapper {
+
+}
+
+.user-show-wrapper {
+
+}
+
+.user-show-wrapper {
+
+}
+

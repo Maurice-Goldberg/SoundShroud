@@ -10,6 +10,7 @@ import {
 } from '../../../actions/track_playing_actions';
 import {currentUser} from '../../../reducers/selectors';
 import {openModal, closeModal} from '../../../actions/modal_actions';
+import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
     let track = state.entities.tracks[ownProps.match.params.trackId] || {};
@@ -20,7 +21,8 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: currentUser(state),
         currentTrackId: state.ui.trackPlaying.track_id,
         trackPlaying: state.ui.trackPlaying,
-        modal: state.ui.modal
+        modal: state.ui.modal,
+        audioPlayer: ownProps.audioPlayer
     };
 };
 
@@ -38,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TrackShow));

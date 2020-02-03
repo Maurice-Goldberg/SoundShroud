@@ -40,3 +40,13 @@ export const findTrackByTitle = ({entities}, title) => {
     }
     return null;
 }
+
+export const findAllTracksByUser = ({entities}, user) => {
+    if(Object.values(entities.tracks).length > 0 && user) {
+        let userTracks = [];
+        user.track_ids.forEach((trackId) => {
+            userTracks.push(entities.tracks[trackId]);
+        })
+        return userTracks;
+    }
+}

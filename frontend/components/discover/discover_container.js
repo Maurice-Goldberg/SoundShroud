@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUserId: state.session.currentUserId,
+    trackPlaying: state.ui.trackPlaying,
 
     chrome_country: findTrackByTitle(state, "Chrome Country"),
     ocean_of_tears: findTrackByTitle(state, "Ocean of Tears"),

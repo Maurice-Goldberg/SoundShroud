@@ -1,6 +1,6 @@
 import TrackPlayPause from './track_play_pause';
 import {connect} from 'react-redux';
-import { receiveCurrentTrack, playTrack, pauseTrack } from '../../actions/track_playing_actions';
+import { receiveCurrentTrack, playTrack, pauseTrack, updatePlaypoint } from '../../actions/track_playing_actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -16,7 +16,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         receiveCurrentTrack: (track) => dispatch(receiveCurrentTrack(track)),
         playTrack: () => dispatch(playTrack()),
-        pauseTrack: () => dispatch(pauseTrack())
+        pauseTrack: () => dispatch(pauseTrack()),
+        updatePlaypoint: (time) => dispatch(updatePlaypoint(time))
     }
 };
 

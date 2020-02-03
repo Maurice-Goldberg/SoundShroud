@@ -1,27 +1,132 @@
 import React from 'react';
 import WaveSurfer from 'wavesurfer.js';
+import {formatTrackTime} from '../../../util/track_util';
 
 class WaveForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            loading: true
+            loading: true,
+            timeElapsed: 0,
+            mounted: false
         }
 
         this.waveformRef = React.createRef();
+        this.scrollbar = React.createRef();
     }
 
     componentDidMount() {
-
+        const {track, trackPlaying} = this.props;
+        if(track) {
+            this.wavesurfer = WaveSurfer.create({
+                container: '#waveform',
+                waveColor: 'white',
+                progressColor: 'darkblue',
+                barGraph: 10,
+                barHeight: 1,
+                barWidth: 2,
+                fillParent: true,
+                cursorWidth: 0,
+                interact: true,
+                autoCenter: true,
+                closeAudioContext: true,
+                hideScrollbar: true,
+                partialRender: true,
+                removeMediaElementOnDestroy: true,
+                pixelRatio: 1,
+            });
+            this.wavesurfer.load(track.trackUrl);
+            this.wavesurfer.on('ready', () => {
+                this.duration =
+                    (<p id="duration-bar">
+                        {formatTrackTime(this.wavesurfer.getDuration())}
+                    </p>);
+                this.setState({ loading: false })
+            });
+        }
     }
 
-    render() {
-        return (
-            <div id="waveform" ref={this.waveformRef}>
+    // changePlaypoint(e) {
+    //     e.persist();
+        
+    //     this.setState({ timeElapsed: e.target.value }, () => {
+    //         this.props.audioPlayer.current.currentTime = e.target.value;
+    //         this.props.updatePlaypoint(this.state.timeElapsed);
+    //     });
+    // }
 
+    render() {
+        const {trackPlaying, track} = this.props;
+        let timeElapsedBar;
+        let elapsedTime;
+        let durationTime;
+        let scrollbarMax;
+
+        if(this.wavesurfer) {
+            if (track.id === trackPlaying.track_id) {
+                this.scrollbar.current.value = 0;
+                elapsedTime = formatTrackTime(trackPlaying.timeElapsed);
+            } else {
+                elapsedTime = "0:00";
+            }
+            durationTime = formatTrackTime(this.wavesurfer.getDuration());
+        }
+        
+        if (trackPlaying.playing && this.wavesurfer && track.id === trackPlaying.track_id) {
+            let waveformSeekVal = (trackPlaying.timeElapsed + 0.5) / this.wavesurfer.getDuration();
+            if (waveformSeekVal > 1) {
+                this.wavesurfer.seekTo(1);
+            } else {
+                this.wavesurfer.seekTo(waveformSeekVal);
+            }
+
+            scrollbarMax = this.wavesurfer.getDuration();
+
+            this.scrollbar.current.value = trackPlaying.timeElapsed || "0";
+
+            timeElapsedBar = (
+                <p id="time-elapsed-bar">
+                    {formatTrackTime(trackPlaying.timeElapsed)}
+                </p>
+            );
+        }
+
+        let trackScrollbarId = "track-show-scrollbar"
+        if(this.state.loading) {
+            trackScrollbarId = "track-show-scrollbar-loading"
+        }
+
+        return (
+            <div id="waveform-wrapper">
+                <div id="waveform" ref={this.waveformRef}>
+
+                </div>
+
+                
+
+                {this.state.loading ?
+                    <div id="track-show-loading-group">
+                        <p id="loading-text">Loading...</p>
+                        <img id="waveform-loading-icon" src={window.loading_icon}/>
+                    </div>
+                    :
+                    timeElapsedBar
+                }
+                <input
+                    id={trackScrollbarId}
+                    type="range"
+                    readOnly
+                    ref={this.scrollbar}
+                    min="0"
+                    max={scrollbarMax}
+                    defaultValue="0"
+                />
+                {this.duration}
+
+                <div id="click-barrier"></div>
             </div>
-        )
+        );
     }
 }
 

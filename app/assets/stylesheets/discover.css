@@ -178,6 +178,10 @@
   margin-top: 5px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .tracks-carousel p {
   font-size: 11px;
   color: rgb(192, 189, 189);
@@ -244,4 +248,6 @@
 .playlist-cover-img {
   width: 100%;
   height: 100%;
+  animation-name: fade-in;
+  animation-duration: 0.5s;
 }

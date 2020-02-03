@@ -5,6 +5,7 @@ import DeleteModalContainer from '../modals/delete_modal_container';
 import TrackPlayPauseContainer from '../track_play_pause_container';
 import NavBarContainer from '../../nav_bar/nav_bar_container';
 import WaveFormContainer from './waveform_container';
+import {Link} from 'react-router-dom';
 
 class TrackShow extends React.Component {
     constructor(props) {
@@ -64,7 +65,9 @@ class TrackShow extends React.Component {
                                             <div className="track-text-and-creation-time">
                                                 <div className="track-text">
                                                     <div className="artist-name-wrapper">
-                                                        <p className="artist-name">{artist.account_name}</p>
+                                                        <Link to={`/users/${artist.id}`}>
+                                                            <p className="artist-name">{artist.account_name}</p>
+                                                        </Link>
                                                     </div>
                                                     <div className="track-name-wrapper">
                                                         <h2 className="track-name">{track.title}</h2>
@@ -74,7 +77,7 @@ class TrackShow extends React.Component {
                                         </div>
                                         
                                         <div className="show-track-player">
-                                            <WaveFormContainer />
+                                            <WaveFormContainer track={track} audioPlayer={this.props.audioPlayer} />
                                         </div>
                                     </div>
                                     <div className="creation-time-and-track-cover">
@@ -95,10 +98,14 @@ class TrackShow extends React.Component {
                                 </div>
                                 <div className="profile-and-description">
                                     <div className="t-s-artist-profile">
-                                        <span className="circular-profile-picture">
-                                            <img src={artist.photoUrl}/>
-                                        </span>
-                                        <h3 className="t-s-artist-name">{artist.account_name}</h3>
+                                        <Link to={`/users/${artist.id}`}>
+                                            <span className="circular-profile-picture">
+                                                <img src={artist.photoUrl}/>
+                                            </span>
+                                        </Link>
+                                        <Link to={`/users/${artist.id}`}>
+                                            <h3 className="t-s-artist-name">{artist.account_name}</h3>
+                                        </Link>
                                     </div>
                                     <p className="track-description">{track.description}</p>
                                     <ul className="track-comments"></ul>

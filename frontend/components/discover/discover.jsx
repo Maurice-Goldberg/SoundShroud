@@ -54,9 +54,9 @@ class Discover extends React.Component {
         this.setState({
           hoveredTrack: "",
           selectedTrackId: null,
-          selectedTrackPhotoUrl: this.props.chrome_country.photoUrl,
-          selectedTrackTrackUrl: this.props.chrome_country.trackUrl,
-          selectedTrack: this.props.chrome_country
+          selectedTrackPhotoUrl: this.props.ocean_of_tears.photoUrl,
+          selectedTrackTrackUrl: this.props.ocean_of_tears.trackUrl,
+          selectedTrack: this.props.ocean_of_tears
         });
       }
     );
@@ -83,8 +83,8 @@ class Discover extends React.Component {
     }
     
     let trackArr = [
-      chrome_country,
       ocean_of_tears,
+      chrome_country,
       gone,
       control,
       stripped,
@@ -98,7 +98,7 @@ class Discover extends React.Component {
     ];
 
     let scrollbarTracks = trackArr.map((track) => {
-      if(track.id === this.state.selectedTrackId) {
+      if(track.id === this.props.trackPlaying.track_id) {
         return (
           <li key={track.id} id="selected"><p className="artist">{track.artist}</p> - <p className="track">{track.title}</p></li>
         );
@@ -120,20 +120,11 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={flamboyant} />
             </div>
           }
-          <p id="track-title">Flamboyant</p>
-          <p>Dorian Electra</p>
-        </div>
-        <div id="track-container">
-          <img src={ocean_of_tears.photoUrl} />
-          <Link id="play-pause-wrapper" to={`/tracks/${ocean_of_tears.id}`} onMouseEnter={() => this.setState({hoveredTrack: "Ocean of Tears1"})} onMouseLeave={() => this.setState({hoveredTrack: ""})}>
+          <Link to={`/tracks/${flamboyant.id}`} >
+            <p id="track-title">Flamboyant</p>
           </Link>
-          {this.state.hoveredTrack === "Ocean of Tears1" && 
-            <div onMouseEnter={() => this.setState({ hoveredTrack: "Ocean of Tears1" })}>
-              <TrackPlayPauseContainer track={ocean_of_tears} />
-            </div>
-          }
-          <p id="track-title">Ocean of Tears</p>
-          <p>Caroline Polachek</p>
+          
+          <p>Dorian Electra</p>
         </div>
         <div id="track-container">
           <img src={that_world.photoUrl} />
@@ -144,7 +135,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={that_world} />
             </div>
           }
-          <p id="track-title">That World</p>
+          <Link to={`/tracks/${that_world.id}`} >
+            <p id="track-title">That World</p>
+          </Link>
           <p>Tim Hecker</p>
         </div>
         <div id="track-container">
@@ -156,7 +149,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={last_bloom} />
             </div>
           }
-          <p id="track-title">Last Bloom</p>
+          <Link to={`/tracks/${last_bloom.id}`} >
+            <p id="track-title">Last Bloom</p>
+          </Link>
           <p>Floating Points</p>
         </div>
         <div id="track-container">
@@ -168,7 +163,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={hand_crushed_by_a_mallet} />
             </div>
           }
-          <p id="track-title">Hand Crushed By A Mallet</p>
+          <Link to={`/tracks/${hand_crushed_by_a_mallet.id}`} >
+            <p id="track-title">Hand Crushed By A Mallet</p>
+          </Link>
           <p>100 Gecs</p>
         </div>
         <div id="track-container">
@@ -180,7 +177,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={gone} />
             </div>
           }
-          <p id="track-title">Gone</p>
+          <Link to={`/tracks/${gone.id}`} >
+            <p id="track-title">Gone</p>
+          </Link>
           <p>Charli XCX</p>
         </div>
         <div id="track-container">
@@ -192,8 +191,24 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={touch} />
             </div>
           }
-          <p id="track-title">touch</p>
+          <Link to={`/tracks/${touch.id}`} >
+            <p id="track-title">touch</p>
+          </Link>
           <p>Galen Tipton</p>
+        </div>
+        <div id="track-container">
+          <img src={ocean_of_tears.photoUrl} />
+          <Link id="play-pause-wrapper" to={`/tracks/${ocean_of_tears.id}`} onMouseEnter={() => this.setState({ hoveredTrack: "Ocean of Tears1" })} onMouseLeave={() => this.setState({ hoveredTrack: "" })}>
+          </Link>
+          {this.state.hoveredTrack === "Ocean of Tears1" &&
+            <div onMouseEnter={() => this.setState({ hoveredTrack: "Ocean of Tears1" })}>
+              <TrackPlayPauseContainer track={ocean_of_tears} />
+            </div>
+          }
+          <Link to={`/tracks/${ocean_of_tears.id}`} >
+            <p id="track-title">Ocean of Tears</p>
+          </Link>
+          <p>Caroline Polachek</p>
         </div>
       </>
     );
@@ -209,7 +224,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={stripped} />
             </div>
           }
-          <p id="track-title">Stripped</p>
+          <Link to={`/tracks/${stripped.id}`} >
+            <p id="track-title">Stripped</p>
+          </Link>
           <p>Depeche Mode</p>
         </div>
         <div id="track-container">
@@ -221,7 +238,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={control} />
             </div>
           }
-          <p id="track-title">Control</p>
+          <Link to={`/tracks/${control.id}`} >
+            <p id="track-title">Control</p>
+          </Link>
           <p>Janet Jackson</p>
         </div>
         <div id="track-container">
@@ -233,7 +252,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={running_up_that_hill} />
             </div>
           }
-          <p id="track-title">Running Up That Hill</p>
+          <Link to={`/tracks/${running_up_that_hill.id}`} >
+            <p id="track-title">Running Up That Hill</p>
+          </Link>
           <p>Kate Bush</p>
         </div>
         <div id="track-container">
@@ -245,7 +266,9 @@ class Discover extends React.Component {
               <TrackPlayPauseContainer track={mercy_street} />
             </div>
           }
-          <p id="track-title">Mercy Street</p>
+          <Link to={`/tracks/${mercy_street.id}`} >
+            <p id="track-title">Mercy Street</p>
+          </Link>
           <p>Peter Gabriel</p>
         </div>
       </>

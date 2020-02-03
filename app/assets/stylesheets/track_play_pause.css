@@ -9,18 +9,18 @@
 
 #play-btn-wrapper .play-sign {
   position: relative;
-  left: 15px;
+  left: 14px;
   top: 12px;
-  height: 25px;
-  width: 25px;
+  height: 26px;
+  width: 26px;
   z-index: 3;
 }
 
 #play-btn-wrapper .pause-sign {
   position: relative;
   left: 14px;
-  top: 14px;
-  height: 22px;
-  width: 22px;
+  top: 12px;
+  height: 24px;
+  width: 24px;
   z-index: 3;
 }
