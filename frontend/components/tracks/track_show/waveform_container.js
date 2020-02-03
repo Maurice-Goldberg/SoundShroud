@@ -6,7 +6,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         track: ownProps.track,
         trackPlaying: state.ui.trackPlaying,
-        audioPlayer: ownProps.audioPlayer
+        audioPlayer: ownProps.audioPlayer,
+        barHeight: ownProps.barHeight
     }
 }
 

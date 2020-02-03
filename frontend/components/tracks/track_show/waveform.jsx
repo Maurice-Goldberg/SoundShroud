@@ -20,11 +20,11 @@ class WaveForm extends React.Component {
         const {track, trackPlaying} = this.props;
         if(track) {
             this.wavesurfer = WaveSurfer.create({
-                container: '#waveform',
+                container: `#waveform-${track.id}`,
                 waveColor: 'white',
                 progressColor: 'darkblue',
                 barGraph: 10,
-                barHeight: 1,
+                barHeight: this.props.barHeight || 1,
                 barWidth: 2,
                 fillParent: true,
                 cursorWidth: 0,
@@ -99,7 +99,7 @@ class WaveForm extends React.Component {
 
         return (
             <div id="waveform-wrapper">
-                <div id="waveform" ref={this.waveformRef}>
+                <div id={`waveform-${track.id}`} ref={this.waveformRef}>
 
                 </div>
 
@@ -116,15 +116,13 @@ class WaveForm extends React.Component {
                 <input
                     id={trackScrollbarId}
                     type="range"
-                    readOnly
                     ref={this.scrollbar}
                     min="0"
                     max={scrollbarMax}
                     defaultValue="0"
                 />
-                {this.duration}
-
                 <div id="click-barrier"></div>
+                {this.duration}
             </div>
         );
     }

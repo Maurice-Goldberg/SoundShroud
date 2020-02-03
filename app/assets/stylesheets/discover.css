@@ -133,6 +133,11 @@
   inset: 0 0 0 1px rgba(0,0,0,.1);
 }
 
+#track-container p:last-child:hover {
+  cursor: pointer;
+  color: rgb(226, 226, 226);
+}
+
 #play-pause-wrapper {
   position: absolute;
   top: 0;

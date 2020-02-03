@@ -47,6 +47,13 @@ class TrackShow extends React.Component {
         if (Object.entries(track).length === 0) {
             return null;
         } else {
+            let responseBtns = <></>;
+            if (currentUser) {
+                if (currentUser.id === track.account_id) {
+                    responseBtns = this.responseButtons();
+                }
+            }
+
             return (
                 <>
                     <NavBarContainer />
@@ -88,13 +95,13 @@ class TrackShow extends React.Component {
                             </div>
                             <div className="bottom-info">
                                 <div className="track-response-bar">
-                                    <div className="comment-bar">
-                                        <img className="current-user-avatar"/>
+                                    {/* {currentUser && <div className="comment-bar">
+                                        <img className="current-user-avatar" src={currentUser.photoUrl}/>
                                         <input className="comment-input"
                                         type="text"
                                         placeholder="Write a comment"/>
-                                    </div>
-                                    {currentUser ? this.responseButtons : <></>}
+                                    </div>} */}
+                                    {responseBtns}
                                 </div>
                                 <div className="profile-and-description">
                                     <div className="t-s-artist-profile">

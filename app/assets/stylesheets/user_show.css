@@ -2,6 +2,7 @@
     margin: 0 auto;
     width: 1230px;
     display: flex;
+    align-items: start;
     flex-direction: column;
     background: rgb(36, 36, 36);
     
@@ -47,35 +48,162 @@
     background: linear-gradient(200deg, rgb(64, 68, 87) 10%, rgb(104, 104, 147) 80%, rgb(134, 134, 235) 100%);
 }
 
+#track-section-wrapper {
+    margin-left: 25px;
+    margin-bottom: 70px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 1230px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 5px;
+
+}
+
+.user-show-wrapper #tracks-header {
+    font-size: 25px;
+    padding: 30px 1090px 15px 10px;
+    border-bottom: 1px solid darkslateblue;
+}
+
+.user-show-wrapper .track-hero-wrapper {
+    width: 880px;
+    border-right: 1px solid darkslateblue;
+    padding-top: 10px;
+}
+
 .user-show-wrapper .track-hero {
     background: transparent;
-    margin: 10px 20px 10px 20px;
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    height: 180px;
+}
+
+.user-show-wrapper .right-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: -7px;
 }
 
 .user-show-wrapper .track-cover {
     height: 175px;
     width: 175px;
+    margin-left: 15px;
+    margin-right: -10px;
 }
 
-.user-show-wrapper .left-wrapper {
+.user-show-wrapper .track-text-and-creation-time {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    width: 65%;
+    justify-content: space-between;
 }
 
-.user-show-wrapper .play-btn-track-text-and-creation-time {
-    width: 100px;
+.user-show-wrapper .creation-time-elapsed {
+    position: static;
+    margin-top: 40px;
+    font-size: 12px;
 }
 
-.user-show-wrapper {
-
+.user-show-wrapper .track-name:hover {
+    cursor: pointer;
 }
 
-.user-show-wrapper {
-
+.user-show-wrapper .show-track-player {
+  margin-top: 3px;
+  width: 600px;
+  height: 0px;
 }
 
-.user-show-wrapper {
-
+.user-show-wrapper #click-barrier {
+    height: 70px;
 }
+
+.user-show-wrapper .track-name {
+    font-size: 16px;
+    background: transparent;
+    padding-top: 0px;
+    margin-top: 6px;
+}
+
+.user-show-wrapper .artist-name {
+    font-size: 12px;
+    background: transparent;
+}
+
+.user-show-wrapper #duration-bar {
+    left: 570px;
+}
+
+.user-show-wrapper #waveform-loading-icon {
+    top: -15px;
+    left: 180px;
+    height: 150px;
+}
+
+.user-show-wrapper #loading-text {
+    left: 225px;
+    top: 30px;
+    font-size: 15px;
+}
+
+#user-show-play-btn-wrapper .play-btn {
+  left: 30px;
+  top: 30px;
+  height: 35px;
+  width: 35px;
+  margin-top: 3px;
+}
+
+#user-show-play-btn-wrapper .play-sign {
+  position: relative;
+  left: 6px;
+  top: 4px;
+  height: 17px;
+  width: 17px;
+  z-index: 3;
+}
+
+#user-show-play-btn-wrapper .pause-sign {
+  position: relative;
+  left: 6px;
+  top: 4px;
+  height: 14px;
+  width: 14px;
+  z-index: 3;
+}
+
+.user-show-wrapper .edit-btn {
+  width: 15px;
+  height: 10px;
+  font-size: 11px;
+  padding: 3px 3px 10px 27px;
+  z-index: 5;
+}
+
+.user-show-wrapper .edit-btn p {
+    margin-left: -2px;
+}
+
+.user-show-wrapper .delete-btn {
+    width: 15px;
+    height: 10px;
+    font-size: 11px;
+    padding: 3px 3px 10px 40px;
+    z-index: 5;
+}
+
+.user-show-wrapper .delete-btn p {
+    margin-left: -4px;
+}
+
+.user-show-wrapper .response-buttons-bar {
+    margin-top: 100px;
+    margin-left: 34px;
+}
+
 

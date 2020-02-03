@@ -20,9 +20,8 @@
 
 .bottom-info {
   flex-basis: 64.2%;
-  margin: 0 auto;
   position: relative;
-  left: -180px;
+  margin-left: 15px;
 }
 
 .left-wrapper {
@@ -188,6 +187,19 @@
   z-index: 2;
   top: 60px;
   left: -2px;
+  /* pointer-events: none; */
+}
+
+#track-show-scrollbar::-webkit-slider-thumb {
+  pointer-events: none;
+}
+
+#track-show-scrollbar::-ms-thumb {
+  pointer-events :none;
+}
+
+#track-show-scrollbar::-moz-slider-thumb {
+  pointer-events: none;
 }
 
 #track-show-scrollbar-loading {
@@ -238,10 +250,10 @@ audio:focus {
   width: 30px;
   height: 20px;
   font-size: 13px;
+  padding: 5px 5px 5px 25px;
   border: 1px solid black;
   background: rgb(109, 109, 109);
   color: white;
-  padding: 5px 5px 5px 25px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -314,7 +326,7 @@ audio:focus {
 .current-user-avatar {
   width: 31px;
   height: 31px;
-  border: 1px solid white;
+  margin-right: 3px;
 }
 
 .comment-bar {
@@ -324,6 +336,8 @@ audio:focus {
 }
 
 .response-buttons-bar {
+  margin-top: 5px;
+  margin-bottom: 30px;
   width: 820px;
   height: 20px;
   display: flex;
@@ -334,9 +348,11 @@ audio:focus {
   height: 29px;
   width: 780px;
   padding-left: 10px;
-  background: black;
-  border: gray;
+  background-color: #080808;
+  border: darkslateblue;
   border-radius: 2px;
+  color: white;
+  font-size: 14px;
 }
 
 .comment-input::placeholder {
@@ -345,9 +361,11 @@ audio:focus {
 
 .comment-input:focus {
   outline-color: darkslateblue;
+  background-color: black;
 }
 
 .profile-and-description {
+  margin-top: -20px;
   display: flex;
 }
 
@@ -381,7 +399,8 @@ audio:focus {
 
 .track-description {
   color: white;
-  margin-left: 30px;
+  margin-left: 50px;
+  margin-top: 5px;
 }
 
 .track-comments {

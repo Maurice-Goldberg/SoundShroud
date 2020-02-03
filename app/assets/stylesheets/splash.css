@@ -208,6 +208,10 @@
   margin-top: 5px;
 }
 
+#track-container #artist-name:hover {
+  color: rgb(218, 218, 218);
+}
+
 #thank-you-text {
   font-size: 35px;
   color: white;
