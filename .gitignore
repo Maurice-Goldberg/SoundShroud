@@ -2,3 +2,4 @@ log/
 node_modules/
 bundle.js
 bundle.js.map
+log/development.log
