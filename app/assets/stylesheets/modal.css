@@ -42,7 +42,7 @@
   position: relative;
 }
 
-#first-form .loading-group {
+/* #first-form .loading-group {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -52,18 +52,45 @@
   animation-name: fade-in;
   animation-duration: 0.25s;
   z-index: 13;
-}
+} */
 
-#first-form .loading-icon {
+/* #first-form .loading-icon {
   height: 450px;
-}
+} */
 
-#first-form .loading-text {
+/* #first-form .loading-text {
   position: absolute;
   left: 280px;
   top: 160px;
   z-index: 14;
   font-size: 50px;
+} */
+
+.session-loading-group {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.342);
+    z-index: 15;
+}
+
+.session-loading-text {
+    position: absolute;
+    z-index: 16;
+    font-size: 33px;
+    top: 160px;
+    left: 130px;
+}
+
+.session-loading-icon {
+    position: absolute;
+    z-index: 15;
+    height: 350px;
+    width: 350px;
+    left: 50px;
+    top: 50px;
 }
 
 #top-section {

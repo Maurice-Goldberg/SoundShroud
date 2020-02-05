@@ -97,7 +97,7 @@ class UploadDetails extends React.Component {
                     <div>
                         <div className="image-input-text-bar">
                             <label className="image-input-text">Upload image
-                    <img className="camera-png" src={window.camera} />
+                                <img className="camera-png" src={window.camera} />
                                 <input
                                     className="image-input"
                                     type="file"

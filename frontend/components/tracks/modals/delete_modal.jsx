@@ -1,6 +1,8 @@
 import React from 'react';
 import {withRouter} from 'react-router';
 import {formatUploadTime} from '../../../util/track_util';
+import TrackPlayPauseContainer from '../../tracks/track_play_pause_container';
+import WaveFormContainer from '../track_show/waveform_container';
 
 class DeleteModal extends React.Component {
     constructor(props) {
@@ -8,14 +10,20 @@ class DeleteModal extends React.Component {
         this.deleteTrackHelper = this.deleteTrackHelper.bind(this);
     }
 
+
     deleteTrackHelper(id) {
         this.props.deleteTrack(id);
-        this.props.history.push('/discover');
+        if(this.props.context === "track show") {
+            this.props.history.push('/discover');
+        } else {
+            this.props.forceUserShowUpdate();
+            this.props.history.push(`/users/${this.props.currentUserId}`);
+        }
         this.props.closeModal();
     }
 
     render() {
-        const {closeModal, track, artist} = this.props;
+        const {closeModal, track, artist, trackPlaying} = this.props;
         return (
             <div className="modal-background" onClick={closeModal}>
                 <div className="delete-modal-child">
@@ -25,9 +33,10 @@ class DeleteModal extends React.Component {
                             <div className="track-player">
                                 <div className="track-player-top-row">
                                     <div className="play-btn-track-text-and-creation-time">
-                                        <span className="play-btn"></span>
-                                        <div className="play-sign"></div>
-                                        <div className="pause-sign"></div>
+                                        <TrackPlayPauseContainer
+                                            track={track}
+                                            currentTrackId={trackPlaying.track_id}
+                                        />
                                         <div className="track-text-and-creation-time">
                                             <div className="track-text">
                                                 <div className="artist-name-wrapper">
@@ -43,16 +52,14 @@ class DeleteModal extends React.Component {
                                 </div>
 
                                 <div className="show-track-player">
-                                    <audio className="audio-player" controls>
-                                        <source src={track.trackUrl} type="audio/mpeg" />
-                                    </audio>
+                                    <WaveFormContainer track={track} audioPlayer={this.props.audioPlayer} barHeight={0.5} />
                                 </div>
-                                <div className="comment-bar">
+                                {/* <div className="comment-bar">
                                     <img className="current-user-avatar" />
                                     <input className="comment-input"
                                         type="text"
                                         placeholder="Write a comment" />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="divider"></div>

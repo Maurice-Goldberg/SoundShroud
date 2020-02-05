@@ -26,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchTracks: () => dispatch(fetchTracks()),
         openEditModal: () => dispatch(openModal("Edit")),
         openDeleteModal: () => dispatch(openModal("Delete")),
+        openProfilePictureModal: () => dispatch(openModal("Profile Picture")),
         closeModal: () => dispatch(closeModal()),
     }
 }

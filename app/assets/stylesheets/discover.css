@@ -6,8 +6,6 @@
   padding-bottom: 60px;
   left: 22px;
   background: rgb(36, 36, 36);
-  animation-name: fade-in;
-  animation-duration: 0.5s;
 }
 
 .discover-wrapper {
@@ -255,4 +253,13 @@ a {
   height: 100%;
   animation-name: fade-in;
   animation-duration: 0.5s;
+}
+
+.playlist-cover-loading {
+  display: none;
+}
+
+.playlist-cover .loading-icon {
+  width: 175px;
+  height: 175px;
 }

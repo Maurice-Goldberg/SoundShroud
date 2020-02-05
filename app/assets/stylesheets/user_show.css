@@ -206,4 +206,23 @@
     margin-left: 34px;
 }
 
+.user-show-wrapper .image-input {
+    left: -90px;
+    top: 150px;
+}
+
+.user-show-wrapper .image-input-text {
+    left: 45px;
+    top: 150px;
+}
+
+.user-show-wrapper #filled-profile-picture .image-input {
+    top: -77px;
+    left: 70px;
+}
+
+.user-show-wrapper #filled-profile-picture .image-input-text {
+    top: -77px;
+    left: 70px;
+}
 

@@ -18,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         track: track,
         artist: artist,
+        context: ownProps.context,
         currentUser: currentUser(state),
         currentTrackId: state.ui.trackPlaying.track_id,
         trackPlaying: state.ui.trackPlaying,

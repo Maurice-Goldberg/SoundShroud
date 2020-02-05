@@ -7,7 +7,9 @@ const mapStateToProps = (state, ownProps) => {
     return {
         track: ownProps.track,
         artist: ownProps.artist,
-        currentUserId: ownProps.currentUserId
+        currentUserId: ownProps.currentUserId,
+        trackPlaying: state.ui.trackPlaying,
+        forceUserShowUpdate: ownProps.forceUserShowUpdate
     }
 }
 

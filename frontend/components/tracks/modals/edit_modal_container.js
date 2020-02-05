@@ -7,8 +7,10 @@ import {currentUser} from '../../../reducers/selectors';
 const mapStateToProps = (state, ownProps) => {
     return {
         track: ownProps.track,
+        context: ownProps.context,
         currentUserId: ownProps.currentUserId,
-        currentUser: currentUser(state)
+        currentUser: currentUser(state),
+        forceUserShowUpdate: ownProps.forceUserShowUpdate
     }
 }
 

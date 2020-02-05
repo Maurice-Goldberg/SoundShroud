@@ -4,7 +4,7 @@
   flex-direction: column;
   animation-name: fade-in;
   animation-duration: 0.5s;
-  padding-bottom: 100px;
+  padding-bottom: 75px;
 }
 
 .track-hero {
@@ -16,12 +16,6 @@
   height: 380px;
   background: rgb(0,0,0);
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgba(69,0,173,1) 100%);
-}
-
-.bottom-info {
-  flex-basis: 64.2%;
-  position: relative;
-  margin-left: 15px;
 }
 
 .left-wrapper {
@@ -239,12 +233,30 @@ audio:focus {
   outline: none;
 }
 
+.bottom-info {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 1230px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .track-response-bar {
-  padding: 25px 0 0 30px;
+  border-top: 1px solid rgb(49, 49, 49);
+  width: 800px;
+  height: 100%;
+  padding: 10px 0 0 30px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
 }
+
+/* .right-border {
+  border-left: 1px solid rgb(49, 49, 49);
+} */
 
 .edit-btn {
   width: 30px;
@@ -367,6 +379,7 @@ audio:focus {
 .profile-and-description {
   margin-top: -20px;
   display: flex;
+  flex-direction: row;
 }
 
 .t-s-artist-profile {

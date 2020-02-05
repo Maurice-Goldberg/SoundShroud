@@ -11,7 +11,8 @@ class Discover extends React.Component {
       selectedTrackId: "",
       selectedTrackPhotoUrl: "",
       selectedTrackTrackUrl: "",
-      selectedTrack: ""
+      selectedTrack: "",
+      loading: true
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -305,6 +306,11 @@ class Discover extends React.Component {
       </>
     )
 
+    let imgClass = "playlist-cover-loading"
+    if(!this.state.loading) {
+      imgClass = "playlist-cover-img";
+    }
+
     return (
       <>
         <NavBarContainer />
@@ -316,7 +322,9 @@ class Discover extends React.Component {
                 <h3 className="discover-panel-subtitle">All of SoundShroud. Just for you.</h3>
                 <div className="tracks-panel">
                   <div className="playlist-cover">
-                    <img src={this.state.selectedTrackPhotoUrl} className="playlist-cover-img" />
+                    {this.state.loading && <img className="loading-icon" src={window.loading_icon} />}
+                    
+                    <img src={this.state.selectedTrackPhotoUrl} className={imgClass} onLoad={() => this.setState({ loading: false })}/>
                     <Link id="play-pause-wrapper" to={`/tracks/${this.state.selectedTrack.id}`} onMouseEnter={() => this.setState({ hoveredTrack: this.state.selectedTrack.title })} onMouseLeave={() => this.setState({ hoveredTrack: "" })}>
                     </Link>
                     {this.state.hoveredTrack === this.state.selectedTrack.title &&

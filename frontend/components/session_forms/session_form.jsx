@@ -11,7 +11,8 @@ class SessionForm extends React.Component {
         password: "",
         account_name: ""
       },
-      formToRender: "First form"
+      formToRender: "First form",
+      loading: false
     };
     this.userExists;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,22 +25,29 @@ class SessionForm extends React.Component {
 
   handleSubmit(formType) {
     const { submitUser } = this.props;
-    submitUser(this.state.userParams).then(() => {
-      if(this.props.errors.length === 0) {
+    this.setState({ loading: true }, () => {
+      submitUser(this.state.userParams).then(() => {
+        if(this.props.errors.length === 0) {
+          this.setState({
+            userParams: {
+              email: "",
+              password: "",
+              account_name: ""
+            },
+            formToRender: formType,
+            loading: false
+          }, () => {
+            this.props.closeModal();
+            this.props.history.push('/discover');  
+          });
+        }
+      }).fail(() => {
         this.setState({
-          userParams: {
-            email: "",
-            password: "",
-            account_name: ""
-          },
-          formToRender: formType,
-          loading: false
-        }, () => {
-          this.props.closeModal();
-          this.props.history.push('/discover');  
+          loading: false,
+          formToRender: formType
         });
-      }
-    });
+      });
+    })
   }
 
   handleDemoSignIn() {
@@ -47,15 +55,9 @@ class SessionForm extends React.Component {
       userParams: {
         email: "demouser@gmail.com",
         password: "password123"
-      },
-      loading: true
+      }
     }, () => {
-      this.setState({ loading: false }, () => {
-        this.handleSubmit("First form");
-      });
-      // setTimeout(() => {
-      //   this.props.history.push('/discover');
-      // }, 1000);
+      this.handleSubmit("First form");
     });
   }
 
@@ -192,12 +194,6 @@ class SessionForm extends React.Component {
   firstForm() {
     return (
       <div id="first-form">
-        {this.state.loading &&
-          <div className="loading-group">
-            <p className="loading-text">Logging in...</p>
-            <img className="loading-icon" src={window.loading_icon} />
-          </div>
-        }
         <div id="top-section">
           {this.props.formType === "Log in" &&
           <p
@@ -398,6 +394,12 @@ class SessionForm extends React.Component {
 
     return (
         <div className="session-form" >
+            {this.state.loading &&
+              <div className="session-loading-group">
+                <p className="session-loading-text">Logging in...</p>
+                <img className="session-loading-icon" src={window.loading_icon}/>
+              </div>
+            }
           {form}
         </div>
     );

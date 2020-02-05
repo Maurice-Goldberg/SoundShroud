@@ -27,43 +27,72 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  position: relative;
-  left: -25px;
+  margin-top: 10px;
   width: 420px;
+  left: 0px;
+  top: 0px;
+}
+
+.delete-modal-child #play-btn-wrapper .play-btn {
+  margin: 40px 0px 0px 220px;
+  left: 0px;
+  top: 0px;
+}
+
+.delete-modal-child .track-text-and-creation-time {
+  margin-left: 80px;
+    left: 0px;
+  top: 0px;
 }
 
 .track-player-top-row {
   display: flex;
   flex-direction: row;
+    left: 0px;
+  top: 0px;
 }
 
 .delete-modal-child .track-name {
   font-size: 17px;
   background-color: transparent;
-  position: relative;
-  top: -10px;
+    left: 0px;
+  top: 0px;
 }
 
 .delete-modal-child .artist-name {
   font-size: 11px;
   background-color: transparent;
+    left: 0px;
+  top: 0px;
 }
 
 .delete-modal-child .creation-time-elapsed {
   font-size: 11px;
   color: rgb(181, 180, 180);
-  margin-left: 430px;
-  margin-top: 33px;
+  margin-left: 450px;
+  margin-top: 42px;
+    left: 0px;
+  top: 0px;
+}
+
+.delete-modal-child #duration-bar {
+  /* margin-left: -250px; */
+  left: 0px;
+  top: 0px;
 }
 
 .delete-modal-child .track-cover {
   width: 160px;
   height: 160px;
   margin: 25px;
+    left: 0px;
+  top: 0px;
 }
 
 .delete-modal-child .track-name-wrapper {
   width: 340px;
+    left: 0px;
+  top: 0px;
 }
 
 .delete-modal-child .track-name {
@@ -71,13 +100,36 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+    left: 0px;
+  top: 0px;
 }
 
 .delete-modal-child .show-track-player {
-  width: 365px;
+  width: 350px;
   height: 100px;
-  position: relative;
-  top: -180px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+    left: 0px;
+  top: 0px;
+}
+
+.delete-modal-child #waveform-wrapper {
+  width: 350px;
+    left: 0px;
+  top: 0px;
+}
+
+.delete-modal-child #waveform-loading-icon {
+  left: 125px;
+  top: 0px;
+  height: 100px;
+  width: 100px;
+}
+
+.delete-modal-child #loading-text {
+  font-size: 12px;
+  left: 150px;
+  top: 25px;
 }
 
 .delete-modal-child audio {
@@ -89,7 +141,7 @@
   width: 40px;
 }
 
-.delete-modal-child .comment-input {
+/* .delete-modal-child .comment-input {
   height: 18px;
   width: 300px;
   padding-left: 10px;
@@ -104,7 +156,7 @@
   top: -190px;
   height: 20px;
   width: 20px;
-}
+} */
 
 .delete-modal-child button {
   font-size: 13px;
@@ -128,8 +180,6 @@
 }
 
 .divider, .bottom-half {
-  position: relative;
-  top: -170px;
 }
 
 .delete-prompt {

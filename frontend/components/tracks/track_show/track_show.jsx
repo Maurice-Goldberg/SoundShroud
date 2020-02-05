@@ -58,8 +58,8 @@ class TrackShow extends React.Component {
                 <>
                     <NavBarContainer />
                     <div className="track-show-container">
-                    {modal === "Edit" && <EditModalContainer track={track} currentUserId={currentUser.id}/>}
-                    {modal === "Delete" && <DeleteModalContainer track={track} currentUserId={currentUser.id} artist={artist} />}
+                    {modal === "Edit" && <EditModalContainer track={track} currentUserId={currentUser.id} context={"track show"}/>}
+                    {modal === "Delete" && <DeleteModalContainer track={track} currentUserId={currentUser.id} artist={artist} context={"track show"} />}
                         <div className="track-show-center-panel">
                             <div className="track-hero-wrapper">
                                 <div className="track-hero">
@@ -115,7 +115,8 @@ class TrackShow extends React.Component {
                                         </Link>
                                     </div>
                                     <p className="track-description">{track.description}</p>
-                                    <ul className="track-comments"></ul>
+                                    {/* <div className="right-border"></div> */}
+                                    {/* <ul className="track-comments"></ul> */}
                                 </div>
                                 <div className="logo-footer"></div>
                             </div>
