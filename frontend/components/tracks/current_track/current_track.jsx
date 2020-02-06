@@ -34,11 +34,11 @@ class CurrentTrack extends React.Component {
     }
 
     handlePlayPauseClick() {
+        this.clearPlayingTimeUpdates();
+        clearInterval(this.intervalId);
         if(this.props.playing) {
             this.props.pauseTrack();
             this.props.audioPlayer.current.pause();
-            this.clearPlayingTimeUpdates();
-            clearInterval(this.intervalId);
         } else {
             this.props.playTrack();
             this.props.audioPlayer.current.play();
@@ -83,9 +83,6 @@ class CurrentTrack extends React.Component {
     }
 
     skipTrack() {
-        //commented out code will be used when playlist functionality is implemented
-
-        // this.audioPlayer.current.currentTime = this.audioPlayer.current.duration;
         this.setState({
             playing: false,
             timeElapsed: 0
@@ -153,10 +150,6 @@ class CurrentTrack extends React.Component {
             trackPlaying: this.props.trackPlaying
         });
         //maybe i have to make it play automatically?
-    }
-
-    componentDidMount() {
-        this.props.fetchTracks();
     }
 
     render() {

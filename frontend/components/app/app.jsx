@@ -30,7 +30,7 @@ class App extends React.Component {
           <Route exact path='/' component={SplashContainer} />
           <Route exact path='/discover' component={DiscoverContainer} />
           <Route exact path='/tracks/:trackId' render={(props) => <TrackShowContainer audioPlayer={this.audioPlayer} />} />
-          <Route exact path='/users/:userId' render={(props) => <UserShowContainer audioPlayer={this.audioPlayer} />}/>
+          <Route exact path='/users/:userId' component={UserShowContainer}/>
           <ProtectedRoute exact path='/upload' component={UploadContainer} />
           <ProtectedRoute exact path='/logout' component={LogoutNavBarContainer} />
         </div>

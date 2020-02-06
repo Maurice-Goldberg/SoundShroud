@@ -10,11 +10,6 @@ class TrackPlayPause extends React.Component {
     handleClick() {
         let audioPlayer = document.getElementById("audio-player");
 
-        //vertical select not working yet for some reason
-        if(this.props.verticalSelect) {
-            this.props.verticalSelect();
-        }
-
         if (this.props.playing && this.props.track.id === this.props.trackPlayingId) {
             this.props.pauseTrack();
             audioPlayer.pause();
