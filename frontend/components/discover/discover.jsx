@@ -32,6 +32,7 @@ class Discover extends React.Component {
       selectedTrack: track
     }, () => {
       this.props.receiveCurrentTrack(track);
+      clearInterval(this.props.intervalId);
       this.props.playTrack();
       audioPlayer.setAttribute("autoPlay", "");
       audioPlayer.play();
@@ -322,7 +323,6 @@ class Discover extends React.Component {
                 <div className="tracks-panel">
                   <div className="playlist-cover">
                     {this.state.loading && <img className="loading-icon" src={window.loading_icon} />}
-                    
                     <img src={this.state.selectedTrackPhotoUrl} className={imgClass} onLoad={() => this.setState({ loading: false })}/>
                     <Link id="play-pause-wrapper" to={`/tracks/${this.state.selectedTrack.id}`} onMouseEnter={() => this.setState({ hoveredTrack: this.state.selectedTrack.title })} onMouseLeave={() => this.setState({ hoveredTrack: "" })}>
                     </Link>
@@ -344,25 +344,6 @@ class Discover extends React.Component {
                   </ul>
                 </div>
               </div>
-              {/* <div className="best-of">
-                <h2 className="discover-panel-header">Best of 2019</h2>
-                <h3 className="discover-panel-subtitle">Our top SoundShroud 2019 picks.</h3>
-                <div className="tracks-panel-wrapper">
-                  <div className="tracks-panel">
-                    <div className="playlist-cover">
-                      <img src={ocean_of_tears.photoUrl} alt="Caroline Polachek" className="playlist-cover-img" />
-                      <Link id="play-pause-wrapper" to={`/tracks/${ocean_of_tears.id}`} onMouseEnter={() => this.setState({ hoveredTrack: "Ocean of Tears2" })} onMouseLeave={() => this.setState({ hoveredTrack: "" })}>
-                      </Link>
-                      {this.state.hoveredTrack === "Ocean of Tears2" &&
-                        <div onMouseEnter={() => this.setState({ hoveredTrack: "Ocean of Tears2" })}>
-                          <TrackPlayPauseContainer track={ocean_of_tears} />
-                        </div>
-                      }
-                    </div>
-                    <ul className="tracks">{scrollbarTracks}</ul>
-                  </div>
-                </div>
-              </div> */}
               <div className="soundshroud-classics">
                 <h2 className="discover-panel-header">SoundShroud Classics</h2>
                 <h3 className="discover-panel-subtitle">The oldies never get old if they're good</h3>
@@ -371,6 +352,24 @@ class Discover extends React.Component {
                     {oldTracks}
                   </ul>
                 </div>
+              </div>
+            </div>
+            <div className="sidebar-panel">
+              <div className="top-section">
+                <img src={window.people}/>
+                <h3>Who to check out</h3>
+              </div>
+              <div className="artists-to-check-out">
+                    {/* <div className="artist">
+                      <img src={ this.props.hunnid_gecs } />
+                      <div className="name-and-track-count">
+                        <p className="name">100 Gecs</p>
+                        <div className="track-count">
+                          <img src={window.track}/>
+                          <p>{this.props.hunnid_gecs.track_ids.length}</p>
+                        </div>
+                      </div>
+                    </div> */}
               </div>
             </div>
           </div>

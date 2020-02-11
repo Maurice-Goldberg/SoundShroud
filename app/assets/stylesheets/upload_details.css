@@ -1,5 +1,6 @@
 .upload-details-page {
     display: flex;
+      padding-top: 60px;
     justify-content: center;
     animation-name: fade-in;
     animation-duration: 0.5s;

@@ -1,5 +1,6 @@
 .track-show-center-panel {
   display: flex;
+    padding-top: 45px;
   justify-content: center;
   flex-direction: column;
   animation-name: fade-in;

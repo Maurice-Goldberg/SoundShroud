@@ -451,7 +451,7 @@ class SessionForm extends React.Component {
     let loadingText;
     if(this.state.formToRender === "Account name") {
       loadingText = "Signing up..."
-    } else if(this.state.formToRender === "Log in") {
+    } else if(this.state.formToRender === "Log in" || this.state.formToRender === "First form") {
       loadingText = "Logging in..."
     }
 

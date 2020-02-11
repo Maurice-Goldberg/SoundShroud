@@ -12,11 +12,13 @@ class UserShow extends React.Component {
     constructor(props) {
         super(props);
 
-        //gotta have the delete modal change the state of UserShow, but the userTracks has to actually point to
-        //an array of userTracks, not DOM elements of user tracks (that can still just happen in the render method)
+        let photoUrl = ""
+        if(props.user) {
+            photoUrl = props.user.photoUrl;
+        }
         this.state = {
-            userTracks: null,
-            photoUrl: props.user.photoUrl,
+            mounted: false,
+            photoUrl: photoUrl,
             possiblePhotoFile: null,
             possiblePhotoUrl: "",
             pictureTextClass: "hidden"
@@ -64,7 +66,6 @@ class UserShow extends React.Component {
 
     pictureArea() {
         if (!this.props.user.photoUrl) {
-            debugger
             if(this.props.currentUser) {
                 if (this.props.user.id === this.props.currentUser.id) {
                     return (
@@ -191,31 +192,34 @@ class UserShow extends React.Component {
     }
 
     componentDidMount() {
-        debugger
-        this.props.fetchUser(this.props.userId).then((user) => {
-            this.setState({
-                photoUrl: user.photoUrl
+        this.setState({mounted: true}, () => {
+            this.props.fetchUser(this.props.userId).then((user) => {
+                this.setState({
+                    photoUrl: user.photoUrl
+                });
             });
-        });
-        this.props.fetchTracks().then(() => {
-            this.setState({
-                userTracks: this.userTracks()
-            })
+            this.props.fetchTracks().then(() => {
+                this.setState({
+                    userTracks: this.userTracks()
+                })
+            });
         });
     }
 
-    // componentWillReceiveProps() {
-    //     if(this.props.userTracks) {
-    //         this.props.fetchUser(this.props.userId).then(
-    //             () => {
-    //                 this.setState({
-    //                     userTracks: this.userTracks(),
-    //                     photoUrl: this.props.user.photoUrl
-    //                 });
-    //             }
-    //         );
-    //     }
-    // }
+    componentDidUpdate() {
+        if(!this.props.userTracks) {
+            this.props.fetchUser(this.props.userId).then((user) => {
+                this.setState({
+                    photoUrl: user.photoUrl
+                });
+            });
+            this.props.fetchTracks().then(() => {
+                this.setState({
+                    userTracks: this.userTracks()
+                })
+            });
+        }
+    }
 
     render() {
         if(!this.props.userTracks) {
@@ -228,6 +232,8 @@ class UserShow extends React.Component {
                 responseBtns = this.responseButtons();
             }
         }
+
+        let userTracks = this.userTracks();
 
         return (
             <>
@@ -248,7 +254,7 @@ class UserShow extends React.Component {
                     <div id="track-section-wrapper">
                         <p id="tracks-header">Tracks</p>
                         <div id="tracks-wrapper">
-                            {this.state.userTracks}
+                            {userTracks}
                         </div>
                     </div>
                 </div>

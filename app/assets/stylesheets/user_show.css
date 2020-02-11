@@ -1,10 +1,13 @@
 .user-show-wrapper {
     margin: 0 auto;
+    padding-top: 40px;
     width: 1230px;
     display: flex;
     align-items: start;
     flex-direction: column;
     background: rgb(36, 36, 36);
+    animation-name: fade-in;
+    animation-duration: 0.5s;
     
 }
 

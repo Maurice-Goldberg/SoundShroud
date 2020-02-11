@@ -1,15 +1,50 @@
 .discover-container {
   margin: 0 auto;
+  padding-top: 40px;
   width: 1230px;
   overflow: hidden;
-  padding-top: 30px;
-  padding-bottom: 60px;
   left: 22px;
   background: rgb(36, 36, 36);
 }
 
 .discover-wrapper {
-  margin-left: 17%;
+  display: flex;
+}
+
+.listening-panel {
+  padding: 30px 15px 60px 30px;
+  width: 835px;
+  border-right: 1px solid darkslateblue;
+}
+
+.sidebar-panel {
+  position: fixed;
+  width: 350px;
+  left: 64.2%;
+}
+
+.sidebar-panel .top-section {
+  display: flex;
+  width: 85%;
+  margin: 30px 0px 0px 22.5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(71, 61, 139, 0.438);
+}
+
+.sidebar-panel h3 {
+  color: rgba(255, 255, 255, 0.616);
+  padding-top: 2px;
+}
+
+.sidebar-panel .top-section img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.artists-to-check-out {
+  display: flex;
+  flex-direction: column;
 }
 
 .discover-panel-header {
@@ -25,7 +60,7 @@
 }
 
 .tracks-panel {
-  width: 830px;
+  width: 815px;
   height: 225px;
   margin-bottom: 30px;
   background: rgb(0,0,0);
@@ -34,8 +69,8 @@
 }
 
 .s-p-track-list {
-  height: 230px;
-  width: 258px;
+  height: 245px;
+  width: 228px;
   border: 1px solid white;
   margin-bottom: 15px;
 }
@@ -195,7 +230,7 @@ a {
 
 .tracks-carousel .tracks {
   display: flex;
-  width: 825px;
+  width: 810px;
   height: 230px;
   margin-bottom: 20px;
   overflow-x: auto;

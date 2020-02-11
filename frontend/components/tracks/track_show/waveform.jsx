@@ -1,6 +1,7 @@
 import React from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import {formatTrackTime} from '../../../util/track_util';
+import {withRouter} from 'react-router-dom';
 
 class WaveForm extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class WaveForm extends React.Component {
 
     componentDidMount() {
         this.props.startLoading();
-        const {track, trackPlaying} = this.props;
+        const {track} = this.props;
         if(track) {
             this.wavesurfer = WaveSurfer.create({
                 container: `#waveform-${track.id}`,
@@ -29,13 +30,13 @@ class WaveForm extends React.Component {
                 barWidth: 2,
                 fillParent: true,
                 cursorWidth: 0,
-                interact: true,
+                interact: false,
                 autoCenter: true,
                 closeAudioContext: true,
                 hideScrollbar: true,
                 partialRender: true,
                 removeMediaElementOnDestroy: true,
-                pixelRatio: 1,
+                pixelRatio: 1
             });
             this.wavesurfer.load(track.trackUrl);
             this.wavesurfer.on('ready', () => {
@@ -46,6 +47,45 @@ class WaveForm extends React.Component {
                 this.setState({ loading: false });
                 this.props.stopLoading();
             });
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.trackId !== this.props.match.params.trackId) {
+            this.wavesurfer.destroy();
+            this.setState({
+                loading: true,
+            });
+            this.props.startLoading();
+            const { track } = this.props;
+            if (track) {
+                this.wavesurfer = WaveSurfer.create({
+                    container: `#waveform-${track.id}`,
+                    waveColor: 'white',
+                    progressColor: 'darkblue',
+                    barGraph: 10,
+                    barHeight: this.props.barHeight || 1,
+                    barWidth: 2,
+                    fillParent: true,
+                    cursorWidth: 0,
+                    interact: false,
+                    autoCenter: true,
+                    closeAudioContext: true,
+                    hideScrollbar: true,
+                    partialRender: true,
+                    removeMediaElementOnDestroy: true,
+                    pixelRatio: 1
+                });
+                this.wavesurfer.load(track.trackUrl);
+                this.wavesurfer.on('ready', () => {
+                    this.duration =
+                        (<p id="duration-bar">
+                            {formatTrackTime(this.wavesurfer.getDuration())}
+                        </p>);
+                    this.setState({ loading: false });
+                    this.props.stopLoading();
+                });
+            }
         }
     }
 
@@ -124,10 +164,10 @@ class WaveForm extends React.Component {
                     defaultValue="0"
                 />
                 <div id="click-barrier"></div>
-                {this.duration}
+                {this.state.loading === false && this.duration}
             </div>
         );
     }
 }
 
-export default WaveForm;
+export default withRouter(WaveForm);
