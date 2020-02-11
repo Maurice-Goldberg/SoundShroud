@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import Discover from './discover';
 import {fetchTracks} from '../../actions/track_actions';
-import {findTrackByTitle, findTrackArtist, findTrack} from '../../reducers/selectors';
+import {findTrackByTitle, findTrackArtist} from '../../reducers/selectors';
 import {receiveCurrentTrack, playTrack} from '../../actions/track_playing_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUserId: state.session.currentUserId,
     trackPlaying: state.ui.trackPlaying,
+    loading: state.ui.loading,
 
     chrome_country: findTrackByTitle(state, "Chrome Country"),
     ocean_of_tears: findTrackByTitle(state, "Ocean of Tears"),

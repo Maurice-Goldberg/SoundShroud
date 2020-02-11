@@ -1,5 +1,5 @@
 import React from 'react';
-import {findByEmail} from '../../util/session_api_util';
+// import {findByEmail} from '../../util/session_api_util';
 import {withRouter} from 'react-router-dom';
 
 class SessionForm extends React.Component {
@@ -14,7 +14,7 @@ class SessionForm extends React.Component {
       formToRender: "First form",
       loading: false
     };
-    this.userExists;
+    this.emailExists; 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoSignIn = this.handleDemoSignIn.bind(this);
     this.userExists = this.userExists.bind(this);
@@ -24,29 +24,92 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(formType) {
-    const { submitUser } = this.props;
+    const { submitUser, demoSubmitUser } = this.props;
     this.setState({ loading: true }, () => {
-      submitUser(this.state.userParams).then(() => {
-        if(this.props.errors.length === 0) {
-          this.setState({
-            userParams: {
-              email: "",
-              password: "",
-              account_name: ""
-            },
-            formToRender: formType,
-            loading: false
-          }, () => {
-            this.props.closeModal();
-            this.props.history.push('/discover');  
-          });
-        }
-      }).fail(() => {
-        this.setState({
-          loading: false,
-          formToRender: formType
+      if(this.props.formType === "Create account" && formType === "First form") {
+        demoSubmitUser(this.state.userParams).then(() => {
+          if (this.props.errors.length === 0) {
+            this.setState({
+              userParams: {
+                email: "",
+                password: "",
+                account_name: ""
+              },
+              formToRender: formType,
+              loading: false
+            }, () => {
+              this.props.closeModal();
+              this.props.history.push('/discover');
+            });
+          }
         });
-      });
+      } else if (this.props.formType === "Create account" && this.state.formToRender === "Log in") {
+        this.props.login(this.state.userParams).then(() => {
+          if (this.props.errors.length === 0) {
+            this.setState({
+              userParams: {
+                email: "",
+                password: "",
+                account_name: ""
+              },
+              formToRender: formType,
+              loading: false
+            }, () => {
+              this.props.closeModal();
+              this.props.history.push('/discover');
+            });
+          }
+        }).fail(() => {
+          this.setState({
+            loading: false,
+            formToRender: "Log in"
+          });
+        });
+      } else if(this.props.formType === "Log in" && this.state.formToRender === "Account name") {
+        this.props.signup(this.state.userParams).then(() => {
+          if (this.props.errors.length === 0) {
+            this.setState({
+              userParams: {
+                email: "",
+                password: "",
+                account_name: ""
+              },
+              formToRender: formType,
+              loading: false
+            }, () => {
+              this.props.closeModal();
+              this.props.history.push('/discover');
+            });
+          }
+        }).fail(() => {
+          this.setState({
+            loading: false,
+            formToRender: "Create account"
+          });
+        });
+      } else {
+        submitUser(this.state.userParams).then(() => {
+          if(this.props.errors.length === 0) {
+            this.setState({
+              userParams: {
+                email: "",
+                password: "",
+                account_name: ""
+              },
+              formToRender: formType,
+              loading: false
+            }, () => {
+              this.props.closeModal();
+              this.props.history.push('/discover');  
+            });
+          }
+        }).fail(() => {
+          this.setState({
+            loading: false,
+            formToRender: formType
+          });
+        });
+      }
     })
   }
 
@@ -121,25 +184,19 @@ class SessionForm extends React.Component {
   }
 
   userExists(email) {
-    let exists;
-    findByEmail(email).then(
-      () => {
-        exists = true;
-      }
-    ).fail(
-      () => {
-        exists = false;
-      }
-    )
-    return exists;
+    return Object.values(this.props.users).some((user) => {
+      return user.email === email;
+    });
   }
 
   processFirstContinue(email) {
     const formType = this.props.formType;
-    this.userExists(email);
     if (!this.checkValidEmail(email)) {
       this.setState({formToRender: "First form"});
       this.props.setErrors(["Enter a valid email address."]);
+    } else if(formType === "Log in" && !this.userExists(email)) {
+      this.setState({formToRender: "Create account"});
+      this.props.setErrors([]);
     } else if((formType === "Log in") || (formType === "Create account" && this.userExists(email))) {
       this.setState({formToRender: "Log in"});
       this.props.setErrors([]);
@@ -195,12 +252,11 @@ class SessionForm extends React.Component {
     return (
       <div id="first-form">
         <div id="top-section">
-          {this.props.formType === "Log in" &&
           <p
             id="demo-login-btn"
             onClick={this.handleDemoSignIn}
             className="session-button"
-          >Demo User</p>}
+          >Demo User</p>
 
           <a id="github-btn"
             target="_blank"
@@ -392,11 +448,18 @@ class SessionForm extends React.Component {
         break;
     }
 
+    let loadingText;
+    if(this.state.formToRender === "Account name") {
+      loadingText = "Signing up..."
+    } else if(this.state.formToRender === "Log in") {
+      loadingText = "Logging in..."
+    }
+
     return (
         <div className="session-form" >
             {this.state.loading &&
               <div className="session-loading-group">
-                <p className="session-loading-text">Logging in...</p>
+                <p className="session-loading-text">{loadingText}</p>
                 <img className="session-loading-icon" src={window.loading_icon}/>
               </div>
             }

@@ -1,6 +1,6 @@
 import TrackPlayPause from './track_play_pause';
 import {connect} from 'react-redux';
-import { receiveCurrentTrack, playTrack, pauseTrack, updatePlaypoint } from '../../actions/track_playing_actions';
+import { receiveCurrentTrack, playTrack, pauseTrack, updatePlaypoint, clearIntervalId } from '../../actions/track_playing_actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -8,7 +8,9 @@ const mapStateToProps = (state, ownProps) => {
         keyName: ownProps.keyName,
         playing: state.ui.trackPlaying.playing,
         trackPlayingId: state.ui.trackPlaying.track_id,
-        selectVertical: ownProps.selectVertical
+        selectVertical: ownProps.selectVertical,
+        loading: state.ui.loading,
+        intervalId: state.ui.trackPlaying.intervalId
     }
 };
 

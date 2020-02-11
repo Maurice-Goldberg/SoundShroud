@@ -42,15 +42,11 @@ export const findTrackByTitle = ({entities}, title) => {
 }
 
 export const findAllTracksByUser = ({entities}, user) => {
-    debugger
     if(Object.values(entities.tracks).length > 0 && user) {
         let userTracks = [];
-        debugger
         user.track_ids.forEach((trackId) => {
-            debugger
             userTracks.push(entities.tracks[trackId]);
         })
-        debugger
         return userTracks;
     }
 }

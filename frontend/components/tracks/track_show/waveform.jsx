@@ -17,6 +17,7 @@ class WaveForm extends React.Component {
     }
 
     componentDidMount() {
+        this.props.startLoading();
         const {track, trackPlaying} = this.props;
         if(track) {
             this.wavesurfer = WaveSurfer.create({
@@ -42,7 +43,8 @@ class WaveForm extends React.Component {
                     (<p id="duration-bar">
                         {formatTrackTime(this.wavesurfer.getDuration())}
                     </p>);
-                this.setState({ loading: false })
+                this.setState({ loading: false });
+                this.props.stopLoading();
             });
         }
     }

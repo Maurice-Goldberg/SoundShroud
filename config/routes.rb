@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :users, only: [:create, :show, :update]
+    resources :users, only: [:create, :show, :index, :update]
     resources :tracks, only: [:show, :index, :create, :destroy, :update] do
       resources :comments, only: [:index, :create]
     end

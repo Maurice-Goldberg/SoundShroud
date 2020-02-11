@@ -3,9 +3,9 @@ require 'open-uri'
 Track.destroy_all
 User.destroy_all
 
-demouser = User.create({account_name: "Demo User", email: "demouser@gmail.com", password: "password123"})
-demouser_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/soundshroud_favicon.png')
-demouser.photo.attach(io: demouser_photo, filename: 'soundshroud_favicon.png')
+demo_user = User.create({account_name: "Maurice", email: "demouser@gmail.com", password: "password123"})
+demo_user_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/maurice.png')
+demo_user.photo.attach(io: demo_user_photo, filename: 'maurice.png')
 
 opn = User.create({account_name: "Oneohtrix Point Never", email: "opn@aol.com", password: "gardenofdelete"})
 opn_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/opn.jpg')
@@ -55,6 +55,29 @@ galen_tipton = User.create({account_name: "Galen Tipton", email: "galentipton@gm
 galen_tipton_photo = open('https://soundshroud000-seeds.s3.amazonaws.com/galen_tipton.jpg')
 galen_tipton.photo.attach(io: galen_tipton_photo, filename: 'galen_tipton.jpg');
 
+electric_counterpoint = Track.create({
+  private: false,
+  title: "Electric Counterpoint (by Steve Reich)",
+  account_id: demo_user.id,
+  artist: "Maurice",
+  description: "A piece for guitar ensemble by the minimalist composer Steve Reich. I uploaded it to this site to share with you all!"
+})
+electric_counterpoint_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/electric_counterpoint.jpg')
+electric_counterpoint.photo.attach(io: electric_counterpoint_cover, filename: 'electric_counterpoint.jpg');
+electric_counterpoint_track = open('https://soundshroud000-seeds.s3.amazonaws.com/electric_counterpoint.mp3')
+electric_counterpoint.track_file.attach(io: electric_counterpoint_track, filename: 'electric_counterpoint.mp3')
+
+bach = Track.create({
+  private: false,
+  title: "Flute Sonata in E minor: I. Adagio (by J.S. Bach)",
+  account_id: demo_user.id,
+  artist: "Maurice",
+  description: "My favorite flute sonata by J.S. Bach. I used to be able to play it back in high school. I hope you all enjoy!"
+})
+bach_cover = open('https://soundshroud000-seeds.s3.amazonaws.com/bach.jpg')
+bach.photo.attach(io: bach_cover, filename: 'bach.jpg');
+bach_track = open('https://soundshroud000-seeds.s3.amazonaws.com/bach.mp3')
+bach.track_file.attach(io: bach_track, filename: 'bach.mp3')
 
 chrome_country = Track.create({
   private: false,

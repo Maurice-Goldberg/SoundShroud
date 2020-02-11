@@ -30,7 +30,6 @@ class Dropdown extends React.Component {
   }
 
   toggleList() {
-    debugger
     this.setState(oldState => ({
       open: !oldState.open
     }));

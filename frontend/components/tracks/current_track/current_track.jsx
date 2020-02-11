@@ -46,28 +46,46 @@ class CurrentTrack extends React.Component {
     }
 
     updatePlayingTime() {
+        if(this.state.looping) {
+            clearInterval(this.intervalId);
+            this.props.clearIntervalId();
+        }
         this.intervalId = setInterval(() => {
             this.scrollbar.current.value = this.props.audioPlayer.current.currentTime;
             this.setState({timeElapsed: this.props.audioPlayer.current.currentTime - 0.5});
             this.props.updatePlaypoint(this.state.timeElapsed);
         }, 50);
+        this.props.receiveIntervalId(this.intervalId);
     }
 
     clearPlayingTimeUpdates() {
+        this.props.clearIntervalId();
         clearInterval(this.intervalId);
         this.setState({ timeElapsed: this.props.audioPlayer.current.currentTime });
     }
 
     handleAudioEnd() {
+        this.clearPlayingTimeUpdates();
         clearInterval(this.intervalId);
-        this.props.pauseTrack();
-        this.props.audioPlayer.pause();
+        this.props.clearIntervalId();
         this.scrollbar.current.value = 0;
         this.props.updatePlaypoint(0);
-        this.setState({
-            timeElapsed: 0,
-            playing: false
-        });
+        
+        if(this.state.looping) {
+            this.props.audioPlayer.current.currentTime = 0;
+            this.props.playTrack();
+            this.props.audioPlayer.current.play();
+            this.setState({
+                timeElapsed: 0
+            });
+        } else {
+            this.props.pauseTrack();
+            this.props.audioPlayer.pause();
+            this.setState({
+                timeElapsed: 0,
+                playing: false
+            });
+        }
     }
 
     restartTrack() {
@@ -132,11 +150,9 @@ class CurrentTrack extends React.Component {
     }
 
     toggleLoop() {
-        if(this.props.audioPlayer.current.loop) {
-            this.props.audioPlayer.current.loop = false;
+        if(this.state.looping) {
             this.setState({looping: false});
         } else {
-            this.props.audioPlayer.current.loop = true;
             this.setState({looping: true});
         }
     }
@@ -149,28 +165,31 @@ class CurrentTrack extends React.Component {
             playing: this.props.playing,
             trackPlaying: this.props.trackPlaying
         });
-        //maybe i have to make it play automatically?
     }
 
     render() {
-        if(!this.props.trackPlaying) {
-            return null;
+        let trackUrl
+        if(this.props.trackPlaying) {
+            trackUrl = this.props.trackPlaying.trackUrl;
         } else {
-            let trackUrl = this.props.trackPlaying.trackUrl;
-            return (
-                <>
-                    <audio
-                        id="audio-player"
-                        preload="auto"
-                        type="audio/mp3"
-                        ref={this.props.audioPlayer}
-                        src={trackUrl}
-                        onLoadedMetadata={this.handleMD}
-                        onPlaying={this.updatePlayingTime}
-                        onPause={this.clearPlayingTimeUpdates}
-                        onEnded={this.handleAudioEnd}
-                        style={{ display: 'none' }}
-                    />
+            trackUrl = "";
+        }
+
+        return (
+            <>
+                <audio
+                    id="audio-player"
+                    preload="auto"
+                    type="audio/mp3"
+                    ref={this.props.audioPlayer}
+                    src={trackUrl}
+                    onLoadedMetadata={this.handleMD}
+                    onPlaying={this.updatePlayingTime}
+                    onPause={this.clearPlayingTimeUpdates}
+                    onEnded={this.handleAudioEnd}
+                    style={{ display: 'none' }}
+                />
+                {this.props.trackPlaying &&
                     <div className="current-track-wrapper">
                         <div className="current-track-box">
                             <div className="audio-controls">
@@ -252,9 +271,9 @@ class CurrentTrack extends React.Component {
                             </div>
                         </div>
                     </div>
-                </>
-            );
-        }
+                }
+            </>
+        );
     }
 }
 

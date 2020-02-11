@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import Splash from './splash';
 import { closeModal } from '../../actions/modal_actions';
 import { fetchTracks } from '../../actions/track_actions';
+import {fetchUsers} from '../../actions/user_actions';
 import { findTrackByTitle } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
@@ -24,7 +25,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTracks: () => dispatch(fetchTracks())
+    fetchTracks: () => dispatch(fetchTracks()),
+    fetchUsers: () => dispatch(fetchUsers())
   }
 }
 

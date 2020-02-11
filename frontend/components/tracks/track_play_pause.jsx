@@ -9,15 +9,17 @@ class TrackPlayPause extends React.Component {
 
     handleClick() {
         let audioPlayer = document.getElementById("audio-player");
-
-        if (this.props.playing && this.props.track.id === this.props.trackPlayingId) {
-            this.props.pauseTrack();
-            audioPlayer.pause();
-        } else {
-            this.props.receiveCurrentTrack(this.props.track);
-            this.props.playTrack();
-            audioPlayer.setAttribute("autoPlay", "");
-            audioPlayer.play();
+        clearInterval(this.props.intervalId);
+        if(!this.props.loading) {
+            if (this.props.playing && this.props.track.id === this.props.trackPlayingId) {
+                this.props.pauseTrack();
+                audioPlayer.pause();
+            } else {
+                this.props.receiveCurrentTrack(this.props.track);
+                this.props.playTrack();
+                audioPlayer.setAttribute("autoPlay", "");
+                audioPlayer.play();
+            }
         }
     }
 
@@ -25,9 +27,13 @@ class TrackPlayPause extends React.Component {
         return (
             <div id="play-btn-wrapper" onClick={e => e.stopPropagation()}>
                 <span className="play-btn" onClick={this.handleClick}>
-                    {this.props.playing && this.props.track.id === this.props.trackPlayingId ?
+                    {this.props.loading ? 
+                    <img src={window.loading_icon2} className="loading-icon2"/>
+                    :
+                    this.props.playing && this.props.track.id === this.props.trackPlayingId ?
                         <img src={window.pause_btn} className="pause-sign" />
-                        : <img src={window.play_btn} className="play-sign" />}
+                        : <img src={window.play_btn} className="play-sign" />
+                    }
                 </span>
             </div>
         )

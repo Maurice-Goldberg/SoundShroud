@@ -67,9 +67,12 @@
     border-bottom: 1px solid darkslateblue;
 }
 
+.user-show-wrapper #tracks-wrapper {
+    border-right: 1px solid darkslateblue;
+}
+
 .user-show-wrapper .track-hero-wrapper {
     width: 880px;
-    border-right: 1px solid darkslateblue;
     padding-top: 10px;
 }
 
@@ -99,7 +102,7 @@
 .user-show-wrapper .track-text-and-creation-time {
     display: flex;
     flex-direction: row;
-    width: 65%;
+    width: 85%;
     justify-content: space-between;
 }
 
@@ -171,10 +174,19 @@
 #user-show-play-btn-wrapper .pause-sign {
   position: relative;
   left: 6px;
-  top: 4px;
+  top: 5px;
   height: 14px;
   width: 14px;
   z-index: 3;
+}
+
+#user-show-play-btn-wrapper .loading-icon2 {
+    position: relative;
+    left: 6px;
+    top: 5px;
+    height: 25px;
+    width: 25px;
+    z-index: 3;
 }
 
 .user-show-wrapper .edit-btn {
@@ -224,5 +236,14 @@
 .user-show-wrapper #filled-profile-picture .image-input-text {
     top: -77px;
     left: 70px;
+}
+
+.hidden {
+    display: none;
+}
+
+.image-input-text-bar {
+    animation-name: fade-in;
+    animation-duration: 0.2s;
 }
 

@@ -3,7 +3,9 @@ import {
   PLAY_TRACK,
   PAUSE_TRACK,
   RESTART_TRACK,
-  UPDATE_PLAYPOINT
+  UPDATE_PLAYPOINT,
+  RECEIVE_INTERVAL_ID,
+  CLEAR_INTERVAL_ID
 } from '../../actions/track_playing_actions';
 
 
@@ -26,6 +28,12 @@ const trackPlayingReducer = (oldState = defaultState, action) => {
       return newState;
     case PAUSE_TRACK:
       newState.playing = false;
+      return newState;
+    case RECEIVE_INTERVAL_ID:
+      newState.intervalId = action.intervalId;
+      return newState;
+    case CLEAR_INTERVAL_ID:
+      newState.intervalId = null;
       return newState;
     case RESTART_TRACK:
       newState.timeElapsed = 0;

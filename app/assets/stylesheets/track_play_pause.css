@@ -18,9 +18,18 @@
 
 #play-btn-wrapper .pause-sign {
   position: relative;
-  left: 14px;
+  left: 12px;
   top: 12px;
-  height: 24px;
-  width: 24px;
+  height: 26px;
+  width: 26px;
   z-index: 3;
+}
+
+#play-btn-wrapper .loading-icon2 {
+  position: relative;
+  z-index: 3;
+  left: 12px;
+  top: 12px;
+  height: 35px;
+  width: 35px;
 }

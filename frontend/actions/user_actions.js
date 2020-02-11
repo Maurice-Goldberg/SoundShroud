@@ -1,6 +1,7 @@
-import * as UserAPIUTil from '../util/user_api_util';
+import * as UserAPIUtil from '../util/user_api_util';
 
 export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 
 export const receiveUser = (user) => {
     return {
@@ -9,8 +10,29 @@ export const receiveUser = (user) => {
     }
 }
 
+export const receiveUsers = (users) => {
+    debugger
+    return {
+        type: RECEIVE_USERS,
+        users
+    }
+}
+
 export const fetchUser = (user_id) => (dispatch) => {
-    return UserAPIUTil.fetchUser(user_id).then(
+    return UserAPIUtil.fetchUser(user_id).then(
         user => dispatch(receiveUser(user))
+        );
+    }
+    
+export const fetchUsers = () => (dispatch) => {
+    debugger
+    return UserAPIUtil.fetchUsers().then(
+        (users) => dispatch(receiveUsers(users))
+    );
+}
+
+export const updateUser = (formData, id) => (dispatch) => {
+    return UserAPIUtil.updateUser(formData, id).then(
+        updatedUser => (dispatch(receiveUser(updatedUser)))
     );
 }

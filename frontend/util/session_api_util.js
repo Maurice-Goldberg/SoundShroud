@@ -21,11 +21,3 @@ export const signupUser = user => {
     data: { user }
   });
 };
-
-export const findByEmail = email => {
-  return $.ajax({
-    method: 'GET',
-    url: 'api/session/email',
-    data: {email}
-  });
-}

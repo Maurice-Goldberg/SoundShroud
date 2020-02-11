@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../../actions/session_actions';
-import { RECEIVE_USER } from '../../actions/user_actions';
+import { RECEIVE_USER, RECEIVE_USERS } from '../../actions/user_actions';
 import { RECEIVE_TRACK } from '../../actions/track_actions';
 
 const usersReducer = (oldState = {}, action) => {
@@ -9,6 +9,8 @@ const usersReducer = (oldState = {}, action) => {
     case RECEIVE_CURRENT_USER:
       newState[action.user.id] = action.user;
       return newState;
+    case RECEIVE_USERS:
+      return action.users;
     case RECEIVE_USER:
       newState[action.user.id] = action.user;
       return newState;

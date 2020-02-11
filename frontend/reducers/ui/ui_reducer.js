@@ -7,7 +7,7 @@ import modalReducer from './modal_reducer';
 const uiReducer = combineReducers({
   loading: loadingReducer,
   trackPlaying: trackPlayingReducer,
-  modal: modalReducer
+  modal: modalReducer,
 });
 
 export default uiReducer;

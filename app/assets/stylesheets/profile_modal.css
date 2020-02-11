@@ -1,0 +1,81 @@
+.profile-modal-background {
+      position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(71, 61, 139, 0.959);
+  z-index: 10;
+  animation-name: profile-modal-background-fade-in;
+  animation-duration: 0.25s;
+}
+
+.profile-modal-background .modal-child {
+  animation-name: profile-modal-child-swoop-in;
+  animation-duration: 0.5s;
+  top: 0%;
+  height: 470px;
+  width: 500px;
+  padding: 30px;
+}
+
+@keyframes profile-modal-background-fade-in {
+  from {
+    background: transparent;
+  }
+  to {
+    background: rgb(71, 61, 139);
+  }
+}
+
+@keyframes profile-modal-child-swoop-in {
+  from {
+    top: -100%;
+    bottom: -100%;
+  }
+  to {
+    top: 0%;
+    bottom: 0%;
+  }
+}
+
+.profile-modal-background h2 {
+  font-size: 22px;
+  padding: 0px 300px 12px 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(61, 61, 61);
+}
+
+.profile-modal-background .modal-child p {
+  color: rgb(145, 145, 145);
+  font-size: 12px;
+}
+
+.profile-photo {
+  width: 320px;
+  height: 320px;
+  border-radius: 100%;
+  margin-left: 85px;
+  margin-top: 30px;
+  object-fit: cover;
+}
+
+.profile-modal-background .second-upload-buttons {
+  margin: 20px 0px 0px 330px;
+}
+
+.x {
+  margin-top: 10px;
+  margin-left: 97%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+  color: rgb(180, 180, 180);
+  font-weight: 100;
+  animation-name: fade-in;
+  animation-duration: 0.5s;
+}
+
+.x:hover {
+  color: white;
+  cursor: pointer;
+}

@@ -20,7 +20,6 @@ class Discover extends React.Component {
   }
 
   selectVertical() {
-    debugger
     this.setState({ selectedTrackId: this.state.selectedTrack.id });
   }
 
