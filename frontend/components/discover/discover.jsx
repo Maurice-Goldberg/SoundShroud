@@ -55,13 +55,23 @@ class Discover extends React.Component {
       () => {
         this.props.fetchTracks().then(
         () => {
-            this.setState({
-              hoveredTrack: "",
-              selectedTrackId: null,
-              selectedTrackPhotoUrl: this.props.ocean_of_tears.photoUrl,
-              selectedTrackTrackUrl: this.props.ocean_of_tears.trackUrl,
-              selectedTrack: this.props.ocean_of_tears
-            });
+            if(this.props.trackPlaying.playing) {
+              this.setState({
+                hoveredTrack: this.props.track.title,
+                selectedTrackId: this.props.trackPlaying.track_id,
+                selectedTrackPhotoUrl: this.props.track.photoUrl,
+                selectedTrackTrackUrl: this.props.track.trackUrl,
+                selectedTrack: this.props.track
+              });
+            } else {
+              this.setState({
+                hoveredTrack: "",
+                selectedTrackId: null,
+                selectedTrackPhotoUrl: this.props.ocean_of_tears.photoUrl,
+                selectedTrackTrackUrl: this.props.ocean_of_tears.trackUrl,
+                selectedTrack: this.props.ocean_of_tears
+              });
+            }
           }
         );
       }

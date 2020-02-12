@@ -7,9 +7,13 @@ import {receiveCurrentTrack, playTrack} from '../../actions/track_playing_action
 
 const mapStateToProps = (state, ownProps) => {
   if (findTrackByTitle(state, "Chrome Country")) {
+    let track = state.ui.trackPlaying.playing ?
+      state.entities.tracks[state.ui.trackPlaying.track_id]
+      : null;
     return {
       currentUserId: state.session.currentUserId,
       trackPlaying: state.ui.trackPlaying,
+      track: track,
       loading: state.ui.loading,
       intervalId: state.ui.trackPlaying.intervalId,
   
