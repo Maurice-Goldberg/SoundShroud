@@ -28,20 +28,18 @@ class SessionForm extends React.Component {
     this.setState({ loading: true }, () => {
       if(this.props.formType === "Create account" && formType === "First form") {
         demoSubmitUser(this.state.userParams).then(() => {
-          if (this.props.errors.length === 0) {
-            this.setState({
-              userParams: {
-                email: "",
-                password: "",
-                account_name: ""
-              },
-              formToRender: formType,
-              loading: false
-            }, () => {
-              this.props.closeModal();
-              this.props.history.push('/discover');
-            });
-          }
+          this.setState({
+            userParams: {
+              email: "",
+              password: "",
+              account_name: ""
+            },
+            formToRender: formType,
+            loading: false
+          }, () => {
+            this.props.closeModal();
+            this.props.history.push('/discover');
+          });
         });
       } else if (this.props.formType === "Create account" && this.state.formToRender === "Log in") {
         this.props.login(this.state.userParams).then(() => {
@@ -217,7 +215,6 @@ class SessionForm extends React.Component {
             this.handleSubmit("Log in");
             break;
           case "Create account":
-            debugger
             this.processSignUpContinue();
             break;
           case "Account name":

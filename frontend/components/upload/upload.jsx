@@ -170,6 +170,8 @@ class Upload extends React.Component {
               photoUrl={this.state.photoUrl}
               photoFile={this.state.photoFile}
               closeModal={this.props.closeModal}
+              setErrors={this.props.setErrors}
+              errors={this.props.errors}
             />
           </>
         );

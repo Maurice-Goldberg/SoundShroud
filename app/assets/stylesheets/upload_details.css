@@ -95,24 +95,20 @@
 .camera-png {
   width: 25px;
   height: 25px;
-  top: -47px;
-  left: 70px;
-  position: relative;
-  z-index: 4;
-}
-
-.camera-png {
-  cursor: pointer;
   z-index: 1;
+  cursor: pointer;
   position: absolute;
   left: 0px;
-  top: 0px;
+  top: -3px;
+}
+
+.image-input-text-bar {
+    top: -65px;
+  left: 70px;
+  position: relative;
 }
 
 .image-input-text {
-  top: -65px;
-  left: 70px;
-  position: relative;
   background: rgb(148, 148, 148);
   color: black;
   width: 60px;
@@ -162,6 +158,20 @@
 
 .description-input {
   height: 120px;
+}
+
+.image-error {
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+  animation-name: slide-down;
+  animation-duration: 0.25s;
+  width: 250px;
+  text-align: center;
+}
+
+#errored-image-square {
+  border: 1px solid red;
 }
 
 .errored-title-group .title-input {

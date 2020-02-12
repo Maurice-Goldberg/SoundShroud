@@ -14,7 +14,8 @@ class UploadDetails extends React.Component {
                 private: props.private,
                 trackFile: props.trackFile,
                 formType: props.formType,
-                loading: false
+                loading: false,
+                photoError: false
             }
         } else {
             this.state = {
@@ -25,18 +26,30 @@ class UploadDetails extends React.Component {
                 private: props.private,
                 trackFile: null,
                 formType: props.formType,
-                loading: false
+                loading: false,
+                photoError: false
             }
         }
 
         this.handlePhotoFile = this.handlePhotoFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.showImageError = this.showImageError.bind(this);
     }
 
     preventEnter(event) {
         let code = event.keyCode || event.which;
         if(code === 13) {
             event.preventDefault();
+        }
+    }
+
+    showImageError() {
+        if(this.props.errors.length > 0) {
+            return (
+                <p className="image-error">
+                    {`${this.props.errors[0]}`}
+                </p>
+            )
         }
     }
 
@@ -54,6 +67,12 @@ class UploadDetails extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        if (this.state.photoUrl === "") {
+            this.props.setErrors(["Please add a song cover"]);
+            this.setState({photoError: true})
+            return;
+        }
+
         this.setState({
             loading: true
         });
@@ -69,9 +88,14 @@ class UploadDetails extends React.Component {
             formData.append('track[photo]', this.state.photoFile);
             
             this.props.uploadTrack(formData)
-                .then(
-                    ({ trackResponse }) => this.props.history.push(`/tracks/${trackResponse.track.id}`)
-                )
+                .then(({ trackResponse }) => {
+                        this.props.setErrors([]);
+                        this.props.history.push(`/tracks/${trackResponse.track.id}`)
+                    }
+                ).fail(() => {
+                        this.setState({loading: false});
+                    }
+                );
         } else {
             if(this.state.photoFile) {
                 formData.append('track[photo]', this.state.photoFile);
@@ -89,43 +113,40 @@ class UploadDetails extends React.Component {
     render() {
         let coverSquare;
     
-        console.log(this.state.photoUrl);
         if (this.state.photoUrl) {
             coverSquare = (
                 <div className="left-div">
                     <img className="cover-art" src={this.state.photoUrl} />
-                    <div>
-                        <div className="image-input-text-bar">
-                            <label className="image-input-text">Upload image
-                                <img className="camera-png" src={window.camera} />
-                                <input
-                                    className="image-input"
-                                    type="file"
-                                    accept="image/jpeg,image/pjpeg,image/gif,image/png"
-                                    onChange={this.handlePhotoFile}
-                                />
-                            </label>
-                        </div>
+                    <div className="image-input-text-bar">
+                        <label className="image-input-text">Upload image
+                            <img className="camera-png" src={window.camera} />
+                            <input
+                                className="image-input"
+                                type="file"
+                                accept="image/jpeg,image/pjpeg,image/gif,image/png"
+                                onChange={this.handlePhotoFile}
+                            />
+                        </label>
                     </div>
                 </div>)
         } else {
+            let errorId = this.state.photoError ? "errored-image-square" : "";
             coverSquare = (
                 <div className="left-div">
-                    <div className="blank-image-square"></div>
-                    <div>
-                        <div className="image-input-text-bar">
-                            <label className="image-input-text">Upload image
-                                <img className="camera-png" src={window.camera} />
-                                <input
-                                    className="image-input"
-                                    value={this.state.photoUrl}
-                                    type="file"
-                                    accept="image/jpeg,image/pjpeg,image/gif,image/png"
-                                    onChange={this.handlePhotoFile}
-                                />
-                            </label>
-                        </div>
+                    <div className="blank-image-square" id={errorId}></div>
+                    <div className="image-input-text-bar">
+                        <label className="image-input-text">Upload image
+                            <img className="camera-png" src={window.camera} />
+                            <input
+                                className="image-input"
+                                value={this.state.photoUrl}
+                                type="file"
+                                accept="image/jpeg,image/pjpeg,image/gif,image/png"
+                                onChange={this.handlePhotoFile}
+                            />
+                        </label>
                     </div>
+                    {this.showImageError()}
                 </div>
             );
         }
@@ -238,6 +259,7 @@ class UploadDetails extends React.Component {
                                 <button className="cancel-upload-btn" onClick={this.props.closeModal}>Cancel</button>
                                 :
                                 <button className="cancel-upload-btn" onClick={() => {
+                                    this.props.setErrors([]);
                                     this.setState({
                                         photoFile: null,
                                         photoUrl: ""
