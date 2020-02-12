@@ -8,7 +8,6 @@ class NavBar extends React.Component {
   }
 
   accountNav() {
-    // debugger
     let account_name = this.props.currentUser.account_name;
     let list = (
       <>

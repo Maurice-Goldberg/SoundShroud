@@ -99,7 +99,7 @@ class Discover extends React.Component {
           } = this.props;
 
     if (!chrome_country) {
-      debugger
+      
       return null;
     }
     
@@ -331,7 +331,7 @@ class Discover extends React.Component {
       imgClass = "playlist-cover-img";
     }
 
-    debugger
+    
 
     return (
       <>
