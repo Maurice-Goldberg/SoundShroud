@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import TrackPlayPauseContainer from '../tracks/track_play_pause_container';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import { findTrackArtist } from '../../reducers/selectors';
 
 class Discover extends React.Component {
   constructor(props) {
@@ -50,17 +51,21 @@ class Discover extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTracks().then(
+    this.props.fetchUsers().then(
       () => {
-        this.setState({
-          hoveredTrack: "",
-          selectedTrackId: null,
-          selectedTrackPhotoUrl: this.props.ocean_of_tears.photoUrl,
-          selectedTrackTrackUrl: this.props.ocean_of_tears.trackUrl,
-          selectedTrack: this.props.ocean_of_tears
-        });
+        this.props.fetchTracks().then(
+        () => {
+            this.setState({
+              hoveredTrack: "",
+              selectedTrackId: null,
+              selectedTrackPhotoUrl: this.props.ocean_of_tears.photoUrl,
+              selectedTrackTrackUrl: this.props.ocean_of_tears.trackUrl,
+              selectedTrack: this.props.ocean_of_tears
+            });
+          }
+        );
       }
-    );
+    )
   }
 
   render() {
@@ -76,10 +81,15 @@ class Discover extends React.Component {
             hand_crushed_by_a_mallet,
             mercy_street,
             running_up_that_hill,
-            that_world
+            that_world,
+
+            opn,
+            galen_tipton,
+            hunnid_gecs
           } = this.props;
 
     if (!chrome_country) {
+      debugger
       return null;
     }
     
@@ -311,6 +321,8 @@ class Discover extends React.Component {
       imgClass = "playlist-cover-img";
     }
 
+    debugger
+
     return (
       <>
         <NavBarContainer />
@@ -354,23 +366,58 @@ class Discover extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="sidebar-panel">
-              <div className="top-section">
-                <img src={window.people}/>
-                <h3>Who to check out</h3>
-              </div>
-              <div className="artists-to-check-out">
-                    {/* <div className="artist">
-                      <img src={ this.props.hunnid_gecs } />
-                      <div className="name-and-track-count">
+            <div className="sidebar-panel-wrapper">
+              <div className="sidebar-panel">
+                <div className="top-section">
+                  <img src={window.people}/>
+                  <h3>Artists to check out</h3>
+                </div>
+                <div className="artists-to-check-out">
+                  <div className="artist">
+                    <Link to={`/users/${hunnid_gecs.id}`}>
+                      <img className="artist-photo" src={hunnid_gecs.photoUrl} />
+                    </Link>
+                    
+                    <div className="name-and-track-count">
+                      <Link to={`/users/${hunnid_gecs.id}`}>
                         <p className="name">100 Gecs</p>
-                        <div className="track-count">
-                          <img src={window.track}/>
-                          <p>{this.props.hunnid_gecs.track_ids.length}</p>
-                        </div>
+                      </Link>
+                      <div className="track-count">
+                        <img className="waveform-img" src={window.waveform}/>
+                        <p>{hunnid_gecs.track_ids.length}</p>
                       </div>
-                    </div> */}
-              </div>
+                    </div>
+                  </div>
+                  <div className="artist">
+                    <Link to={`/users/${opn.id}`}>
+                      <img className="artist-photo" src={ opn.photoUrl } />
+                    </Link>
+                    <div className="name-and-track-count">
+                      <Link to={`/users/${opn.id}`}>
+                        <p className="name">Oneohtrix Point Never</p>
+                      </Link>
+                      <div className="track-count">
+                        <img className="waveform-img" src={window.waveform}/>
+                        <p>{opn.track_ids.length}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="artist">
+                    <Link to={`/users/${galen_tipton.id}`}>
+                      <img className="artist-photo" src={ galen_tipton.photoUrl } />
+                    </Link>
+                    <div className="name-and-track-count">
+                      <Link to={`/users/${galen_tipton.id}`}>
+                        <p className="name">Galen Tipton</p>
+                      </Link>
+                      <div className="track-count">
+                        <img className="waveform-img" src={window.waveform}/>
+                        <p>{galen_tipton.track_ids.length}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>`
             </div>
           </div>
         </div>

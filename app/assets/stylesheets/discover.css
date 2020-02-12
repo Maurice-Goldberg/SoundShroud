@@ -17,10 +17,13 @@
   border-right: 1px solid darkslateblue;
 }
 
+.sidebar-panel-wrapper {
+  width: 350px;
+}
+
 .sidebar-panel {
   position: fixed;
-  width: 350px;
-  left: 64.2%;
+  width: 360px;
 }
 
 .sidebar-panel .top-section {
@@ -45,6 +48,53 @@
 .artists-to-check-out {
   display: flex;
   flex-direction: column;
+  padding-top: 15px;
+  padding-left: 20px;
+
+}
+
+.artists-to-check-out .artist {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.artists-to-check-out .name {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.artists-to-check-out .name:hover {
+  color: white;
+}
+
+.track-count p {
+  font-size: 13px;
+  margin-left: 2px;
+  margin-top: 3px;
+}
+
+.name-and-track-count {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-count {
+  display: flex;
+}
+
+.artist .artist-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.waveform-img {
+  width: 20px;
+  height: 20px;
 }
 
 .discover-panel-header {
@@ -62,7 +112,7 @@
 .tracks-panel {
   width: 815px;
   height: 225px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background: rgb(0,0,0);
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(36,6,121,1) 63%, rgb(43, 0, 173) 100%);
   display: flex;
@@ -97,6 +147,23 @@
 
 .soundshroud-weekly .tracks {
   margin-top: 12px;
+}
+
+.soundshroud-weekly {
+  border-bottom: 1px solid darkslateblue;
+  width: 815px;
+  padding-bottom: 10px;
+}
+
+.new-music-now {
+  margin-top: 30px;
+  border-bottom: 1px solid darkslateblue;
+  width: 815px;
+}
+
+.soundshroud-classics {
+  margin-top: 30px;
+  width: 815px;
 }
 
 .tracks-panel .tracks li {
@@ -243,44 +310,6 @@ a {
   flex-direction: column;
   margin: 10px;
   border: 1px solid white;
-}
-
-.tracks-carousel .tracks::-webkit-scrollbar-track
-{
-    border-radius: 10px;
-    background-color: transparent;
-}
-
-.tracks-carousel .tracks::-webkit-scrollbar
-{
-    width: 10px;
-    background-color: transparent;
-}
-
-.tracks-carousel .tracks::-webkit-scrollbar-thumb
-{
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: rgba(255, 255, 255, 0.344);
-}
-
-.tracks-carousel .artists::-webkit-scrollbar-track
-{
-    border-radius: 10px;
-    background-color: transparent;
-}
-
-.tracks-carousel .artists::-webkit-scrollbar
-{
-    width: 10px;
-    background-color: transparent;
-}
-
-.tracks-carousel .artists::-webkit-scrollbar-thumb
-{
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: rgba(255, 255, 255, 0.344);
 }
 
 .playlist-cover-img {

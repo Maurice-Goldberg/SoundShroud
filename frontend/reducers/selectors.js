@@ -13,18 +13,14 @@ export const findTrack = ({entities}, trackId) => {
 }
 
 export const findTrackArtist = (users, trackId) => {
-    if(trackId) {
-        let usersArr = Object.values(users);
-        for (let i = 0; i < usersArr.length; i++) {
-            let user = usersArr[i];
-            if (user.track_ids[trackId]) {
-                return user;
-            }
+    let usersArr = Object.values(users);
+    for (let i = 0; i < usersArr.length; i++) {
+        let user = usersArr[i];
+        if (user.track_ids.some((id) => id === trackId)) {
+            return user;
         }
-        return {};
-    } else {
-        return {};
     }
+    return {};
 };
 
 export const currentUser = ({entities, session}) => {
