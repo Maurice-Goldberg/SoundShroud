@@ -4,10 +4,10 @@ export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 export const REMOVE_TRACK = "REMOVE_TRACK";
 
-export const receiveTrack = (track) => {
+export const receiveTrack = (trackResponse) => {
     return {
         type: RECEIVE_TRACK,
-        trackResponse: track
+        trackResponse
     }
 }
 
@@ -18,10 +18,10 @@ export const receiveTracks = (tracks) => {
     }
 }
 
-export const removeTrack = (track) => {
+export const removeTrack = (trackResponse) => {
     return {
         type: REMOVE_TRACK,
-        trackResponse: track
+        trackResponse
     }
 }
 
@@ -39,19 +39,19 @@ export const fetchTracks = () => (dispatch) => {
 
 export const uploadTrack = (formData) => (dispatch) => {
     return TrackAPIUtil.uploadTrack(formData).then(
-        uploadedTrack => (dispatch(receiveTrack(uploadedTrack)))
+        trackResponse => (dispatch(receiveTrack(trackResponse)))
     );
 };
 
 export const updateTrack = (formData, id) => (dispatch) => {
     return TrackAPIUtil.updateTrack(formData, id).then(
-        updatedTrack => (dispatch(receiveTrack(updatedTrack)))
+        trackResponse => (dispatch(receiveTrack(trackResponse)))
     );
 }
 
 export const deleteTrack = (id) => (dispatch) => {
     return TrackAPIUtil.deleteTrack(id).then(
-        deletedTrack => (dispatch(removeTrack(deletedTrack)))
+        trackResponse => (dispatch(removeTrack(trackResponse)))
     )
 }
 

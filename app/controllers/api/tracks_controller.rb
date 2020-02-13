@@ -32,6 +32,7 @@ class Api::TracksController < ApplicationController
     @track = Track.find_by_id(params[:id])
     if @track
       @track.destroy
+      render "api/tracks/show"
     else
       render json: ["Track not found"], status: 422
     end

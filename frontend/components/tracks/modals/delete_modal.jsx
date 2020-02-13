@@ -17,7 +17,7 @@ class DeleteModal extends React.Component {
             this.props.history.push('/discover');
         } else {
             this.props.forceUserShowUpdate();
-            this.props.history.push(`/users/${this.props.currentUserId}`);
+            // this.props.history.push(`/users/${this.props.currentUserId}`);
         }
         this.props.closeModal();
     }

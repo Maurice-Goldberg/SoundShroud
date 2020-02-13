@@ -66,7 +66,7 @@
 
 .user-show-wrapper #tracks-header {
     font-size: 25px;
-    padding: 30px 1090px 15px 10px;
+    padding: 25px 1090px 15px 10px;
     border-bottom: 1px solid darkslateblue;
 }
 
@@ -112,6 +112,7 @@
 .user-show-wrapper .creation-time-elapsed {
     position: static;
     margin-top: 40px;
+    margin-right: 160px;
     font-size: 12px;
 }
 

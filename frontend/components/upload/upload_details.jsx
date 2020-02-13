@@ -83,7 +83,13 @@ class UploadDetails extends React.Component {
         formData.append('track[account_id]', this.props.currentUserId);
         formData.append('track[artist]', this.props.currentUser.account_name);
         
-        if (this.props.formType !== "edit") {
+        if (this.props.formType === "edit") {    
+            if(this.state.photoFile) {
+                formData.append('track[photo]', this.state.photoFile);
+            }
+            this.props.updateTrack(formData, this.props.id)
+                .then(this.props.closeModal)
+        } else {
             formData.append('track[track_file]', this.state.trackFile);
             formData.append('track[photo]', this.state.photoFile);
             
@@ -96,17 +102,6 @@ class UploadDetails extends React.Component {
                         this.setState({loading: false});
                     }
                 );
-        } else {
-            if(this.state.photoFile) {
-                formData.append('track[photo]', this.state.photoFile);
-            }
-            this.props.updateTrack(formData, this.props.id)
-                .then(
-                    ({ trackResponse }) => {
-                        this.props.history.push(`/tracks/${trackResponse.track.id}`);
-                        this.props.closeModal();
-                    }
-                )
         }
     }
     

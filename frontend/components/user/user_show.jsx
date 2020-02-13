@@ -21,7 +21,8 @@ class UserShow extends React.Component {
             photoUrl: photoUrl,
             possiblePhotoFile: null,
             possiblePhotoUrl: "",
-            pictureTextClass: "hidden"
+            pictureTextClass: "hidden",
+            trackBtnId: null
         }
 
         this.responseButtons = this.responseButtons.bind(this);
@@ -29,18 +30,28 @@ class UserShow extends React.Component {
         this.userTracks = this.userTracks.bind(this);
         this.pictureArea = this.pictureArea.bind(this);
         this.handlePhotoFile = this.handlePhotoFile.bind(this);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
     }
 
-    responseButtons() {
+    handleButtonClick(e) {
+        let trackId = parseInt(e.currentTarget.getAttribute("trackId"));
+        if(e.currentTarget.className === "edit-btn") {
+            this.setState({trackBtnId: trackId }, this.props.openEditModal);
+        } else if(e.currentTarget.className === "delete-btn") {
+            this.setState({ trackBtnId: trackId }, this.props.openDeleteModal);
+        }
+    }
+
+    responseButtons(trackId) {
         if(this.props.currentUser) {
             if(parseInt(this.props.userId) === this.props.currentUser.id) {
                 return (
                     <div className="response-buttons-bar">
-                        <div className="edit-btn" onClick={this.props.openEditModal}>
+                        <div className="edit-btn" trackId={trackId} onClick={this.handleButtonClick}>
                             <p className="pencil-png">✏️</p>
                             <p className="edit-btn-ele" >Edit</p>
                         </div>
-                        <div className="delete-btn" onClick={this.props.openDeleteModal}>
+                        <div className="delete-btn" trackId={trackId} onClick={this.handleButtonClick}>
                             <p className="trashcan-png">🗑</p>
                             <p className="delete-btn-ele">Delete</p>
                         </div>
@@ -129,60 +140,66 @@ class UserShow extends React.Component {
     }
 
     userTracks() {
-        return this.props.userTracks.map((userTrack) => {
-            return (
-                <div key={userTrack.id}>
-                    {this.props.modal === "Edit" &&
-                        this.props.currentUser &&
-                        <EditModalContainer track={userTrack} currentUserId={this.props.currentUser.id} forceUserShowUpdate={this.forceUserShowUpdate} />
-                    }
-                    {this.props.modal === "Delete" &&
-                        this.props.currentUser &&
-                        <DeleteModalContainer track={userTrack} currentUserId={this.props.currentUser.id} artist={this.props.user} forceUserShowUpdate={this.forceUserShowUpdate} />
-                    }
-                    <div className="track-hero-wrapper">
-                        <div className="track-hero">
-                            <Link to={`/tracks/${userTrack.id}`}>
-                                <img className="track-cover" src={userTrack.photoUrl} />
-                            </Link>
-                            <div className="right-wrapper">
-                                <div id="play-btn-track-text-and-creation-time">
-                                    <div id="user-show-play-btn-wrapper">
-                                        <TrackPlayPauseContainer
-                                            track={userTrack}
-                                            currentTrackId={this.props.trackPlaying.track_id}
-                                        />
-                                    </div>
-                                    <div className="track-text-and-creation-time">
-                                        <div className="track-text">
-                                            <div className="artist-name-wrapper">
-                                                <Link to={`/users/${this.props.user.id}`}>
-                                                    <p className="artist-name">{this.props.user.account_name}</p>
-                                                </Link>
+        if(this.props.userTracks.length) {
+            return this.props.userTracks.map((userTrack) => {
+                if(userTrack) {
+                    return (
+                        <div key={userTrack.id}>
+                            {this.props.modal === "Edit" &&
+                                this.props.currentUser &&
+                                this.state.trackBtnId === userTrack.id &&
+                                <EditModalContainer track={userTrack} currentUserId={this.props.currentUser.id} forceUserShowUpdate={this.forceUserShowUpdate} />
+                            }
+                            {this.props.modal === "Delete" &&
+                                this.props.currentUser &&
+                                this.state.trackBtnId === userTrack.id &&
+                                <DeleteModalContainer track={userTrack} currentUserId={this.props.currentUser.id} artist={this.props.user} forceUserShowUpdate={this.forceUserShowUpdate} />
+                            }
+                            <div className="track-hero-wrapper">
+                                <div className="track-hero">
+                                    <Link to={`/tracks/${userTrack.id}`}>
+                                        <img className="track-cover" src={userTrack.photoUrl} />
+                                    </Link>
+                                    <div className="right-wrapper">
+                                        <div id="play-btn-track-text-and-creation-time">
+                                            <div id="user-show-play-btn-wrapper">
+                                                <TrackPlayPauseContainer
+                                                    track={userTrack}
+                                                    currentTrackId={this.props.trackPlaying.track_id}
+                                                />
                                             </div>
-                                            <div className="track-name-wrapper">
-                                                <Link to={`/tracks/${userTrack.id}`}>
-                                                    <h2 className="track-name">{userTrack.title}</h2>
-                                                </Link>
+                                            <div className="track-text-and-creation-time">
+                                                <div className="track-text">
+                                                    <div className="artist-name-wrapper">
+                                                        <Link to={`/users/${this.props.user.id}`}>
+                                                            <p className="artist-name">{this.props.user.account_name}</p>
+                                                        </Link>
+                                                    </div>
+                                                    <div className="track-name-wrapper">
+                                                        <Link to={`/tracks/${userTrack.id}`}>
+                                                            <h2 className="track-name">{userTrack.title}</h2>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                                <p className="creation-time-elapsed">{formatUploadTime(userTrack.created_at)}</p>
                                             </div>
                                         </div>
-                                        <p className="creation-time-elapsed">{formatUploadTime(userTrack.created_at)}</p>
+        
+                                        <div className="show-track-player">
+                                            <WaveFormContainer
+                                                track={userTrack}
+                                                // audioPlayer={this.props.audioPlayer}
+                                                barHeight={0.5} />
+                                        </div>
+                                        {this.responseButtons(userTrack.id)}
                                     </div>
                                 </div>
-
-                                <div className="show-track-player">
-                                    <WaveFormContainer
-                                        track={userTrack}
-                                        // audioPlayer={this.props.audioPlayer}
-                                        barHeight={0.5} />
-                                </div>
-                                {/* {this.responseButtons()} */}
                             </div>
                         </div>
-                    </div>
-                </div>
-            );
-        });
+                    );
+                }
+            });
+        }
     }
 
     forceUserShowUpdate() {
@@ -198,6 +215,7 @@ class UserShow extends React.Component {
                     photoUrl: user.photoUrl
                 });
             });
+            this.props.fetchUsers();
             this.props.fetchTracks().then(() => {
                 this.setState({
                     userTracks: this.userTracks()
@@ -213,6 +231,7 @@ class UserShow extends React.Component {
                     photoUrl: user.photoUrl
                 });
             });
+            this.props.fetchUsers();
             this.props.fetchTracks().then(() => {
                 this.setState({
                     userTracks: this.userTracks()
