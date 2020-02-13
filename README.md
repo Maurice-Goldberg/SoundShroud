@@ -1,4 +1,4 @@
-# [SoundShroud](http://soundshroud000.herokuapp.com/#/discover)
+# [SoundShroud](http://soundshroud000.herokuapp.com/#/)
 
 SoundShroud is my dark-mode clone of [SoundCloud](https://soundcloud.com/discover), the popular audio streaming platform. In developing this clone, I looked to exactly replicate the core functionality of the app while reconceptualizing its color scheme to be more aesthetically pleasing.
 
@@ -13,39 +13,36 @@ The following technologies were used:
 ## Features
 
 ### Splash Page
-- User first arrives on a sleek welcome page with a sampling of songs displayed, accompanied by prompts to sign in or create a new account
-- Splash page hero banner uses smooth carousel navigation
+- The user first arrives on a sleek welcome page with a sampling of songs displayed, accompanied by prompts to sign in or create a new account
+- Splash page hero banner uses smooth carousel display
+- Splash page showcases a sample of songs from the SoundShroud database that the user can play before logging in or signing up
 
 ### User Authentication
-- User can log in to a pre-existing account through a modal form
-- User can sign up for a new account through a modal form
-- User can sign in as a demo user for quick access to the site's core features
+- The user can log in to a pre-existing account through a modal form
+- The user can sign up for a new account through a modal form
+- The user can sign in as a demo user for quick access to the site's core features
 
 ### Discover Page
-- Upon signing in, user arrives on a show page of currently trending tracks, as well as a set of artists to check out, curated by the site
-- Page has a vertical scroll display for songs and a horizontal carousel display for artists
+- Upon signing in, the user arrives on a show page of currently trending tracks, as well as a set of artists to check out, curated by the site
+- The page displays tracks of interest in both horizontal and vertical scrollable displays
 
 ### Song CRUD Functionality (Create/Read/Update/Destroy)
-- Create: User can upload new songs through an upload form
-- Read: User can view all public songs through individual song pages
-- Update: User can edit their own song's information (title, description, and cover art)
-- Destroy: User can remove songs from their account
+- Create: the user can upload new songs through an upload form
+- Read: the user can view all public songs through individual song pages
+- Update: the user can edit their own song's information (title, description, and cover art)
+- Destroy: the user can remove songs from their account
 
 ### Audio Streaming
-- User can play songs via audio players located throughout the site (splash page, discover page, individual song pages)
-- Audio player has play, pause, scrolling, song skip, and song restart functionality
-- Audio player displays an aesthetically pleasing waveform representing the song's changes in volume over time
+- The user can play songs via audio players located throughout the site (splash page, discover page, individual song pages, profile pages)
+- The individual track pages each display an aesthetically pleasing waveform representing the individual song's changes in volume over time
 
 ### Persistent Song Bar
-- User can continuously listen to music through an audio player footer as they navigate from page to page
-- Song's progress in time is directly mimicked by the display of the individual song page's audio player
+- The user can continuously listen to music through an audio player footer as they navigate from page to page
+- The song bar has play, pause, scrolling, song skip, and song restart functionality
+- The song's progress in time is directly mimicked by the display of the individual song page's audio player
 
 ### Profile Page
-- User profile page displays all posted tracks, a short user bio, and widget links to the user's social media
-- User can view other users' profile pages
-- User can view and edit their own profile page
-
-### Comment Functionality
-- User can comment underneath a song on the song's individual show page
-- User can remove a previously posted commment
-- User can reply to another user's comment
+- The user profile page displays all posted tracks
+- The user can view other users' profile pages
+- The user can upload or update their own profile picture
+- The user can edit or delete their own tracks from their profile page
