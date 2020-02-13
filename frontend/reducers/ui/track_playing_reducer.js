@@ -14,7 +14,6 @@ let defaultState = {
   playing: false,
   timeElapsed: 0,
   recentlyPlayedIds: [1, 2, 3],
-  //just for testing purposes right now
   track_id: 3
 }
 const trackPlayingReducer = (oldState = defaultState, action) => {
