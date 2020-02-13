@@ -5,6 +5,7 @@ import {
   RESTART_TRACK,
   UPDATE_PLAYPOINT,
   RECEIVE_INTERVAL_ID,
+  RECEIVE_RECENT_LISTEN,
   CLEAR_INTERVAL_ID
 } from '../../actions/track_playing_actions';
 
@@ -12,7 +13,7 @@ import {
 let defaultState = {
   playing: false,
   timeElapsed: 0,
-
+  recentlyPlayedIds: [1, 2, 3],
   //just for testing purposes right now
   track_id: 3
 }
@@ -28,6 +29,10 @@ const trackPlayingReducer = (oldState = defaultState, action) => {
       return newState;
     case PAUSE_TRACK:
       newState.playing = false;
+      return newState;
+    case RECEIVE_RECENT_LISTEN:
+      newState.recentlyPlayedIds.unshift(action.trackId);
+      newState.recentlyPlayedIds.pop();
       return newState;
     case RECEIVE_INTERVAL_ID:
       newState.intervalId = action.intervalId;
