@@ -18,13 +18,17 @@ The following technologies were used:
 - Splash page showcases a sample of songs from the SoundShroud database that the user can play before logging in or signing up
 
 ### User Authentication
-- The user can sign up for a new account through a modal form
+- The user can sign up for a new account via a modal form
+![Sign up modal](gifs/create_acc_modal.gif)
 
-- The user can sign in as a demo user for quick access to the site's core features
+- The user can sign in through via a modal form
+![Sign in modal](gifs/sign_in_modal.gif)
 
 - Robust error handling for invalid email format, invalid email/password combination, and empty text fields
+![Errors](gifs/auth_errors.gif)
 
-- The user can log in to a pre-existing demo account
+- The user can log in to as a demo user for quick access to the site's core features
+![Demo login](gifs/demo_login.gif)
 
 - Re-routes user from create account modal to sign in modal if a pre-existing email is entered
 - Re-routes user from sign in modal to create account modal if a new email is entered
@@ -32,12 +36,20 @@ The following technologies were used:
 ### Discover Page
 - Upon signing in, the user arrives on a show page of currently trending tracks, as well as a set of artists to check out, curated by the site
 - The page displays tracks of interest in both horizontal and vertical scrollable displays
+![Discover](gifs/discover_page.gif)
 
 ### Song CRUD Functionality (Create/Read/Update/Destroy)
 - Create: the user can upload new songs through an upload form
+![Upload](gifs/upload.gif)
+
 - Read: the user can view all public songs through individual song pages
+![Track show](gifs/track_show_page.gif)
+
 - Update: the user can edit their own song's information (title, description, and cover art)
+![Edit modal](gifs/edit_modal.gif)
+
 - Destroy: the user can remove songs from their account
+![Delete modal](gifs/delete_modal.gif)
 
 ### Audio Streaming
 - The user can play songs via audio players located throughout the site (splash page, discover page, individual song pages, profile pages)
