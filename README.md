@@ -59,7 +59,7 @@ The following technologies were used:
 
 ### Profile Page
 - The user profile page displays all of that user's posted tracks
-![User show](gifs/user_show_page.gif)
+![User show](gifs/user_show.gif)
 
 - The user can upload or update their own profile picture
 ![User show](gifs/profile_picture_modal.gif)
