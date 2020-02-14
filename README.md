@@ -18,16 +18,16 @@ The following technologies were used:
 - Splash page showcases a sample of songs from the SoundShroud database that the user can play before logging in or signing up
 
 ### User Authentication
-- The user can sign up for a new account through a modal form
+- The user can sign up for a new account via a modal form
 ![Sign up modal](gifs/create_acc_modal.gif)
 
-- The user can sign in as a demo user for quick access to the site's core features
+- The user can sign in through via a modal form
 ![Sign in modal](gifs/sign_in_modal.gif)
 
 - Robust error handling for invalid email format, invalid email/password combination, and empty text fields
 ![Errors](gifs/auth_errors.gif)
 
-- The user can log in to a pre-existing demo account
+- The user can log in to as a demo user for quick access to the site's core features
 ![Demo login](gifs/demo_login.gif)
 
 - Re-routes user from create account modal to sign in modal if a pre-existing email is entered
