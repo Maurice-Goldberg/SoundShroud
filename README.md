@@ -18,9 +18,16 @@ The following technologies were used:
 - Splash page showcases a sample of songs from the SoundShroud database that the user can play before logging in or signing up
 
 ### User Authentication
-- The user can log in to a pre-existing account through a modal form
 - The user can sign up for a new account through a modal form
+
 - The user can sign in as a demo user for quick access to the site's core features
+
+- Robust error handling for invalid email format, invalid email/password combination, and empty text fields
+
+- The user can log in to a pre-existing demo account
+
+- Re-routes user from create account modal to sign in modal if a pre-existing email is entered
+- Re-routes user from sign in modal to create account modal if a new email is entered
 
 ### Discover Page
 - Upon signing in, the user arrives on a show page of currently trending tracks, as well as a set of artists to check out, curated by the site
