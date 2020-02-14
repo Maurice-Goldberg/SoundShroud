@@ -19,12 +19,16 @@ The following technologies were used:
 
 ### User Authentication
 - The user can sign up for a new account through a modal form
+![Sign up modal](gifs/create_acc_modal.gif)
 
 - The user can sign in as a demo user for quick access to the site's core features
+![Sign in modal](gifs/sign_in_modal.gif)
 
 - Robust error handling for invalid email format, invalid email/password combination, and empty text fields
+![Errors](gifs/auth_errors.gif)
 
 - The user can log in to a pre-existing demo account
+![Demo login](gifs/demo_login.gif)
 
 - Re-routes user from create account modal to sign in modal if a pre-existing email is entered
 - Re-routes user from sign in modal to create account modal if a new email is entered
