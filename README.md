@@ -36,12 +36,20 @@ The following technologies were used:
 ### Discover Page
 - Upon signing in, the user arrives on a show page of currently trending tracks, as well as a set of artists to check out, curated by the site
 - The page displays tracks of interest in both horizontal and vertical scrollable displays
+![Discover](gifs/discover_page.gif)
 
 ### Song CRUD Functionality (Create/Read/Update/Destroy)
 - Create: the user can upload new songs through an upload form
+![Upload](gifs/upload.gif)
+
 - Read: the user can view all public songs through individual song pages
+![Track show](gifs/track_show_page.gif)
+
 - Update: the user can edit their own song's information (title, description, and cover art)
+![Edit modal](gifs/edit_modal.gif)
+
 - Destroy: the user can remove songs from their account
+![Delete modal](gifs/delete_modal.gif)
 
 ### Audio Streaming
 - The user can play songs via audio players located throughout the site (splash page, discover page, individual song pages, profile pages)
