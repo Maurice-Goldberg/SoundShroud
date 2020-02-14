@@ -6,6 +6,7 @@ The following technologies were used:
 - React-Redux (front-end)
 - Ruby on Rails (back-end)
 - AJAX (front-end to back-end communication)
+- Wavesurfer.js (conversion of audio files into a representative waveform)
 - PostgreSQL (database storage)
 - AWS S3 (data hosting)
 - Heroku (domain hosting)
