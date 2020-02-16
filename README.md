@@ -6,6 +6,7 @@ The following technologies were used:
 - React-Redux (front-end)
 - Ruby on Rails (back-end)
 - AJAX (front-end to back-end communication)
+- Wavesurfer.js (conversion of audio files into a representative waveform)
 - PostgreSQL (database storage)
 - AWS S3 (data hosting)
 - Heroku (domain hosting)
@@ -42,26 +43,31 @@ The following technologies were used:
 - Create: the user can upload new songs through an upload form
 ![Upload](gifs/upload.gif)
 
-- Read: the user can view all public songs through individual song pages
+- Read: the user can view all public songs through individual song pages, each displaying an aesthetically pleasing waveform representing the individual song's changes in volume over time
 ![Track show](gifs/track_show_page.gif)
 
-- Update: the user can edit their own song's information (title, description, and cover art)
+- Update: the user can edit their own song's title, description, and privacy settings
 ![Edit modal](gifs/edit_modal.gif)
 
 - Destroy: the user can remove songs from their account
 ![Delete modal](gifs/delete_modal.gif)
 
-### Audio Streaming
-- The user can play songs via audio players located throughout the site (splash page, discover page, individual song pages, profile pages)
-- The individual track pages each display an aesthetically pleasing waveform representing the individual song's changes in volume over time
-
-### Persistent Song Bar
-- The user can continuously listen to music through an audio player footer as they navigate from page to page
-- The song bar has play, pause, scrolling, song skip, and song restart functionality
+### Audio Streaming & Persistent Song Bar
+- The user can play and pause songs through buttons located throughout the site (splash page, discover page, individual song pages, profile pages)
+- The user can listen to and control the music being played using a continuosly visible footer that persists while navigating from page to page
+- The song bar has play, pause, scrolling, looping, song skip, and song restart functionality
 - The song's progress in time is directly mimicked by the display of the individual song page's audio player
 
 ### Profile Page
-- The user profile page displays all posted tracks
-- The user can view other users' profile pages
+- The user profile page displays all of that user's posted tracks
+![User show](gifs/user_show.gif)
+
 - The user can upload or update their own profile picture
+![User show](gifs/profile_picture_modal.gif)
+
 - The user can edit or delete their own tracks from their profile page
+- The user can view other users' profile pages
+
+
+
+
