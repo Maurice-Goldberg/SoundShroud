@@ -20,12 +20,14 @@ class WaveForm extends React.Component {
     componentDidMount() {
         this.props.startLoading();
         const {track} = this.props;
+        // const audioContext = new AudioContext();
         if(track) {
             this.wavesurfer = WaveSurfer.create({
                 container: `#waveform-${track.id}`,
                 waveColor: 'white',
                 progressColor: 'darkblue',
                 barGraph: 10,
+                audioContext: audioContext,
                 barHeight: this.props.barHeight || 1,
                 barWidth: 2,
                 fillParent: true,
@@ -58,6 +60,7 @@ class WaveForm extends React.Component {
             });
             this.props.startLoading();
             const { track } = this.props;
+            // const audioContext = new AudioContext();
             if (track) {
                 this.wavesurfer = WaveSurfer.create({
                     container: `#waveform-${track.id}`,
@@ -67,6 +70,7 @@ class WaveForm extends React.Component {
                     barHeight: this.props.barHeight || 1,
                     barWidth: 2,
                     fillParent: true,
+                    audioContext: audioContext,
                     cursorWidth: 0,
                     interact: false,
                     autoCenter: true,
