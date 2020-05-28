@@ -26,6 +26,16 @@
   top: 12px;
 }
 
+#user-show-play-btn-wrapper #play-btn-wrapper .play-sign {
+  left: 7px;
+  top: 5px;
+}
+
+#user-show-play-btn-wrapper #play-btn-wrapper .pause-sign {
+  left: 7px;
+  top: 6px;
+}
+
 #play-btn-wrapper .pause-sign {
   position: relative;
   left: 17px;
